@@ -1,0 +1,342 @@
+html, body {
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* * {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+} */
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap-flex {
+    display:flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+.space-even {
+    justify-content: space-evenly;
+}
+
+.logodiv{
+    flex:1;
+}
+
+.maindiv {
+    flex:1;
+}
+
+.logodetailsdiv {
+    flex:1;
+}
+
+.height-100 {
+    height:100%;
+}
+
+.px-15 {
+    padding: 15px !important;
+}
+
+.px-20 {
+    padding:20px !important;
+}
+
+.pl-20 {
+    padding-left: 20px !important;
+}
+
+.pt-25 {
+    padding-top:25px !important;
+}
+
+.ma_icons {
+    width: 205px;
+}
+
+.mb-20 {
+    margin-bottom: 20px !important;
+}
+
+.mt-10 {
+    margin-top:10px !important;
+}
+
+.mt-20 {
+    margin-top:20px !important;
+}
+
+.mt-30 {
+    margin-top:30px !important;
+}
+
+.mt-40 {
+    margin-top:40px !important;
+}
+
+.thebgdiv {
+    background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.the_agenda1 {
+    background: #AFB838;
+background: linear-gradient(20deg, rgba(175, 184, 56, 0.99) 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+p.the_agenda1:hover {
+    background: linear-gradient(-20deg, rgba(175, 184, 56, 0.99) 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+.the_agenda2 {
+    background: #de8b35;
+    background: linear-gradient(20deg, #de8b35 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+p.the_agenda2:hover {
+    background: linear-gradient(-20deg, #de8b35 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+.the_agenda3 {
+    background: #e73b2b;
+    background: linear-gradient(20deg, #e73b2b 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+p.the_agenda3:hover {
+    background: linear-gradient(-20deg, #e73b2b 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+.the_agenda4 {
+    background: #e12887;
+    background: linear-gradient(20deg, #e12887 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+p.the_agenda4:hover {
+    background: linear-gradient(-20deg, #e12887 20%, rgba(0, 0, 0, 0.13) 70%);    
+}
+
+.the_agenda5{
+    background: #47a7bf;
+    background: linear-gradient(20deg, #47a7bf 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+p.the_agenda5:hover {
+     background: linear-gradient(-20deg, #47a7bf 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+.the_agenda6{
+    background: #fbb81f;
+    background: linear-gradient(20deg, #fbb81f 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+p.the_agenda6:hover {
+    background: linear-gradient(-20deg, #fbb81f 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+.the_agenda7{
+        background: #7c7f37;
+    background: linear-gradient(20deg, #7c7f37 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+p.the_agenda7:hover {
+    background: linear-gradient(-20deg, #7c7f37 20%, rgba(0, 0, 0, 0.13) 70%);
+}
+
+.the_agenda8{
+        background: #b56216;
+    background: linear-gradient(20deg, #b56216 20%, rgba(0, 0, 0, 0.13) 70%); 
+}
+
+p.the_agenda8:hover {
+    background: linear-gradient(-20deg, #b56216 20%, rgba(0, 0, 0, 0.13) 70%); 
+}
+
+.the_agenda9 {
+        background: #7e2a1f;
+    background: linear-gradient(20deg, #7e2a1f 20%, rgba(0, 0, 0, 0.13) 70%); 
+        /* color:#fff; */
+}
+
+p.the_agenda9:hover {
+    background: linear-gradient(-20deg, #7e2a1f 20%, rgba(0, 0, 0, 0.13) 70%); 
+}
+
+.the_agenda10 {
+        background: #bb0868;
+    background: linear-gradient(20deg, #bb0868 20%, rgba(0, 0, 0, 0.13) 70%); 
+        /* color:#fff; */
+}
+
+p.the_agenda10:hover {
+    background: linear-gradient(-20deg, #bb0868 20%, rgba(0, 0, 0, 0.13) 70%); 
+}
+
+.imagebgholder {
+    height: 100%;
+    width: 98.8%;
+    background-size: cover;
+}
+
+.thecolorbg {
+    background-color: #f1f1f1;
+}
+
+.thetitle {
+    color: #fff;
+  letter-spacing: 9px;
+  text-shadow: 0px 0px 10px #000;
+  text-transform: uppercase;
+  font-size: 50px;
+}
+
+.agendatitle {
+text-transform: uppercase;
+  font-size: 18px;
+  background: #ffffff57;
+  padding: 10px 10px 10px 28px;
+  margin-left: -25px;
+  letter-spacing: 8px;
+}
+
+.theagenda {
+text-transform: uppercase;
+  font-size: 33px;
+  line-height: 50px;
+  width: 75%;
+}
+
+.theperitem {
+    border: 1px solid #e5e5e5;
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.agendalist {
+    padding-left: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    width: 9999px;
+    position: relative;
+    z-index: -2;
+}
+
+.agendalist li {
+    background-color: #fff;
+}
+
+.thenavigation {
+    text-align: center;
+}
+
+.thenavigation p {
+    padding: 10px 10px 10px 3.2rem;
+    font-size: 16px;
+    color: #fff;
+    text-align: left;
+    border: 5px solid #dadadaeb;
+}
+
+.thenavigation a {
+    text-decoration: none;
+}
+
+.pagenavs a {
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    height: 0px !important;
+}
+
+.lh-25 {
+    line-height: 25px;
+}
+
+.prevnextbtn button {
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 99px;
+    padding: 5px 15px;
+    font-size: 13px;
+}
+
+.prevnextbtn button:hover {
+    cursor: pointer;
+    background:#fff;
+}
+
+.gap_3 {
+    gap:3px;
+}
+
+.infoholder ul {
+    display: flex;
+    flex-direction: row;
+    width: 10000000px;
+    padding: 0px;
+    gap: 100px;
+}
+
+.infoholder ul li {
+    /* width: 1035px; */
+}
+
+.infoholder {
+    width: inherit;
+    /* overflow: hidden; */
+}
+
+.bigpix_ul{ 
+    /* padding:0px;
+    margin:0px; */
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bigpix_ul li{
+    display: none;
+    list-style: none;
+    /* width: 1040px; */
+    height: 100%;
+}
+
+.thebutton_div:hover{
+    color:#333 !important;
+}
+
+.ma_holder {
+    
+}

@@ -1,0 +1,97 @@
+.hideit {
+    display: none;
+}
+
+.itemsaved {
+    outline: 2px solid green;
+}
+
+.itemnotsave {
+    outline: 2px solid red;
+}
+
+#theindicators tr td {
+    /*:first-child,#theindicators tr td:last-child*/
+    vertical-align: top;
+}
+
+#inside_disagg {
+    padding: 18px;
+}
+
+.tbody_disagg {
+    border: 2px dashed #efefef;
+    border-radius: 15px;
+}
+
+.the_disagg_tbl tbody tr th,
+.the_disagg_tbl tbody tr td {
+    padding: 0px !important;
+}
+
+.textareatxt {
+    min-height: 100px !important;
+}
+
+.tabindex_year {}
+
+.tabindexli_selected {
+    background: #e2e2e2;
+}
+
+.tabindex_year li {
+    border-radius: 3px 3px 0px 0px;
+    padding: 5px 14px;
+    background: #f1f1f1;
+}
+
+.thedisplaydiv {
+    background: #e2e2e2;
+    padding: 10px;
+}
+
+.disagg_list li {
+    padding: 5px 0px;
+    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
+    margin-top: -1px;
+}
+
+.disagg_list li:hover,
+.tabindex_year li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+.disagg_listli_selected {
+    background: #e2e2e2 !important;
+}
+
+.ul_listing {
+    padding: 0px;
+}
+
+.ul_listing li {
+    list-style: none;
+    background: #cccccc3d;
+    margin-bottom: 5px;
+    padding: 9px;
+    border-radius: 5px;
+}
+
+.ul_listing li:hover {
+    cursor: pointer;
+    background: #cccccc;
+}
+
+.selected {
+    background-color: #ccc !important;
+}
+
+.uploadcsvwindow {
+    margin-top: 10px;
+    border: 1px solid #eeecec;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px #e8e4e4;
+}
