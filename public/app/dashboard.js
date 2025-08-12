@@ -91,6 +91,15 @@ $(document).on("click", ".fakesave", function () {
     alert("Successfully Saved");
 })
 
+$(document).on("click",".bring_down", function() {
+    var m_id = $(this).data('arrowdata');
+
+    $(document).find(".devpart"+m_id).children().remove();
+    get_("prjsunderdevpart", {devpart : m_id }, function(data) {
+        $(data).appendTo(".devpart"+m_id);
+    });
+});
+
 $('#fileInput').on('change', function () {
     var file_data = $('#fileInput').prop('files')[0];
     var aid = $(document).find("#aid").val();

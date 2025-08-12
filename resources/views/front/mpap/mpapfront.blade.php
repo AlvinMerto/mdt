@@ -62,126 +62,6 @@
 
 <div id="map"></div>
 
-<div class="left_box" style="display:none;">
-        <div class="logodiv">
-            <img src="{{asset('images/mdt_logo.png')}}"/>
-            <h4 style="margin: 35px 0px 25px 0px; font-size: 14px;"> List of Development Partners  </h4>
-        </div>
-        <div class="bodydiv">
-            <div class="search_box row">
-                <div class="col-md-10">
-                    <input type='text' placeholder="Search..."/>
-                </div>
-                <div class="col-md-2"> <i class="bi bi-search"></i> </div>
-            </div>
-            <div class="btn-divs">
-                <p> &nbsp; </p>
-                <div>
-                    <button id="ma_button"> Mindanao Agenda </button>
-                    <button id="analysisbtn"> Analysis </button>
-                    <!-- <button> Filter </button> -->
-                </div>
-            </div>
-        </div>
-        <div class="contentdiv">
-            <!-- <p class="listtitle"> List of Development Partners <i class="bi bi-arrow-clockwise refresh_page"></i> </p> -->
-            <ul class="ullist">
-                <?php
-                    if (count($devpart) > 0) {
-                        foreach($devpart as $d) { 
-                            $icon = asset("images/icons/".$d['logo']).".png";
-                            ?>
-                            <li id="<?php echo str_replace(' ', '', $d['abbr']); ?>">
-                                <div class="row">
-                                    <div class="col-md-3 devbox">
-                                        <img src="{{$icon}}"/>
-                                    </div>
-                                    <div class="col-md-9 ptop">
-                                        <p class="program_title getprograms" data-devid="<?php echo $d['id']; ?>"> <?php echo $d['devpartner']; ?> </p>
-                                        <p class="program_details"> 134 Projects </p>
-                                    </div>
-                                    
-                                    <!-- <div class="col-md-2 icon_div">
-                                        <i class="bi bi-arrow-right-short"></i>
-                                    </div> -->
-                                </div>
-                                <div class="li_content">
-                                    <div class="row">
-                                        <div class="col-md-12 p-l">
-                                            <p class="small_title"> List of Programs/Projects</p>
-                                            <span id="theprograms_<?php echo $d['id']; ?>"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                <?php   }
-                    }
-                ?>
-            </ul>
-        </div>
-</div>
-
-<div class="rbme_side">
-    <div class="rbme_left">
-        <!-- <div class="logodiv mt-30">
-            <img src="{{asset('images/rbme_logo.png')}}"/>
-        </div> -->
-        <div class="bodydiv mt-30 white-font pl-25 pr-25">
-            <div class="row bor-b pb-2">
-                <div class="col-md-12">
-                    <h4 class='font-14 npp black_text'> PROGRAMS AND PROJECTS </h4>
-                </div>
-                <!-- <div class="col-md-5" style="text-align: right;">
-                    <span class="button_small"> Show Projects </span>
-                </div> -->
-            </div>
-            <div class="row mt-10">
-                <div class="col-md-4 p-0">
-                    <select class="mpap-select-big black_text black_text form-select form-select-transparent text-dark fs-7 lh-1 fw-bold py-0 ps-3 w-auto font-35" id="yearselect">
-                        <?php 
-                            for($i = date("Y") ; $i >= 2016; $i--) {
-                                echo "<option value='{$i}'> {$i} </option>";
-                            } 
-                        ?>
-                    </select>
-                </div>
-                <div class="col-md-8 p-0">
-                    <select class="mpap-select-big black_text form-select form-select-transparent text-dark fs-7 lh-1 fw-bold py-0 ps-3 w-auto font-35">
-                        <option value='all'> Mindanao </option>
-                        <option value='9'> Region IX </option>
-                        <option value='10'> Region X </option>
-                        <option value='11'> Region XI </option>
-                        <option value='12'> Region XII </option>
-                        <option value='13'> Region XIII </option>
-                        <option value='barmm'> Barmm </option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mt-10">
-                <div class="col-md-12 p-0">
-                    <h3 class="font-80 red-it bold-it m-0"> <span id="numofprojs"> <?php echo $numofprojs; ?> </span> <i class="bi bi-play-circle-fill font-60" id="playit"></i> </h3>
-                    <p class="red-it font-21"> ODA FUNDED PROGRAMS AND PROJECTS </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="chartdiv_bar"></div>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="contentdiv white-font">
-            <div class="row ">
-                <div class="col-md-12 bor-b">
-                    <h4 class='font-14 npp pb-10'> MINDANAO AGENDA AT A GLANCE </h4>
-                </div>
-                <div class="col-md-12">
-                    <div id="agenda_chart"></div>
-                </div>
-            </div>
-        </div> -->
-    </div>
-</div>
-
 <div class="the_mindanao_agenda">
     <ul class="ma_icons"> 
         <?php foreach($ma as $m) { 
@@ -249,7 +129,6 @@
                     </h1>
                 </div>
                 <div class="col-md-4 header_div_stat">
-                    <!-- <i class="ki-outline ki-arrow-up fs-3 text-success me-2 font-88"> {{asset('images/ma_icons/minda_agenda_1.png')}} </i> -->
                     <img class="each_agenda_icon" id="agendalogo" src=""/>
                 </div>
                 <div class="col-md-12">
@@ -309,8 +188,6 @@
 
             </div>
         </div>
-    
-
     </div>
 </div>
 

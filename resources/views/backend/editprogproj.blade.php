@@ -52,21 +52,27 @@
 									<div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
 										<!--begin::Title-->
 										<h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bold fs-3 m-0">
-											<?php echo $collection[0]->title; ?>
+											Editing Project
 										</h1>
 										<!--end::Title-->
 										<!--begin::Breadcrumb-->
 										<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
 											<!--begin::Item-->
 											<li class="breadcrumb-item text-muted">
-												<?php echo $collection[0]->description; ?>
+												<a href="{{route('dashboard')}}" class="text-muted text-hover-primary">HOME</a>
+											</li>
+											<li class="breadcrumb-item">
+												<span class="bullet bg-gray-400 w-5px h-2px"></span>
+											</li>
+											<li class="breadcrumb-item text-muted">
+												<a href="{{route('mpapbackend')}}" class="text-muted text-hover-primary">MPAP</a>
 											</li>
 											<!--end::Item-->
 										</ul>
 										<!--end::Breadcrumb-->
 									</div>
 									<div class="card-toolbar" style="display:block;">
-										<a href="http://localhost:8000/dashboard/mpap/add" class="btn btn-primary btn-sm">Add Project</a>
+										<a href="{{route('mpapadd')}}" class="btn btn-primary btn-sm">Add Project</a>
 									</div>
 									<!--end::Page title-->
 								</div>
@@ -79,119 +85,132 @@
 						<div id="kt_app_content" class="app-content flex-column-fluid">
 							<!--begin::Content container-->
 							<div id="kt_app_content_container" class="app-container container-fluid">
-								<!--begin::Form-->
-								<!--begin::Aside column-->
-								<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-									<!--begin::Thumbnail settings-->
-									<div class="card card-flush py-4" style="display:none;">
-										<!--begin::Card header-->
-										<div class="card-header">
-											<!--begin::Card title-->
-											<div class="card-title">
-												<h2>Thumbnail</h2>
+								<div class="card mb-5">
+									<div class="card-body pt-9 pb-0">
+										<!--begin::Details-->
+										<div class="d-flex flex-wrap flex-sm-nowrap mb-6">
+											<!--begin::Image-->
+											<div class="d-flex flex-center flex-shrink-0 bg-light rounded w-100px h-100px w-lg-150px h-lg-150px me-7 mb-4">
+												<img class="mw-50px mw-lg-75px" src="assets/media/svg/brand-logos/volicity-9.svg" alt="image">
 											</div>
-											<!--end::Card title-->
-										</div>
-										<!--end::Card header-->
-										<!--begin::Card body-->
-										<div class="card-body text-center pt-0">
-											<!--begin::Image input-->
-											<div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3"
-												data-kt-image-input="true">
-												<!--begin::Preview existing avatar-->
-												<div class="image-input-wrapper w-150px h-150px"
-													style="background-image: url(assets/media//stock/ecommerce/78.png)">
+											<!--end::Image-->
+											<!--begin::Wrapper-->
+											<div class="flex-grow-1">
+												<!--begin::Head-->
+												<div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+													<!--begin::Details-->
+													<div class="d-flex flex-column">
+														<!--begin::Status-->
+														<div class="d-flex align-items-center mb-1">
+															<h4> <?php echo $collection[0]->title; ?> </h4>
+															<span class="badge badge-light-success me-auto"> <?php echo $collection[0]->status; ?> </span>
+														</div>
+														<!--end::Status-->
+														<!--begin::Description-->
+														<div class="d-flex flex-wrap fw-semibold mb-4 fs-5 text-gray-400">
+															<?php echo $collection[0]->description; ?>
+														</div>
+														<!--end::Description-->
+													</div>
+													<!--end::Details-->
 												</div>
-												<!--end::Preview existing avatar-->
-												<!--begin::Label-->
-												<label
-													class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-													data-kt-image-input-action="change" data-bs-toggle="tooltip"
-													title="Change avatar">
-													<i class="ki-outline ki-pencil fs-7"></i>
-													<!--begin::Inputs-->
-													<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-													<input type="hidden" name="avatar_remove" />
-													<!--end::Inputs-->
-												</label>
-												<!--end::Label-->
-												<!--begin::Cancel-->
-												<span
-													class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-													data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-													title="Cancel avatar">
-													<i class="ki-outline ki-cross fs-2"></i>
-												</span>
-												<!--end::Cancel-->
-												<!--begin::Remove-->
-												<span
-													class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-													data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-													title="Remove avatar">
-													<i class="ki-outline ki-cross fs-2"></i>
-												</span>
-												<!--end::Remove-->
+												<!--end::Head-->
+												<!--begin::Info-->
+												<div class="d-flex flex-wrap justify-content-start">
+													<!--begin::Stats-->
+													<div class="d-flex flex-wrap">
+														<!--begin::Stat-->
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<div class="fs-4 fw-bold"> <?php echo date("F d, Y", strtotime($collection[0]->updated_at)); ?> </div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-semibold fs-6 text-gray-400">Last Update</div>
+															<!--end::Label-->
+														</div>
+														<!--end::Stat-->
+														<!--begin::Stat-->
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<div class="fs-4 fw-bold counted" data-kt-countup="true" data-kt-countup-value="75" data-kt-initialized="1"><?php echo count($geo_finance); ?></div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-semibold fs-6 text-gray-400">Locations</div>
+															<!--end::Label-->
+														</div>
+														<!--end::Stat-->
+														<!--begin::Stat-->
+														<!-- <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<div class="d-flex align-items-center">
+																<i class="ki-outline ki-arrow-up fs-3 text-success me-2"></i>
+																<div class="fs-4 fw-bold counted" data-kt-countup="true" data-kt-countup-value="15000" data-kt-countup-prefix="$" data-kt-initialized="1">$15,000</div>
+															</div>
+															<div class="fw-semibold fs-6 text-gray-400">Budget Spent</div>
+														</div> -->
+														<!--end::Stat-->
+													</div>
+													<!--end::Stats-->
+												</div>
+												<!--end::Info-->
 											</div>
-											<!--end::Image input-->
-											<!--begin::Description-->
-											<div class="text-muted fs-7">Set the thumbnail image. Only *.png, *.jpg
-												and *.jpeg image files are accepted</div>
-											<!--end::Description-->
+											<!--end::Wrapper-->
 										</div>
-										<!--end::Card body-->
+										<!--end::Details-->
+										<div class="separator"></div>
+										<!--begin::Nav-->
+										<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
+											<li class="nav-item">
+												<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+													href="#kt_ecommerce_add_product_general">General</a>
+											</li>
+											<!--end:::Tab item-->
+											<!--begin:::Tab item-->
+											<li class="nav-item">
+												<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+													href="#location_tabs">Location</a>
+											</li>
+											<!--end:::Tab item-->
+											<!--begin:::Tab item-->
+											<li class="nav-item">
+												<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+													href="#financial_tabs">Financial</a>
+											</li>
+											<!--end:::Tab item-->
+											<!--begin:::Tab item-->
+											<li class="nav-item">
+												<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+													href="#project_management_tab">Project Management</a>
+											</li>
+											<!--end:::Tab item-->
+											<!--begin:::Tab item-->
+											<li class="nav-item">
+												<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+													href="#thrust_div_panel">Thrust</a>
+											</li>
+											<!--end:::Tab item-->
+											<!--begin:::Tab item-->
+											<li class="nav-item">
+												<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+													href="#contacts_div">Contacts</a>
+											</li>
+											<!--end:::Tab item-->
+											<!--begin:::Tab item-->
+											<li class="nav-item">
+												<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+													href="#additional_info">Additional Information</a>
+											</li>
+											<!--end:::Tab item-->
+										</ul>
+										<!--end::Nav-->
 									</div>
-									<!--end::Thumbnail settings-->
 								</div>
-								<!--end::Aside column-->
+								<!--begin::Form-->
 								<!--begin::Main column-->
 								<div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-									<!--begin:::Tabs-->
-									<ul
-										class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
-										<!--begin:::Tab item-->
-										<li class="nav-item">
-											<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
-												href="#kt_ecommerce_add_product_general">General</a>
-										</li>
-										<!--end:::Tab item-->
-										<!--begin:::Tab item-->
-										<li class="nav-item">
-											<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-												href="#location_tabs">Location</a>
-										</li>
-										<!--end:::Tab item-->
-										<!--begin:::Tab item-->
-										<li class="nav-item">
-											<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-												href="#financial_tabs">Financial</a>
-										</li>
-										<!--end:::Tab item-->
-										<!--begin:::Tab item-->
-										<li class="nav-item">
-											<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-												href="#project_management_tab">Project Management</a>
-										</li>
-										<!--end:::Tab item-->
-										<!--begin:::Tab item-->
-										<li class="nav-item">
-											<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-												href="#thrust_div_panel">Thrust</a>
-										</li>
-										<!--end:::Tab item-->
-										<!--begin:::Tab item-->
-										<li class="nav-item">
-											<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-												href="#contacts_div">Contacts</a>
-										</li>
-										<!--end:::Tab item-->
-										<!--begin:::Tab item-->
-										<li class="nav-item">
-											<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-												href="#additional_info">Additional Information</a>
-										</li>
-										<!--end:::Tab item-->
-									</ul>
-									<!--end:::Tabs-->
 									<!--begin::Tab content-->
 									<div class="tab-content">
 										<!--begin::Tab pane-->
@@ -245,7 +264,7 @@
 																		<div class="text-muted fs-7">Set the status.</div>
 																		<!--end::Description-->
 																	</div>
-																<!--end::Input-->
+																	<!--end::Input-->
 															</div>
 															<!--end::Status-->
 															<!--begin::Input group-->
@@ -277,8 +296,8 @@
 																</select>
 																<!--end::Input-->
 																<!--begin::Description-->
-																<div class="text-muted fs-7">Click here if you want to
-																	add a <a href="#"> development partner </a></div>
+																<!-- <div class="text-muted fs-7">Click here if you want to
+																	add a <a href="#"> development partner </a></div> -->
 																<!--end::Description-->
 															</div>
 															<!--end::Input group-->
@@ -549,15 +568,15 @@
 										<div class="tab-pane fade" id="financial_tabs" role="tab-panel">
 											<div class="row">
 												<?php
-													if (count($geo_finance) > 0) {
-														echo "<div class='col-md-4'>";
-															echo "<ul class='ul_listing' id='fd_list'>";
-															foreach ($geo_finance as $gf) {
-																echo "<li data-loc_id='{$gf->geolocationid}'> {$gf->columnplace} </li>";
-															}
-															echo "</ul>";
-														echo "</div>";
+												if (count($geo_finance) > 0) {
+													echo "<div class='col-md-4'>";
+													echo "<ul class='ul_listing' id='fd_list'>";
+													foreach ($geo_finance as $gf) {
+														echo "<li data-loc_id='{$gf->geolocationid}'> {$gf->columnplace} </li>";
 													}
+													echo "</ul>";
+													echo "</div>";
+												}
 												?>
 												<div class="col-md-8 d-flex flex-column gap-7 gap-lg-10">
 													<span id="fd_show">
@@ -620,35 +639,39 @@
 														<!--end::Card header-->
 														<!--begin::Card body-->
 														<div class="card-body pt-0">
-															<div class="d-flex flex-wrap gap-10">
-																<div class="fv-row w-100 flex-md-root fv-plugins-icon-container">
-																	<!--begin::Label-->
-																	<label class="form-label">Project Layer</label>
-																	<!--end::Label-->
-																	<!--begin::Editor-->
-																	<select class="form-control mb-2 fieldtext selectlevel"
-																		data-field="layertype"
-																		data-table="master__data"
-																		data-keyid_fld="masterid"
-																		data-dbid="<?php echo $collection[0]->masterid; ?> ">
-																		<?php
-																		$layers = ["--Select Level", "1 - Program Level", "2 - Project Level", "3 - Activity Level"];
-																		?>
-																		<?php
-																		$count = 0;
-																		foreach ($layers as $l) {
-																			$selected = null;
+															<div class="">
+																<div class="row mb-10">
+																	<div class="col-md-2">
+																		<!--begin::Label-->
+																		<label class="form-label">Project Layer</label>
+																		<!--end::Label-->
+																	</div>
+																	<div class="col-md-10">
+																		<!--begin::Editor-->
+																		<select class="form-control mb-2 fieldtext selectlevel"
+																			data-field="layertype"
+																			data-table="master__data"
+																			data-keyid_fld="masterid"
+																			data-dbid="<?php echo $collection[0]->masterid; ?> ">
+																			<?php
+																			$layers = ["--Select Level", "1 - Program Level", "2 - Project Level", "3 - Activity Level"];
+																			?>
+																			<?php
+																			$count = 0;
+																			foreach ($layers as $l) {
+																				$selected = null;
 
-																			if ($count == $collection[0]->layertype) {
-																				$selected = "selected";
+																				if ($count == $collection[0]->layertype) {
+																					$selected = "selected";
+																				}
+
+																				echo "<option value='{$count}' {$selected}>{$layers[$count]}</option>";
+																				$count++;
 																			}
-
-																			echo "<option value='{$count}' {$selected}>{$layers[$count]}</option>";
-																			$count++;
-																		}
-																		?>
-																	</select>
-																	<!--end::Editor-->
+																			?>
+																		</select>
+																		<!--end::Editor-->
+																	</div>
 																</div>
 
 																<?php
@@ -667,117 +690,133 @@
 																}
 																?>
 
-																<div class="fv-row w-100 flex-md-root <?php echo $show2; ?>" id="level2_select">
-																	<!--begin::Label-->
-																	<label class="form-label">Place under level 2</label>
-																	<!--end::Label-->
-																	<!--begin::Editor-->
-																	<select class="form-control mb-2 fieldtext"
-																		id="level2_select"
-																		data-field="attachedtolayer"
-																		data-table="master__data"
-																		data-keyid_fld="masterid"
-																		data-dbid="<?php echo $collection[0]->masterid; ?> ">
-																		<?php foreach ($allmasterdata as $c) {
-																			$selected = null;
-																		?>
-																			<?php if ($c->layertype == 2) { ?>
-																				<?php if ($collection[0]->attachedtolayer == $c->masterid) {
-																					$selected = "selected";
-																				} ?>
-																				<option value="<?php echo $c->masterid; ?>" <?php echo $selected; ?>> <?php echo $c->title; ?> </option>
+																<div class="row <?php echo $show2; ?>" id="level2_select">
+																	<div class="col-md-2">
+																		<!--begin::Label-->
+																		<label class="form-label">Place under level 2</label>
+																		<!--end::Label-->
+																	</div>
+																	<div class="col-md-10">
+																		<!--begin::Editor-->
+																		<select class="form-control mb-2 fieldtext"
+																			id="level2_select"
+																			data-field="attachedtolayer"
+																			data-table="master__data"
+																			data-keyid_fld="masterid"
+																			data-dbid="<?php echo $collection[0]->masterid; ?> ">
+																			<?php foreach ($allmasterdata as $c) {
+																				$selected = null;
+																			?>
+																				<?php if ($c->layertype == 2) { ?>
+																					<?php if ($collection[0]->attachedtolayer == $c->masterid) {
+																						$selected = "selected";
+																					} ?>
+																					<option value="<?php echo $c->masterid; ?>" <?php echo $selected; ?>> <?php echo $c->title; ?> </option>
+																				<?php } ?>
 																			<?php } ?>
-																		<?php } ?>
-																	</select>
-																	<!--end::Editor-->
+																		</select>
+																		<!--end::Editor-->
+																	</div>
 																</div>
 
-																<div class="fv-row w-100 flex-md-root <?php echo $show3; ?>" id="level1_select">
-																	<!--begin::Label-->
-																	<label class="form-label">Place under level 1</label>
-																	<!--end::Label-->
-																	<!--begin::Editor-->
-																	<select class="form-control mb-2 fieldtext"
-																		id="level1_select"
-																		data-field="attachedtolayer"
-																		data-table="master__data"
-																		data-keyid_fld="masterid"
-																		data-dbid="<?php echo $collection[0]->masterid; ?> ">
-																		<?php foreach ($allmasterdata as $c) {
-																			$selected = null;
-																		?>
-																			<?php if ($c->layertype == 1) { ?>
-																				<?php if ($collection[0]->attachedtolayer == $c->masterid) {
-																					$selected = "selected";
-																				} ?>
-																				<option value="<?php echo $c->masterid; ?>" <?php echo $selected; ?>> <?php echo $c->title; ?> </option>
+																<div class="row <?php echo $show3; ?>" id="level1_select">
+																	<div class="col-md-2">
+																		<!--begin::Label-->
+																		<label class="form-label">Place under level 1</label>
+																		<!--end::Label-->
+																	</div>
+																	<div class="col-md-10">
+																		<!--begin::Editor-->
+																		<select class="form-control mb-2 fieldtext"
+																			id="level1_select"
+																			data-field="attachedtolayer"
+																			data-table="master__data"
+																			data-keyid_fld="masterid"
+																			data-dbid="<?php echo $collection[0]->masterid; ?> ">
+																			<?php foreach ($allmasterdata as $c) {
+																				$selected = null;
+																			?>
+																				<?php if ($c->layertype == 1) { ?>
+																					<?php if ($collection[0]->attachedtolayer == $c->masterid) {
+																						$selected = "selected";
+																					} ?>
+																					<option value="<?php echo $c->masterid; ?>" <?php echo $selected; ?>> <?php echo $c->title; ?> </option>
+																				<?php } ?>
 																			<?php } ?>
-																		<?php } ?>
-																	</select>
-																	<!--end::Editor-->
+																		</select>
+																		<!--end::Editor-->
+																	</div>
 																</div>
 															</div>
-															<hr />
-															<div class="d-flex flex-wrap gap-10 mt-5">
-																<div class="fv-row w-100 flex-md-root">
-																	<!--start::Input group-->
-																	<div class="fv-row w-100 flex-md-root fv-plugins-icon-container">
-																		<!--begin::Label-->
-																		<label class="form-label">Lead Agency </label>
-																		<!--end::Label-->
-																		<!--begin::Editor-->
-																		<input type='text'
-																			class="form-control mb-2 fieldtext"
-																			data-field="leadagency"
-																			data-table="implementingtbls"
-																			data-keyid_fld="impid"
-																			data-dbid="<?php echo $implimentingps[0]->impid; ?> "
-																			value="<?php echo $implimentingps[0]->leadagency; ?>" />
-																		<!--end::Editor-->
-																		<!--begin::Description-->
-																		<div class="text-muted fs-7">The agency leading the implimentation of the project</div>
-																		<!--end::Description-->
-																	</div>
-																	<!--end::Input group-->
-																	<!--start::Input group-->
-																	<div class="fv-row w-100 flex-md-root fv-plugins-icon-container mt-5">
-																		<!--begin::Label-->
-																		<label class="form-label"> Agency's Scope </label>
-																		<!--end::Label-->
-																		<!--begin::Editor-->
-																		<input type='text'
-																			class="form-control mb-2 fieldtext"
-																			data-field="region_national"
-																			data-table="implementingtbls"
-																			data-keyid_fld="impid"
-																			data-dbid="<?php echo $implimentingps[0]->impid; ?> "
-																			value="<?php echo $implimentingps[0]->region_national; ?>" />
-																		<!--end::Editor-->
-																		<!--begin::Description-->
-																		<div class="text-muted fs-7"> Add the region(s) of the lead agency (separated in commas) </div>
-																		<!--end::Description-->
-																	</div>
-																	<!--end::Input group-->
-																	<!--start::Input group-->
-																	<div class="fv-row w-100 flex-md-root fv-plugins-icon-container mt-5">
-																		<!--begin::Label-->
-																		<label class="form-label">Other Partner Agency </label>
-																		<!--end::Label-->
-																		<!--begin::Editor-->
-																		<input type='text'
-																			class="form-control mb-2 fieldtext"
-																			data-field="otherpartneragency"
-																			data-table="implementingtbls"
-																			data-keyid_fld="impid"
-																			data-dbid="<?php echo $implimentingps[0]->impid; ?> "
-																			value="<?php echo $implimentingps[0]->otherpartneragency; ?>" />
-																		<!--end::Editor-->
-																		<!--begin::Description-->
-
-																		<!--end::Description-->
-																	</div>
-																	<!--end::Input group-->
+															<hr style="border: 0px;border-bottom: 1px solid #ccc;margin: 20px 0px;" />
+															<div class="row mb-10">
+																<!--start::Input group-->
+																<div class="col-md-2">
+																	<!--begin::Label-->
+																	<label class="form-label">Lead Agency </label>
+																	<!--end::Label-->
 																</div>
+																<div class="col-md-10">
+																	<!--begin::Editor-->
+																	<input type='text'
+																		class="form-control mb-2 fieldtext"
+																		data-field="leadagency"
+																		data-table="implementingtbls"
+																		data-keyid_fld="impid"
+																		data-dbid="<?php echo $implimentingps[0]->impid; ?> "
+																		value="<?php echo $implimentingps[0]->leadagency; ?>" />
+																	<!--end::Editor-->
+																	<!--begin::Description-->
+																	<div class="text-muted fs-7">The agency leading the implimentation of the project</div>
+																	<!--end::Description-->
+																</div>
+															</div>
+															<div class="row mb-10">
+																<!--end::Input group-->
+																<!--start::Input group-->
+																<div class="col-md-2">
+																	<!--begin::Label-->
+																	<label class="form-label"> Agency's Scope </label>
+																	<!--end::Label-->
+																</div>
+																<div class="col-md-10">
+																	<!--begin::Editor-->
+																	<input type='text'
+																		class="form-control mb-2 fieldtext"
+																		data-field="region_national"
+																		data-table="implementingtbls"
+																		data-keyid_fld="impid"
+																		data-dbid="<?php echo $implimentingps[0]->impid; ?> "
+																		value="<?php echo $implimentingps[0]->region_national; ?>" />
+																	<!--end::Editor-->
+																	<!--begin::Description-->
+																	<div class="text-muted fs-7"> Add the region(s) of the lead agency (separated in commas) </div>
+																	<!--end::Description-->
+																</div>
+																<!--end::Input group-->
+															</div>
+															<div class="row">
+																<!--start::Input group-->
+																<div class="col-md-2">
+																	<!--begin::Label-->
+																	<label class="form-label">Other Partner Agency </label>
+																	<!--end::Label-->
+																</div>
+																<div class="col-md-10">
+																	<!--begin::Editor-->
+																	<input type='text'
+																		class="form-control mb-2 fieldtext"
+																		data-field="otherpartneragency"
+																		data-table="implementingtbls"
+																		data-keyid_fld="impid"
+																		data-dbid="<?php echo $implimentingps[0]->impid; ?> "
+																		value="<?php echo $implimentingps[0]->otherpartneragency; ?>" />
+																	<!--end::Editor-->
+																	<!--begin::Description-->
+
+																	<!--end::Description-->
+																</div>
+																<!--end::Input group-->
 															</div>
 															<!--end::Card body-->
 														</div>

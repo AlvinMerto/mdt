@@ -65,9 +65,23 @@ class Dashboard extends Controller
 
     function mpapbackend(Request $req)
     {
-        $projects = master__data::all();
+        // $projects = master__data::select("development_partner","title","masterid")->groupBy(["development_partner","title","masterid"])->get(); //all(); // 
+        // $devparts    = DevPartners::all();
 
-        return view("backend.mpapback")->with(["panel" => "all", "projects" => $projects]);
+        $devparts    = DB::select("select count(masterid) as prjcnt, devpartner, logo, id
+                                    from master__data join dev_partners on 
+                                    master__data.development_partner = dev_partners.id 
+                                    group by devpartner, logo, id");
+        $projects    = [];
+        return view("backend.mpapback")->with(["panel" => "all", "projects" => $projects,"devparts" => $devparts]);
+    }
+
+    function prjsunderdevpart(Request $req) {
+        $devpartner = $req->input("devpart");
+
+        $projects   = master__data::where("development_partner", $devpartner)->get();
+        $html       = view("backend.modals.prjsunderdevpart")->with(["projects" => $projects])->render();
+        return response()->json($html);
     }
 
     function mpapadd(Request $req)

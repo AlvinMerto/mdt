@@ -11,8 +11,8 @@ function map_pin(logo, somefunc = false, id = false, devpart = false, status = f
     el.style.backgroundImage = "url(" + thelogo + ")";
     // el.style.width              = '40px';
     // el.style.height             = '40px';
-    el.style.width = '25px';
-    el.style.height = '25px';
+    el.style.width = '18px';
+    el.style.height = '18px';
     el.style.backgroundSize = '80%';
     el.style.backgroundRepeat = "no-repeat";
     el.style.backgroundPosition = "center center";
@@ -322,6 +322,7 @@ function display_details_mpap(data, id, devpart, status, thelogo_pin) {
     $(document).find("#projectprice").text(formatNumber(data[0][0].projectamount));
     $(document).find("#thesector").text(data[0][0].thesector);
     $(document).find("#tof").text(data[0][0].type_of_financing);
+    $(document).find("#devpartner").text(data[0][0].devpartner);
 
     $(document).find("#proj_locs").children().remove();
 
@@ -371,4 +372,8 @@ function animateCount(id, target, duration) {
 
 function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function roundToOneDecimal(num) {
+  return Math.round(num * 10) / 10;
 }

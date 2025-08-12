@@ -95,3 +95,28 @@
     border-radius: 8px;
     box-shadow: 0px 0px 4px #e8e4e4;
 }
+
+.font-20 {
+    font-size: 20px !important;   
+}
+
+.color-gray {
+    color: #dedcdc !important;
+}
+
+.devpartnertr:hover, .devpartnertr:hover > td i {
+    cursor:pointer;
+    color:#333 !important;
+}
+
+.thelogoclass {
+    width: 20px !important;
+    margin-right: 20px;
+}
+
+.thedevs td ul li{
+    font-size: 13px;
+    margin: 10px 0px;
+    text-transform: capitalize;
+    list-style:none;
+}

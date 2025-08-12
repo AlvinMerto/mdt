@@ -26,13 +26,13 @@ class FrontEndController extends Controller
     }
 
     function front() {
-        $collection = DevPartners::all();
+        // $collection = DevPartners::all();
         
-        $numofprojs = master__data::all()->count();
+        // $numofprojs = master__data::all()->count(); "numofprojs" => $numofprojs,
         $ma         = TheAgenda::all();
         $macro      = MacroIndicators::all();
 
-        return view("front.mpap.mpapfront")->with(["devpart" => $collection,"numofprojs" => $numofprojs, "ma" => $ma,"macro" => $macro]);
+        return view("front.mpap.mpapfront")->with(["ma" => $ma,"macro" => $macro]);
     }
 
     function mpap_front(Request $req) {
@@ -99,7 +99,13 @@ class FrontEndController extends Controller
                                     inner join `financetbls` on `master__data`.`masterid` = `financetbls`.`masterid`
                                     inner join `geolocation` on `financetbls`.`fid` = `geolocation`.`md_projectsid` 
                                     inner join `dev_partners` on `master__data`.`development_partner` = `dev_partners`.`id`
-                                    where title like '%{$keyword}%' or description like '%{$keyword}%'";
+                                    where title like '%{$keyword}%' or description like '%{$keyword}%'
+                                    or columnplace like '%{$keyword}%'
+                                    or exactaddr like '%{$keyword}%'
+                                    or brgy like '%{$keyword}%'
+                                    or muni_city like '%{$keyword}%'
+                                    or province like '%{$keyword}%'
+                                    or region like '%{$keyword}%'";
 
         $collection  = DB::select($sql);
         $view        = view("front.mpap.searchresult", compact("collection"))->render();
@@ -286,7 +292,8 @@ class FrontEndController extends Controller
         $id         = $req->input("ii");
 
         // $collection = MasterData::where(["masterid"=>$id])->get();
-        $collection = master__data::select("master__data.*","sectortbls.thesector","financetbls.*")
+        $collection = master__data::select("master__data.*","sectortbls.thesector","financetbls.*","dev_partners.devpartner")
+                                ->join("dev_partners","master__data.development_partner","=","dev_partners.id")
                                 ->join("sectortbls","master__data.sector","=","sectortbls.sectorid")
                                 ->join("financetbls","master__data.masterid","=","financetbls.masterid")
                                 ->where(["master__data.masterid" => $id])->get();

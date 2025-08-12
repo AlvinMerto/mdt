@@ -56,7 +56,7 @@
                                                 <!--begin::Title-->
                                                 <h3 class="card-title align-items-start flex-column">
                                                     <span class="card-label fw-bold text-dark">Mindanao Programs and Projects</span>
-                                                    <span class="text-gray-400 mt-1 fw-semibold fs-6">Total 2,356 Items in Mindanao</span>
+                                                    <span class="text-gray-400 mt-1 fw-semibold fs-6">Total <?php echo count($projects); ?> Items in Mindanao</span>
                                                 </h3>
                                                 <!--end::Title-->
                                                 <!--begin::Actions-->
@@ -64,19 +64,15 @@
                                                     <!--begin::Filters-->
                                                     <div class="d-flex flex-stack flex-wrap gap-4">
                                                         <!--begin::Destination-->
-                                                        <div class="d-flex align-items-center fw-bold">
-                                                            <!--begin::Label-->
+                                                        <!-- <div class="d-flex align-items-center fw-bold">
                                                             <div class="text-muted fs-7 me-2">Project Level</div>
-                                                            <!--end::Label-->
-                                                            <!--begin::Select-->
                                                             <select class="form-select form-select-transparent">
                                                                 <option value="Show All" selected="selected"> Show All </option>
                                                                 <option value="1"> Level 1</option>
                                                                 <option value="2"> Level 2</option>
                                                                 <option value="3"> Level 3</option>
                                                             </select>
-                                                            <!--end::Select-->
-                                                        </div>
+                                                        </div> -->
                                                         <!--end::Destination-->
 
                                                         <!--begin::Search-->
@@ -98,36 +94,41 @@
                                                             <thead>
                                                                 <!--begin::Table row-->
                                                                 <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-                                                                    <th> Project Title</th>
-                                                                    <th> Development Partner </th>
-                                                                    <th> Status </th>
-                                                                    <th> Project Level </th>
+                                                                    <th> &nbsp; </th>
+                                                                    <th class='text-center'> PROJECTS </th>
+                                                                    <th> DEVELOPMENT PARTNER</th>
+                                                                    <!-- <th> Status </th> -->
+                                                                    <!-- <th> Project Level </th> -->
                                                                 </tr>
                                                                 <!--end::Table row-->
                                                             </thead>
                                                             <!--end::Table head-->
                                                             <!--begin::Table body-->
                                                             <tbody class="fw-bold text-gray-600">
-                                                                <?php if (count($projects) > 0) { ?>
-                                                                    <?php foreach ($projects as $p) { ?>
-                                                                        <tr class="odd">
-                                                                            <td>
-                                                                                <a href="{{url('dashboard/mpap/edit')}}/<?php echo $p->masterid; ?>" class="text-dark text-hover-primary"><?php echo $p->title; ?></a>
-                                                                            </td>
-                                                                            <td><?php echo $p->development_partner; ?></td>
-                                                                            <td>
-                                                                                <span class="badge py-3 px-4 fs-7 badge-light-primary"><?php echo $p->status; ?></span>
-                                                                            </td>
-                                                                            <td>
+                                                                <?php 
+                                                                    if (count($devparts) > 0) {
+                                                                        $count = 1;
+                                                                        foreach($devparts as $dp) {
+                                                                            $theclass = (($count%2)==0)?"even":"odd";
+                                                                            echo "<tr class='{$theclass} devpartnertr bring_down' data-arrowdata='{$dp->id}'>";
+                                                                                echo "<td class='text-center'> <i class='bi bi-arrow-down-circle font-20 color-gray'></i> </td>";
+                                                                                echo "<td class='text-center'>";
+                                                                                    echo $dp->prjcnt;
+                                                                                echo "</td>";
+                                                                                echo "<td>";
+                                                                                    $thelogo = asset("images/icons/{$dp->logo}");
+                                                                                    echo "<img src='{$thelogo}.png' class='thelogoclass'/>";
+                                                                                    echo $dp->devpartner;
+                                                                                    // echo "<a href='{{url('dashboard/mpap/edit')}}/{$dp->masterid}' class='text-dark text-hover-primary'>{$dp->devpartner}</a>";
+                                                                                echo "</td>";
+                                                                            echo "</tr>";
+                                                                            echo "<tr class='devpart{$dp->id} thedevs'>";
 
-                                                                            </td>
-                                                                        </tr>
-                                                                    <?php } ?>
-                                                                <?php } else { ?>
-                                                                    <tr>
-                                                                        <td colspan="10"> No entry found </td>
-                                                                    </tr>
-                                                                <?php } ?>
+                                                                            echo "</tr>";
+                                                                        $count++;
+                                                                        }
+                                                                    }
+                                                                ?>
                                                             </tbody>
                                                             <!--end::Table body-->
                                                         </table>

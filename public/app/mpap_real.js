@@ -37,6 +37,7 @@ $(document).ready(function () {
     initializeDefaultMap();
     initialize_graph();
     initiate_map_heat("#333");
+    // thetimeseries();
 
     // map.on("load", function () {
     //     create_line([
@@ -109,6 +110,14 @@ $(document).on("mouseout", ".markerhover", function () {
     var thisid = $(this).data("markhov");
 
     $("." + thisid).removeClass("themarker_selected");
+});
+
+$(document).on("focus", "#searchbtnbig", function() {
+    $(document).find(".search_box").css({"background-color":"#fff"});
+});
+
+$(document).on("blur", "#searchbtnbig", function() {
+    $(document).find(".search_box").removeAttr("style");
 });
 
 // $(document).on("click", "#generatereport", function () {
@@ -211,6 +220,25 @@ $(document).on("click", '#generatereport_btn, #displayOnMap', function () {
 
 });
 
+$(document).on("click", ".theclosebtn", function () {
+    var detailsbox = $(document).find(".details_box");
+
+
+    detailsbox.animate({
+        "width": "0" + "%",
+        "padding-left": "0px",
+        "padding-right": "0px",
+        "padding-top": "0px"
+    }, 300);
+
+    get_("default", { status: "all" }, function (data) {
+        removemarker();
+
+        display_pin(data);
+        $("#show_mpap").addClass("top_nav_selected");
+    });
+});
+
 function numberofprojects(year = false) {
     let params = Object();
     params.buff = true;
@@ -235,21 +263,48 @@ function getodagrant_figures(year = false) {
 
     get_("getodagrant_figures", params, function (data) {
         var thelen = data.loangrant_amount.length;
-        
-        for (var i = 0; i <= thelen-1; i++) {
-            var tof     = data.loangrant_amount[i].type_of_financing;
+        var total_amnt_grant = 0; // grant
+        var total_amnt_loan = 0; // loan
+
+        for (var i = 0; i <= thelen - 1; i++) {
+            var tof = data.loangrant_amount[i].type_of_financing;
             var display = null;
             var display_count = null;
-            if ( tof == "grant") {
-               display = "odagrant";
-               display_count = "grantprojects";
+
+            if (tof == "grant") {
+                display = "odagrant";
+                display_count = "grantprojects";
+                total_amnt_grant += data.loangrant_amount[i].amount;
             } else if (tof == "loan") {
                 display = "odaloan";
                 display_count = "loanprojects";
+                total_amnt_loan += data.loangrant_amount[i].amount;
             }
-            $(document).find("#"+display_count).text(data.loangrant[i].thecount);
-            $(document).find("#"+display).text(formatNumber(data.loangrant_amount[i].amount));
+
+
+            // formatNumber(data.loangrant_amount[i].amount)
+            // data.loangrant[i].thecount
+
         }
+
+        var inbillion_grant = roundToOneDecimal(total_amnt_grant / 1000000000); // grant
+        var inbillion_loan = roundToOneDecimal(total_amnt_loan / 1000000000); // loan
+
+        if (inbillion_grant == 0) {
+            inbillion_grant = roundToOneDecimal(total_amnt_grant / 1000000); // grant
+        }
+
+        if (inbillion_loan == 0) {
+            inbillion_loan = roundToOneDecimal(total_amnt_loan / 1000000); // loan
+        }
+
+        var total_l_g = roundToOneDecimal(inbillion_grant + inbillion_loan);
+
+        // $(document).find("#" + display_count).text("");
+        $(document).find("#odagrant").text(inbillion_grant + "B");
+        $(document).find("#odaloan").text(inbillion_loan + "B");
+        $(document).find("#total_total").text(total_l_g + "B");
+
         // $(document).find("#odaloan").text(data['loangrant']);
         // $(document).find("#odagrant").text(data['loangrant_amount']);
     });
@@ -424,6 +479,7 @@ function initMainGraph() {
         panY: false,
         wheelX: "panX",
         wheelY: "zoomX",
+        paddingLeft: 0,
         layout: root.verticalLayout
     }));
 
@@ -433,87 +489,139 @@ function initMainGraph() {
     }));
 
     get_("loan_grants", {}, function (data) {
-        // var data = [
-        //     { year: "Loan", income: 23.5, expenses: 18.1 },
-        //     { year: "Grant", income: 26.2, expenses: 22.8 }
-        // ];
+        console.log(data);
+        // var data = data;
 
-        var data = data;
+        // var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+        //     categoryField: "type_of_financing",
+        //     renderer: am5xy.AxisRendererY.new(root, {
+        //         cellStartLocation: 0.1,
+        //         cellEndLocation: 0.9,
+        //         minorGridEnabled: true
+        //     })
+        // }));
 
-        var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-            categoryField: "type_of_financing",
-            renderer: am5xy.AxisRendererY.new(root, {
-                cellStartLocation: 0.1,
-                cellEndLocation: 0.9,
-                minorGridEnabled: true
-            })
-        }));
+        // yAxis.data.setAll(data);
 
-        yAxis.data.setAll(data);
+        // var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+        //     min: 0,
+        //     renderer: am5xy.AxisRendererX.new(root, {
+        //         strokeOpacity: 0.1,
+        //         minGridDistance: 70
+        //     })
+        // }));
 
-        var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-            min: 0,
-            renderer: am5xy.AxisRendererX.new(root, {
-                strokeOpacity: 0.1,
-                minGridDistance: 70
-            })
-        }));
-
-        var series1 = chart.series.push(am5xy.ColumnSeries.new(root, {
-            name: "total",
-            xAxis: xAxis,
-            yAxis: yAxis,
-            valueXField: "total",
-            categoryYField: "type_of_financing",
-            tooltip: am5.Tooltip.new(root, {
-                pointerOrientation: "horizontal",
-                labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
-            })
-        }));
-
-        series1.columns.template.setAll({ height: am5.percent(70) });
-
-        // var series2 = chart.series.push(am5xy.LineSeries.new(root, {
-        //     name: "Expenses",
+        // var series1 = chart.series.push(am5xy.ColumnSeries.new(root, {
+        //     name: "total",
         //     xAxis: xAxis,
         //     yAxis: yAxis,
-        //     valueXField: "expenses",
-        //     categoryYField: "year",
+        //     valueXField: "total",
+        //     categoryYField: "type_of_financing",
         //     tooltip: am5.Tooltip.new(root, {
         //         pointerOrientation: "horizontal",
         //         labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
         //     })
         // }));
 
-        // series2.strokes.template.setAll({ strokeWidth: 2 });
+        // series1.columns.template.setAll({ height: am5.percent(70) });
 
-        // series2.bullets.push(function () {
-        //     return am5.Bullet.new(root, {
-        //         locationY: 0.5,
-        //         sprite: am5.Circle.new(root, {
-        //             radius: 5,
-        //             stroke: series2.get("stroke"),
-        //             strokeWidth: 2,
-        //             fill: root.interfaceColors.get("background")
-        //         })
-        //     });
+        // legend.data.setAll(chart.series.values);
+
+        // chart.set("cursor", am5xy.XYCursor.new(root, { behavior: "zoomY" })).lineX.set("visible", false);
+
+        // series1.data.setAll(data);
+
+        // series1.appear();
+
+        // chart.appear(1000, 100);
+
+        // series1.columns.template.events.on("click", function (ev) {
+        //     distributiongraph(ev.target.dataItem.dataContext.type_of_financing);
         // });
 
-        legend.data.setAll(chart.series.values);
+        // ================
 
-        chart.set("cursor", am5xy.XYCursor.new(root, { behavior: "zoomY" })).lineX.set("visible", false);
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xRenderer = am5xy.AxisRendererX.new(root, {
+            minorGridEnabled: true,
+            minGridDistance: 60
+        });
+        var xAxis = chart.xAxes.push(
+            am5xy.CategoryAxis.new(root, {
+                categoryField: "type_of_financing",
+                renderer: xRenderer,
+                tooltip: am5.Tooltip.new(root, {})
+            })
+        );
+        xRenderer.grid.template.setAll({
+            location: 1
+        })
+
+        xAxis.data.setAll(data);
+
+        var yAxis = chart.yAxes.push(
+            am5xy.ValueAxis.new(root, {
+                min: 0,
+                extraMax: 0.1,
+                renderer: am5xy.AxisRendererY.new(root, {
+                    strokeOpacity: 0.1
+                })
+            })
+        );
+
+        // Add series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+
+        var series1 = chart.series.push(
+            am5xy.ColumnSeries.new(root, {
+                name: "Income",
+                xAxis: xAxis,
+                yAxis: yAxis,
+                valueYField: "total",
+                categoryXField: "type_of_financing",
+                tooltip: am5.Tooltip.new(root, {
+                    pointerOrientation: "horizontal",
+                    labelText: "Total {categoryX} : {valueY} {info}"
+                })
+            })
+        );
+
+        series1.columns.template.setAll({
+            tooltipY: am5.percent(10),
+            templateField: "columnSettings"
+        });
 
         series1.data.setAll(data);
-        // series2.data.setAll(data);
 
-        series1.appear();
-        // series2.appear();
+        chart.set("cursor", am5xy.XYCursor.new(root, {}));
+
+        // Add legend
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+        var legend = chart.children.push(
+            am5.Legend.new(root, {
+                centerX: am5.p50,
+                x: am5.p50
+            })
+        );
+        legend.data.setAll(chart.series.values);
+
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
         chart.appear(1000, 100);
+        series1.appear();
 
         series1.columns.template.events.on("click", function (ev) {
             distributiongraph(ev.target.dataItem.dataContext.type_of_financing);
         });
     });
+}
+
+function thetimeseries() {
+    // Create root element
+    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+    var root = am5.Root.new("thetimeseries");
+    
 }
 
 function initiate_map_heat(color) {

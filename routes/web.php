@@ -75,6 +75,8 @@ Route::middleware("auth")->group(function() {
     Route::post("/saveupdate",[Dashboard::class,"saveupdate"])->name("saveupdate");
     Route::get("/getupdates",[Dashboard::class,"getupdates"])->name("getupdates");
     Route::post("/savelocation",[Dashboard::class,"savelocation"])->name("savelocation");
+
+    Route::get("/prjsunderdevpart",[Dashboard::class,"prjsunderdevpart"])->name("prjsunderdevpart");
 });
 
 Route::get("/get_agenda", [TheAgendaController::class,"get_agenda"])->name("get_agenda");

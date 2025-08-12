@@ -37,15 +37,31 @@
 
     <div id="top_navigation_ma_rbme">
         <ul>
-            <li id="show_ma"> <i class="bi bi-briefcase"></i> &nbsp; TRADE </li>
-            <li id="show_ma"> <i class="bi bi-bank"></i> &nbsp; INVESTMENT </li>
-            <li id="show_ma"> <i class="bi bi-airplane"></i> &nbsp; AIRPORTS </li>
-            <li id="show_ma"> <i class="bi bi-water"></i> &nbsp; SEA PORTS </li>
+            <li class='btn btn-light' id="show_ma"> <i class="bi bi-briefcase"></i> &nbsp; TRADE </li>
+            <li class='btn btn-light' id="show_ma"> <i class="bi bi-bank"></i> &nbsp; INVESTMENT </li>
+            <li class='btn btn-light' id="show_ma"> <i class="bi bi-airplane"></i> &nbsp; AIRPORTS </li>
+            <li class='btn btn-light' id="show_ma"> <i class="bi bi-water"></i> &nbsp; SEA PORTS </li>
+            <!-- <li class='btn btn-light' data-bs-toggle="modal" data-bs-target="#filterdiv"> <i class="bi bi-filter"></i> Open Filter </li> -->
         </ul>
     </div>
 
     <div id="bottom_navigation_ma_rbme">
-        <button class='btn btn-primary'> <i class="bi bi-cloud-download"></i> Download </button>
+        <div class="row">
+            <div class="col-md-12 text-end">
+                <button class='btn btn-light' data-bs-toggle="modal" data-bs-target="#filterdiv"> <i class="bi bi-filter"></i> Open Filter </button>
+            </div>
+            <div class="col-md-12 mt-5">
+                <div class="row search_box">
+                    <div class="col-md-11">
+                        <input type='text' id="searchbtnbig" placeholder="Search Project..." />
+                    </div>
+                    <div class="col-md-1 mid_box"> <i class="bi bi-search"></i> </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-2">
+                <button class='btn btn-light' data-bs-toggle="modal" data-bs-target="#filterdiv"> <i class="bi bi-filter"></i> Open Filter </button>
+            </div> -->
+        </div>
     </div>
 
     <!-- <div id="legend_div">
@@ -70,7 +86,7 @@
                 <!-- <img src="https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg"/> -->
             </div>
             <span> Project Title </span>
-            <h5 style="line-height: 32px;" id="projecttitle"> &nbsp; </h5>
+            <h5 style="line-height: 32px;" id="projecttitle"> &nbsp; </h5> <i class="bi bi-backspace-fill theclosebtn" title='Close this window'></i>
         </div>
         <div class="second_box">
             <!-- <ul class='thenavigation'>
@@ -93,7 +109,7 @@
                         <div class="col-md-4">
                             <div>
                                 <span> Project Cost </span>
-                                <h5> <strong id="projectprice"> -- </strong> </h5>
+                                <h5> $ <strong id="projectprice"> -- </strong> </h5>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -114,8 +130,8 @@
                     <div class="row mb-5">
                         <div class="col-md-12">
                             <div>
-                                <span> Update </span>
-                                <h5 id="theupdates"> -- </h5>
+                                <span> Development Partner </span>
+                                <h5 id="devpartner"> -- </h5>
                             </div>
                         </div>
                     </div>
@@ -152,108 +168,89 @@
             </div>
         </div>
         <div class="bodydiv col-md-12 mb-2">
-            <div class="search_box row mb-10">
-                <div class="col-md-10">
-                    <input type='text' id="searchbtnbig" placeholder="Search Project..." />
-                </div>
-                <div class="col-md-2 mid_box"> <i class="bi bi-search"></i> </div>
-            </div>
-            <div class="d-flex">
+
+            <!-- <div class="d-flex">
                 <h5 class="mb-5"> Filter </h5>
                 <ul class='ul_filter'>
                     <li data-bs-toggle="modal" data-bs-target="#filterdiv"> Generate Report </li>
-                    <!-- <li> <i class="bi bi-cash-coin font-18"></i>  </li> <i class="bi bi-pie-chart-fill font-18"></i>
-                    <li> <i class="bi bi-heart-fill font-18"></i>  </li> -->
-                    <!-- <li> <i class="bi bi-briefcase font-18"></i>  </li> -->
+                    <li> <i class="bi bi-cash-coin font-18"></i>  </li> <i class="bi bi-pie-chart-fill font-18"></i>
+                    <li> <i class="bi bi-heart-fill font-18"></i>  </li>
+                    <li> <i class="bi bi-briefcase font-18"></i>  </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <div class="contentdiv col-md-12">
             <h5 class='mb-5'> General Statistics </h5>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row px-10">
-                        <div class="col-md-12 mb-5 boxes_div">
-                            <div class='d-flex gap-5'>
-                                <span> ALL PROJECTS </span>
-                                <!-- <select id="sector_change" style="width: 100%;background: #fff;border: 0px;">
-                                    <option value="all"> All PROJECTS </option>
-                                    <?php
-                                    // foreach ($sector as $s) {
-                                    //     echo "<option value='{$s->sectorid}'> {$s->thesector} </option>";
-                                    // }
-                                    ?>
-                                </select> -->
-                            </div>
-                            <h1 class='font-50 bbm_blue' id="count_allprojects"> -- </h1>
-                            <small> in <strong id="numoflocs"> -- </strong> locations in Mindanao</small>
-                        </div>
                         <div class="col-md-12 boxes_div mb-5">
-                            <!-- <div class="col-md-3 mid_box">
-                                <i class="bi bi-heart-fill font-30 "></i>
-                            </div> -->
-                            <div class="boxes_div mb-4">
+                            <h6> Amount </h6>
+                            <div class="boxes_div d-flex">
+                                <p class='font-26 mt-4'>
+                                    <strong id='total_total'> </strong>
+                                </p>
+                                <div class="">
+                                    <div class="font-18 d-flex">
+                                        <hr class='borderclass_amnt' />
+                                        <p class='font-16'>
+                                            <span> $ </span>
+                                            <span id='odaloan'> </span> Loan
+                                        </p>
+                                    </div>
+                                    <div class="font-18 d-flex">
+                                        <hr class='borderclass_amnt' />
+                                        <p class='font-16'>
+                                            <span> $ </span>
+                                            <span id='odagrant'> </span> Grant
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="boxes_div mb-4">
                                 <div style='display:flex; justify-content: space-between; margin-bottom:5px;'><span> Total ODA Loan </span> </div>
                                 <h3> <span> $ </span>
-                                    <span id='odaloan'>
-                                        <?php
-                                        // foreach ($loangrant_amount as $lg_amt) {
-                                        //     if ($lg_amt->type_of_financing == "loan") {
-                                        //         echo $lg_amt->amount;
-                                        //     }
-                                        // }
-                                        ?>
-                                    </span>
+                                    <span id='odaloan'> </span>
                                 </h3>
                                 <strong class="showprojects_click" id="loanprojects">
-                                    <?php
-                                    // foreach ($loangrant as $lg) {
-                                    //     if ($lg->type_of_financing == "loan") {
-                                    //         echo $lg->thecount;
-                                    //     }
-                                    // }
-                                    ?> 
                                 </strong>
                                 <small> projects in Mindanao </small>
                             </div>
-                            <!-- <div class="col-md-2 mid_box">
-                            <i class="bi bi-heart-fill font-30 "></i>
-                        </div> -->
                             <div class='boxes_div'>
                                 <div style='display:flex; justify-content: space-between; margin-bottom:5px;'><span> Total ODA Grant </span> </div>
                                 <h3>
                                     <span> $ </span>
-                                    <span id='odagrant'>
-                                        <?php
-                                        // foreach ($loangrant_amount as $lg_amt) {
-                                        //     if ($lg_amt->type_of_financing == "grant") {
-                                        //         echo $lg_amt->amount;
-                                        //     }
-                                        // }
-                                        ?>
-                                    </span>
+                                    <span id='odagrant'> </span>
                                 </h3>
-                                <strong class="showprojects_click" id="grantprojects">
-                                    <?php
-                                    // foreach ($loangrant as $lg) {
-                                    //     if ($lg->type_of_financing == "grant") {
-                                    //         echo $lg->thecount;
-                                    //     }
-                                    // }
-                                    ?> 
-                                </strong>
+                                <strong class="showprojects_click" id="grantprojects"> </strong>
                                 <small> projects in Mindanao </small>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6" style="position: relative;">
-                    <div class="boxes_div mb-4" style="width: 100%; height: 245px;">
-                        <span> Loan and Grant Distribution  </span>
-                        <span id="theloangrantdiv"> </span>
+                <div class="col-md-6 boxes_div mb-4" style="height: 250px;">
+                    <h6> Loan and Grant Distribution </h6>
+                    <span id="theloangrantdiv"> </span>
+                    <!-- <div class="thegraphdiv">
+                        <ul class="ruby-flex" id="thelines">
+                            <li title="2025" style="height:1%; margin:0px 1px; width:15px;" class="thecolor 2025_list"> </li>
+                            <li title="2024" style="height:100%; margin:0px 1px; width:15px;" class="thecolor 2024_list"> </li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class='boxes_div' style="height: 50px;">
+                        <h6> Distributiuon </h6>
+
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div class='boxes_div' style="height: 220px;">
-                        <span> Total oda funds in Mindanao </span>
+                        <h6> Total oda funds in Mindanao </h6>
                         <h1 class="font-40 d-flex" style="justify-content:space-between;"> <span id="showingyear" style="font-size: 30px;margin-top: 6px;"> 2016 - <?php echo date("Y"); ?> </span>
                             <i class="bi bi-play-circle-fill mt-10" id='getoda_play' style="font-size: 30px;color: green;"></i>
                         </h1>
@@ -268,7 +265,8 @@
                             </ul>
                         </div>
                         <div class="thegraphdiv">
-                            <ul class="ruby-flex" id="thelines">
+                            <!-- <span id="thetimeseries"> </span> -->
+                            <ul class="ruby-flex" id="thelines" style="display:none;">
                                 <?php
                                 $thevalue = array_column($gfpy, 'total');
 
@@ -297,7 +295,6 @@
 
                                     if (array_key_exists($year, $theyears)) {
                                         $theval = $theyears[$year];
-                                        // echo "<li style='height:" .$theyears[$year] . "px; margin:0px 1px; width:15px;' class='thecolor'> </li>";
                                     }
                                     echo "<li title = '{$year}' style='height:" . $theval . "%; margin:0px 1px; width:15px;' class='thecolor {$year}_list'> </li>";
                                 }
@@ -313,6 +310,13 @@
                         <span> Distribution per Region </span>
                         <span></span>
                     </div>
+                </div>
+                <div class="col-md-6 boxes_div" style="display:none;">
+                    <div class='d-flex gap-5'>
+                        <span> ALL PROJECTS </span>
+                    </div>
+                    <h1 class='font-50 bbm_blue' id="count_allprojects"> -- </h1>
+                    <small> in <strong id="numoflocs"> -- </strong> locations in Mindanao</small>
                 </div>
             </div>
         </div>
