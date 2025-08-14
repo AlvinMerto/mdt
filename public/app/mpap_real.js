@@ -37,6 +37,9 @@ $(document).ready(function () {
     initializeDefaultMap();
     initialize_graph();
     initiate_map_heat("#333");
+    project_dist();
+    stacked_sector();
+
     // thetimeseries();
 
     // map.on("load", function () {
@@ -112,11 +115,11 @@ $(document).on("mouseout", ".markerhover", function () {
     $("." + thisid).removeClass("themarker_selected");
 });
 
-$(document).on("focus", "#searchbtnbig", function() {
-    $(document).find(".search_box").css({"background-color":"#fff"});
+$(document).on("focus", "#searchbtnbig", function () {
+    $(document).find(".search_box").css({ "background-color": "#fff" });
 });
 
-$(document).on("blur", "#searchbtnbig", function() {
+$(document).on("blur", "#searchbtnbig", function () {
     $(document).find(".search_box").removeAttr("style");
 });
 
@@ -392,6 +395,204 @@ function distributiongraph(type_of_financing) {
 
 }
 
+function stacked_sector() {
+    // Create root element
+    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+    var root = am5.Root.new("stacked_sector");
+
+    var myTheme = am5.Theme.new(root);
+
+    myTheme.rule("Grid", ["base"]).setAll({
+        strokeOpacity: 0.1
+    });
+
+    // Set themes
+    // https://www.amcharts.com/docs/v5/concepts/themes/
+    root.setThemes([
+        am5themes_Animated.new(root),
+        myTheme
+    ]);
+
+    // Create chart
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/
+    var chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: false,
+        panY: false,
+        wheelX: "panY",
+        wheelY: "zoomY",
+        paddingLeft: 0,
+        layout: root.verticalLayout
+    }));
+
+    var data = [{
+        "year": "2021",
+        "europe": 2.5,
+        "namerica": 2.5,
+        "asia": 2.1,
+        "lamerica": 1,
+        "meast": 0.8,
+        "africa": 0.4
+    }, {
+        "year": "2022",
+        "europe": 2.6,
+        "namerica": 2.7,
+        "asia": 2.2,
+        "lamerica": 0.5,
+        "meast": 0.4,
+        "africa": 0.3
+    }, {
+        "year": "2023",
+        "europe": 2.8,
+        "namerica": 2.9,
+        "asia": 2.4,
+        "lamerica": 0.3,
+        "meast": 0.9,
+        "africa": 0.5
+    }]
+
+
+    // Create axes
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+    var yRenderer = am5xy.AxisRendererY.new(root, {});
+    var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+        categoryField: "year",
+        renderer: yRenderer,
+        tooltip: am5.Tooltip.new(root, {})
+    }));
+
+    yRenderer.grid.template.setAll({
+        location: 1
+    })
+
+    yAxis.data.setAll(data);
+
+    var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+        min: 0,
+        maxPrecision: 0,
+        renderer: am5xy.AxisRendererX.new(root, {
+            minGridDistance: 40,
+            strokeOpacity: 0.1
+        })
+    }));
+
+    // Add legend
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+    var legend = chart.children.push(am5.Legend.new(root, {
+        centerX: am5.p50,
+        x: am5.p50
+    }));
+
+    // Add series
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+    function makeSeries(name, fieldName) {
+        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+            name: name,
+            stacked: true,
+            xAxis: xAxis,
+            yAxis: yAxis,
+            baseAxis: yAxis,
+            valueXField: fieldName,
+            categoryYField: "year"
+        }));
+
+        series.columns.template.setAll({
+            tooltipText: "{name}, {categoryY}: {valueX}",
+            tooltipY: am5.percent(90)
+        });
+        series.data.setAll(data);
+
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear();
+
+        series.bullets.push(function () {
+            return am5.Bullet.new(root, {
+                sprite: am5.Label.new(root, {
+                    text: "{valueX}",
+                    fill: root.interfaceColors.get("alternativeText"),
+                    centerY: am5.p50,
+                    centerX: am5.p50,
+                    populateText: true
+                })
+            });
+        });
+
+        legend.data.push(series);
+    }
+
+    makeSeries("Europe", "europe");
+    makeSeries("North America", "namerica");
+    makeSeries("Asia", "asia");
+    makeSeries("Latin America", "lamerica");
+    makeSeries("Middle East", "meast");
+    makeSeries("Africa", "africa");
+
+
+    // Make stuff animate on load
+    // https://www.amcharts.com/docs/v5/concepts/animations/
+    chart.appear(1000, 100);
+}
+function project_dist() {
+    // Create root element
+    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+    var root = am5.Root.new("pie_map");
+
+    // Set themes
+    // https://www.amcharts.com/docs/v5/concepts/themes/
+    root.setThemes([
+        am5themes_Animated.new(root)
+    ]);
+
+    // Create chart
+    // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+    var chart = root.container.children.push(
+        am5percent.PieChart.new(root, {
+            endAngle: 270
+        })
+    );
+
+    // Create series
+    // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+    var series = chart.series.push(
+        am5percent.PieSeries.new(root, {
+            valueField: "value",
+            categoryField: "category",
+            endAngle: 270
+        })
+    );
+
+    series.states.create("hidden", {
+        endAngle: -90
+    });
+
+    // Set data
+    // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+    series.data.setAll([{
+        category: "Lithuania",
+        value: 501.9
+    }, {
+        category: "Czechia",
+        value: 301.9
+    }, {
+        category: "Ireland",
+        value: 201.1
+    }, {
+        category: "Germany",
+        value: 165.8
+    }, {
+        category: "Australia",
+        value: 139.9
+    }, {
+        category: "Austria",
+        value: 128.3
+    }, {
+        category: "UK",
+        value: 99
+    }]);
+
+    series.appear(1000, 100);
+}
+
 function distributiongraph_region(region, type_of_financing) {
     if (region != "Mindanao Specific") {
         alert("Cannot show data that is not Mindanao Specific");
@@ -621,7 +822,7 @@ function thetimeseries() {
     // Create root element
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new("thetimeseries");
-    
+
 }
 
 function initiate_map_heat(color) {

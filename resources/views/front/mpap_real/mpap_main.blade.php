@@ -241,13 +241,20 @@
             </div>
             <div class="row mb-4">
                 <div class="col-md-12">
-                    <div class='boxes_div' style="height: 50px;">
-                        <h6> Distributiuon </h6>
-
+                    <div class='boxes_div'>
+                        <h6> Distribution </h6>
+                        <div class='row'>
+                            <div class="col-md-6">
+                                <div id="pie_map" style="height:200px; width:100%;"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="stacked_sector" style="height:333px; width:100%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="display:none;">
                 <div class="col-md-12">
                     <div class='boxes_div' style="height: 220px;">
                         <h6> Total oda funds in Mindanao </h6>
