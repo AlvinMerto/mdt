@@ -1,8 +1,9 @@
-var agenda = ["the_agenda1","the_agenda2","the_agenda3","the_agenda4","the_agenda5","the_agenda6","the_agenda7","the_agenda8","the_agenda9","the_agenda10"];
+var agenda = ["the_agenda0","the_agenda1","the_agenda2","the_agenda3","the_agenda4","the_agenda5","the_agenda6","the_agenda7","the_agenda8","the_agenda9","the_agenda10"];
 
 var marginleft    = 0;
 var bigslide_pull = 0;
 var count         = 0;
+var w_width       = 0;
 
 var slidewith     = 0;
 $(document).on("click",".prevnext_btn",function() {
@@ -22,6 +23,7 @@ $(document).on("click",".prevnext_btn",function() {
     // }
 
     theplay(id);
+
         // var agendalist   = $(document).find(".agendalist");
         // var thebig_slide = $(document).find("#thebig_slide");
 
@@ -40,13 +42,17 @@ $(document).on("click",".prevnext_btn",function() {
 });
 
 $(document).ready(function() {
+    w_width = window.innerWidth;
+    // w_width = screen.width;
+
     $(document).find(".thebgdiv").addClass(agenda[0]);
     $(document).find(".thebutton_div").addClass(agenda[0]);
-    $(document).find(".bigpix_ul li").eq(count).show();
+    $(document).find(".bigpix_ul li").css("width",w_width).eq(count).show();
 
+    // .bigpix_ul li
     var playing = setInterval(function(){
         theplay("nextbtn");
-    },5000);
+    },10000);
 
     var infoholder = $(document).find(".infoholder");
     slidewith      = infoholder.width();
@@ -63,16 +69,16 @@ function remove_class() {
 function theplay(id) {
 
     if (id == "nextbtn") {
-        marginleft    = (marginleft-412);
+        marginleft    = (marginleft-w_width);
         bigslide_pull = (bigslide_pull-1050); //1305
         count++;
     } else if (id == "prevbtn") {
-        marginleft    = (marginleft+412);
+        marginleft    = (marginleft+w_width);
         bigslide_pull = (bigslide_pull+1050); //1305
         count--;
     }
 
-    if (count == 9) {
+    if (count == 11) {
         count         = 0;
         marginleft    = 0;
         bigslide_pull = 0;
@@ -95,10 +101,15 @@ function theplay(id) {
         "margin-left":bigslide_pull+"px"
     });
     
-    bgs.hide();
-    bgs.eq(count).show();
+    // bgs.hide();
+    // bgs.eq(count).show(300, "linear");
+    $(document).find(".bigpix_ul").animate({
+        "margin-left" : marginleft+"px"
+    });
 
-    
+    $(document).find(".agenda_dets_marker").hide();
+    $(document).find("."+agenda[count]).show();
+
     $(document).find(".thebgdiv").addClass(agenda[count]);
     $(document).find(".thebutton_div").addClass(agenda[count]);
 }

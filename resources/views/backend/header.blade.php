@@ -44,7 +44,7 @@
 
 	<script>
 		var url = "{{url('')}}";
-		var asset = "{{asset('')}}";
+		var asset = "{{secure_asset('')}}";
 	</script>
 </head>
 <!--end::Head-->

@@ -1,7 +1,10 @@
-html, body {
-    width:100%;
+html,
+body {
+    width: 100%;
     height: 100%;
     overflow: hidden;
+    padding:0;
+    margin:0;
 }
 
 /* * {
@@ -14,12 +17,15 @@ html, body {
 } */
 
 * {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+    padding:0;
+    margin:0;
+    white-space: normal; 
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
 }
 
 #wrapper {
@@ -28,7 +34,7 @@ html, body {
 }
 
 .wrap-flex {
-    display:flex;
+    display: flex;
 }
 
 .flex-column {
@@ -43,20 +49,20 @@ html, body {
     justify-content: space-evenly;
 }
 
-.logodiv{
-    flex:1;
+.logodiv {
+    flex: 1;
 }
 
 .maindiv {
-    flex:1;
+    flex: 8;
 }
 
 .logodetailsdiv {
-    flex:1;
+    flex: 1;
 }
 
 .height-100 {
-    height:100%;
+    height: 100%;
 }
 
 .px-15 {
@@ -64,7 +70,7 @@ html, body {
 }
 
 .px-20 {
-    padding:20px !important;
+    padding: 20px !important;
 }
 
 .pl-20 {
@@ -72,7 +78,7 @@ html, body {
 }
 
 .pt-25 {
-    padding-top:25px !important;
+    padding-top: 25px !important;
 }
 
 .ma_icons {
@@ -84,123 +90,143 @@ html, body {
 }
 
 .mt-10 {
-    margin-top:10px !important;
+    margin-top: 10px !important;
 }
 
 .mt-20 {
-    margin-top:20px !important;
+    margin-top: 20px !important;
 }
 
 .mt-30 {
-    margin-top:30px !important;
+    margin-top: 30px !important;
 }
 
 .mt-40 {
-    margin-top:40px !important;
+    margin-top: 40px !important;
+}
+
+.mr-10 {
+    margin-right: 10px !important;
+}
+
+.w-10-p {
+    width: 10% !important;
+}
+
+.w-75 {
+    width: 60% !important;
+}
+
+.w-100-p {
+    width: 100% !important;
 }
 
 .thebgdiv {
     background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
 }
 
 .the_agenda1 {
     background: #AFB838;
-background: linear-gradient(20deg, rgba(175, 184, 56, 0.99) 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgba(175, 184, 56, 0.5) 27%, rgba(175, 184, 56, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    /* 
+    background: #AFB838;
+    background: linear-gradient(20deg, rgba(175, 184, 56, 0.99) 20%, rgba(0, 0, 0, 0.13) 70%); */
 }
 
 p.the_agenda1:hover {
-    background: linear-gradient(-20deg, rgba(175, 184, 56, 0.99) 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgba(175, 184, 56, 0.5) 27%, rgba(175, 184, 56, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+
 }
 
 .the_agenda2 {
     background: #de8b35;
-    background: linear-gradient(20deg, #de8b35 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(222, 139, 53, 0.5) 27%, rgb(222, 139, 53, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 p.the_agenda2:hover {
-    background: linear-gradient(-20deg, #de8b35 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(222, 139, 53, 0.5) 27%, rgb(222, 139, 53, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda3 {
     background: #e73b2b;
-    background: linear-gradient(20deg, #e73b2b 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(231, 59, 43, 0.5) 27%, rgb(231, 59, 43, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 p.the_agenda3:hover {
-    background: linear-gradient(-20deg, #e73b2b 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(231, 59, 43, 0.5) 27%, rgb(231, 59, 43, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda4 {
     background: #e12887;
-    background: linear-gradient(20deg, #e12887 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(225, 40, 135, 0.5) 27%, rgb(225, 40, 135, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 p.the_agenda4:hover {
-    background: linear-gradient(-20deg, #e12887 20%, rgba(0, 0, 0, 0.13) 70%);    
+    background: linear-gradient(266deg, rgb(225, 40, 135, 0.5) 27%, rgb(225, 40, 135, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
-.the_agenda5{
+.the_agenda5 {
     background: #47a7bf;
-    background: linear-gradient(20deg, #47a7bf 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(71, 167, 191, 0.5) 27%, rgb(71, 167, 191, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 p.the_agenda5:hover {
-     background: linear-gradient(-20deg, #47a7bf 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(71, 167, 191, 0.5) 27%, rgb(71, 167, 191, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
-.the_agenda6{
+.the_agenda6 {
     background: #fbb81f;
-    background: linear-gradient(20deg, #fbb81f 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(251, 184, 31, 0.5) 27%, rgb(251, 184, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 p.the_agenda6:hover {
-    background: linear-gradient(-20deg, #fbb81f 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(251, 184, 31, 0.5) 27%, rgb(251, 184, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
-.the_agenda7{
-        background: #7c7f37;
-    background: linear-gradient(20deg, #7c7f37 20%, rgba(0, 0, 0, 0.13) 70%);
+.the_agenda7 {
+    background: #7c7f37;
+    background: linear-gradient(266deg, rgb(124, 127, 55, 0.5) 27%, rgb(124, 127, 55, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 p.the_agenda7:hover {
-    background: linear-gradient(-20deg, #7c7f37 20%, rgba(0, 0, 0, 0.13) 70%);
+    background: linear-gradient(266deg, rgb(124, 127, 55, 0.5) 27%, rgb(124, 127, 55, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
-.the_agenda8{
-        background: #b56216;
-    background: linear-gradient(20deg, #b56216 20%, rgba(0, 0, 0, 0.13) 70%); 
+.the_agenda8 {
+    background: #b56216;
+    background: linear-gradient(266deg, rgb(181, 98, 22, 0.5) 27%, rgb(181, 98, 22, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 p.the_agenda8:hover {
-    background: linear-gradient(-20deg, #b56216 20%, rgba(0, 0, 0, 0.13) 70%); 
+    background: linear-gradient(266deg, rgb(181, 98, 22, 0.5) 27%, rgb(181, 98, 22, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda9 {
-        background: #7e2a1f;
-    background: linear-gradient(20deg, #7e2a1f 20%, rgba(0, 0, 0, 0.13) 70%); 
-        /* color:#fff; */
+    background: #7e2a1f;
+    background: linear-gradient(266deg, rgb(126, 42, 31, 0.5) 27%, rgb(126, 42, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    /* color:#fff; */
 }
 
 p.the_agenda9:hover {
-    background: linear-gradient(-20deg, #7e2a1f 20%, rgba(0, 0, 0, 0.13) 70%); 
+    background: linear-gradient(266deg, rgb(126, 42, 31, 0.5) 27%, rgb(126, 42, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda10 {
-        background: #bb0868;
-    background: linear-gradient(20deg, #bb0868 20%, rgba(0, 0, 0, 0.13) 70%); 
-        /* color:#fff; */
+    background: #bb0868;
+    background: linear-gradient(266deg, rgb(187, 8, 104, 0.5) 27%, rgb(187, 8, 104, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    /* color:#fff; */
 }
 
 p.the_agenda10:hover {
-    background: linear-gradient(-20deg, #bb0868 20%, rgba(0, 0, 0, 0.13) 70%); 
+    background: linear-gradient(-20deg, #bb0868 20%, rgba(0, 0, 0, 0.13) 70%);
 }
 
 .imagebgholder {
     height: 100%;
-    width: 98.8%;
+    width: 100%;
     background-size: cover;
 }
 
@@ -210,26 +236,26 @@ p.the_agenda10:hover {
 
 .thetitle {
     color: #fff;
-  letter-spacing: 9px;
-  text-shadow: 0px 0px 10px #000;
-  text-transform: uppercase;
-  font-size: 50px;
+    letter-spacing: 9px;
+    text-shadow: 0px 0px 10px #000;
+    text-transform: uppercase;
+    font-size: 50px;
 }
 
 .agendatitle {
-text-transform: uppercase;
-  font-size: 18px;
-  background: #ffffff57;
-  padding: 10px 10px 10px 28px;
-  margin-left: -25px;
-  letter-spacing: 8px;
+    text-transform: uppercase;
+    font-size: 18px;
+    background: #ffffff57;
+    padding: 10px 10px 10px 28px;
+    margin-left: -25px;
+    letter-spacing: 8px;
 }
 
 .theagenda {
-text-transform: uppercase;
-  font-size: 33px;
-  line-height: 50px;
-  width: 75%;
+    text-transform: uppercase;
+    font-size: 33px;
+    line-height: 50px;
+    width: 75%;
 }
 
 .theperitem {
@@ -254,15 +280,14 @@ text-transform: uppercase;
 }
 
 .thenavigation {
-    text-align: center;
+    text-align: left;
 }
 
 .thenavigation p {
-    padding: 10px 10px 10px 3.2rem;
+    margin-top: 25px;
     font-size: 16px;
     color: #fff;
-    text-align: left;
-    border: 5px solid #dadadaeb;
+    text-shadow: 0px 1px 1px #000;
 }
 
 .thenavigation a {
@@ -291,11 +316,11 @@ text-transform: uppercase;
 
 .prevnextbtn button:hover {
     cursor: pointer;
-    background:#fff;
+    background: #fff;
 }
 
 .gap_3 {
-    gap:3px;
+    gap: 3px;
 }
 
 .infoholder ul {
@@ -315,28 +340,80 @@ text-transform: uppercase;
     /* overflow: hidden; */
 }
 
-.bigpix_ul{ 
+.bigpix_ul {
     /* padding:0px;
     margin:0px; */
     padding: 0px;
     margin: 0px;
-    position: absolute;
-    width: 100%;
+    position: relative;
+    width: 99999999px;
     height: 100%;
     z-index: -1;
+    display:flex;
+    gap:0;
 }
 
-.bigpix_ul li{
-    display: none;
+.bigpix_ul li {
+   
     list-style: none;
     /* width: 1040px; */
     height: 100%;
 }
 
-.thebutton_div:hover{
-    color:#333 !important;
+.thebutton_div:hover {
+    color: #333 !important;
 }
 
-.ma_holder {
-    
+.ma_holder {}
+
+.navdiv {
+    flex: 5;
+}
+
+.big-ma-text {
+    font-size: 3.5rem;
+    text-shadow: 0px 2px 2px #000;
+}
+
+.bold-it {
+    font-weight: bold;
+}
+
+.thelogo_small {
+    padding-left: 0px;
+}
+
+.thelogo_small li {
+    display: inline-block;
+}
+
+.sponsors-img {}
+
+.sponsors-img img {
+    width: fit-content;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.the_agenda0 {
+    background: #000000;
+    background: -webkit-linear-gradient(266deg, rgba(0, 0, 0, 0.73) 27%, rgba(0, 0, 0, 0.4) 59%, rgba(255, 255, 255, 0) 100%);
+    background: -moz-linear-gradient(266deg, rgba(0, 0, 0, 0.73) 27%, rgba(0, 0, 0, 0.4) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(266deg, rgba(0, 0, 0, 0.73) 27%, rgba(0, 0, 0, 0.4) 59%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#FFFFFF", GradientType=0);
+}
+
+.white-it {
+    color: #fff !important;
+}
+
+.theagendaname_small {
+    font-size: 25px;
+    color: #fff;
+    text-shadow: 0px 1px 1px #000;
+}
+
+.agenda_dets_marker {
+    left: 0;
+    margin-top: 20px;
 }
