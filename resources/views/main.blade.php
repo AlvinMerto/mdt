@@ -16,17 +16,17 @@
         <div class="row height-100">
             <div class="col-md-12 " style="position:absolute; z-index:0;height: 100%;width: 100%;">
                 <ul class='bigpix_ul'>
-                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/ma.jpg')}}')"> </div> </li>
-                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda1.jpg')}}')"> </div> </li>
-                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda2.jpg')}}')"> </div> </li>
+                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/ma.JPG')}}')"> </div> </li>
+                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda1.JPG')}}')"> </div> </li>
+                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda2.JPG')}}')"> </div> </li>
                     <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda3.png')}}')"> </div> </li>
                     <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda4.jpg')}}')"> </div> </li>
-                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda5.jpg')}}')"> </div> </li>
+                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda5.JPG')}}')"> </div> </li>
                     <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda6.png')}}')"> </div> </li>
                     <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda7.jpg')}}')"> </div> </li>
                     <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda8.png')}}')"> </div> </li>
-                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda9.jpg')}}')"> </div> </li>
-                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda10.jpg')}}')"> </div> </li>
+                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda9.JPG')}}')"> </div> </li>
+                    <li> <div class="imagebgholder" style="background-image:url('{{asset('storage/images/new_bgs/agenda10.JPG')}}')"> </div> </li>
                 </ul>
             </div>
             <div class="col-md-5 thebgdiv_" style="padding: 0px;position: relative;z-index: 9999999999999;">
