@@ -9,7 +9,10 @@ use App\Http\Controllers\TheAgendaController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [FrontEndController::class,"main_window"])->name("main_window");
+Route::get('/tracker', [FrontEndController::class,"main_window"])->name("main_window");
+Route::get('/', function() {
+    return redirect()->route("main_window");
+});
 
 Route::get("/test", function(){
     // $name = "Alvin";
