@@ -50,8 +50,8 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<link rel="stylesheet" href="{{url('tracker/style/generalstyle.css')}}"/>
-<link rel="stylesheet" href="{{url('tracker/style/mpapstyle.css')}}"/>
+<link rel="stylesheet" href="{{url('style/generalstyle.css')}}"/>
+<link rel="stylesheet" href="{{url('style/mpapstyle.css')}}"/>
 
 <div id="top_navigation_ma_rbme">
     <ul>
