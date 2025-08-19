@@ -162,9 +162,9 @@
 
     <div class="row left_box px-5 py-5">
         <div class="logodiv col-md-12 pb-10 d-flex">
-            <img src="{{asset('images/mdt_logo.png')}}" />
+            <img src="{{asset('images/mdt_logo.png')}}" style="width:150px;"/>
             <div style="align-content: center;width: 100%;text-align: center;">
-                <h3 style="text-shadow: 0px 1px 2px #929292;"> Mindanao Development Tracker </h3>
+                <!-- <h3 style="text-shadow: 0px 1px 2px #929292;"> Mindanao Development Tracker </h3> -->
             </div>
         </div>
         <div class="bodydiv col-md-12 mb-2">
@@ -242,14 +242,14 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class='boxes_div'>
-                        <h6> Distribution </h6>
+                        <h6> Distributions </h6>
                         <div class='row'>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div id="pie_map" style="height:200px; width:100%;"></div>
                             </div>
                             <div class="col-md-6">
                                 <div id="stacked_sector" style="height:333px; width:100%;"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

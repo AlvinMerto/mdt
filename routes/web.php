@@ -8,11 +8,12 @@ use App\Http\Controllers\GenerateGraphs;
 use App\Http\Controllers\TheAgendaController;
 
 use Illuminate\Support\Facades\Route;
+use League\CommonMark\Extension\FrontMatter\FrontMatterParser;
 
-Route::get('/tracker', [FrontEndController::class,"main_window"])->name("main_window");
-Route::get('/', function() {
-    return redirect()->route("main_window");
-});
+Route::get('/', [FrontEndController::class,"main_window"])->name("main_window");
+// Route::get('/', function() {
+//     return redirect()->route("main_window");
+// });
 
 Route::get("/test", function(){
     // $name = "Alvin";
@@ -102,6 +103,7 @@ Route::get("/show_financials",[Dashboard::class,"show_financials"])->name('show_
 Route::get("/thesearchresults", [FrontEndController::class,"thesearchresults"])->name("thesearchresults");
 Route::get("/searchresults",[FrontEndController::class,"searchresults"])->name("searchresults");
 Route::get("/filter_it", [FrontEndController::class,"filter_it"])->name("filter_it");
+Route::get("/generatereport", [FrontEndController::class,"generatereport"])->name("generatereport");
 
 // widgets 
 Route::get("/allprojects", [FrontEndController::class,"allprojects"])->name('allprojects');

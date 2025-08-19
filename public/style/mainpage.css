@@ -3,8 +3,8 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 }
 
 /* * {
@@ -17,9 +17,9 @@ body {
 } */
 
 * {
-    padding:0;
-    margin:0;
-    white-space: normal; 
+    padding: 0;
+    margin: 0;
+    white-space: normal;
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: normal;
@@ -297,9 +297,10 @@ p.the_agenda10:hover {
 .pagenavs a {
     font-size: 13px;
     font-weight: bold;
-    color: #333;
+    color: #fff;
     text-decoration: none;
     height: 0px !important;
+    text-shadow: 0px 1px 2px #000;
 }
 
 .lh-25 {
@@ -349,12 +350,12 @@ p.the_agenda10:hover {
     width: 99999999px;
     height: 100%;
     z-index: -1;
-    display:flex;
-    gap:0;
+    display: flex;
+    gap: 0;
 }
 
 .bigpix_ul li {
-   
+
     list-style: none;
     /* width: 1040px; */
     height: 100%;
@@ -417,4 +418,64 @@ p.the_agenda10:hover {
 .agenda_dets_marker {
     left: 0;
     margin-top: 20px;
+}
+
+.pop_window {
+    display: none;
+    position: fixed;
+    background: #ffffffeb;
+    padding: 50px 25%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000000000000000000000000;
+    overflow: auto;
+}
+
+.thenavlink {
+    cursor: pointer;
+}
+
+.thenavlink:hover {
+    color: #ccc;
+}
+
+.closewindow:hover {
+    cursor: pointer;
+    color: #ccc;
+}
+
+.hl_logo {
+    width: 80px !important;
+    position: relative !important;
+
+    transition: 1s width;
+}
+
+.thesystembtn {
+background: #fef4f4 !important;
+  width: fit-content;
+  padding: 6px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  box-shadow: 0px 3px 1px #33333352;
+}
+
+.thesystembtn:hover{
+    cursor: pointer;
+    background:#f1f1f1;
+}
+
+.thesystembtn a {
+    text-decoration:none;
+    color:#333;
+}
+
+.theagendalogo:hover {
+    cursor:pointer;
+    width:80px !important;
+    position: relative;
+
+     transition: .5s width;
 }

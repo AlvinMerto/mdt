@@ -207,7 +207,14 @@ $(document).on("change", "#devpart_change", function () {
 
 // });
 
-$(document).on("click", '#generatereport_btn, #displayOnMap', function () {
+$(document).on("click","#generatereport_btn", function() {
+    // generatereport
+    //  console.log(JSON.stringify(prepareParams()));
+
+    console.log( $.param(prepareParams()) );
+});
+
+$(document).on("click", '#displayOnMap', function () {
     removemarker();
 
     // region_select

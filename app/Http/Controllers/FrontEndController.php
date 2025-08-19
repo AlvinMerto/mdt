@@ -347,4 +347,8 @@ class FrontEndController extends Controller
 
         return response()->json($collection);
     }
+
+    function generatereport(Request $req) {
+        return redirect()->route("rbme.front");
+    }
 }

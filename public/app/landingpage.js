@@ -41,6 +41,22 @@ $(document).on("click",".prevnext_btn",function() {
         // $(document).find(".thebutton_div").addClass(agenda[count]);
 });
 
+$(document).on("click",".theagendalogo", function() {
+    var loc_count = $(this).data('imgcnt');
+
+    var action    = null;
+    
+    if (loc_count > count) {
+        action = "nextbtn";
+    } else {
+        action = "prevbtn";
+    }
+
+    // count = loc_count;
+
+    theplay(action);
+});
+
 $(document).ready(function() {
     w_width = window.innerWidth;
     // w_width = screen.width;
@@ -57,6 +73,18 @@ $(document).ready(function() {
     var infoholder = $(document).find(".infoholder");
     slidewith      = infoholder.width();
     $(document).find("#thebig_slide li").width(slidewith);
+
+    $(document).on("click",".pop_window_btn", function() {
+        var window = $(this).data("window");
+
+        $(document).find("#"+window).show();
+    });
+    
+    $(document).on("click",".closewindow", function() {
+        var window = $(this).data('window');
+
+        $(document).find("#"+window).hide();
+    });
 });
 
 function remove_class() {
@@ -79,7 +107,7 @@ function theplay(id) {
     }
 
     if (count == 11) {
-        count         = 0;
+        count         = 1;
         marginleft    = 0;
         bigslide_pull = 0;
         id = "prevbtn";
@@ -109,6 +137,9 @@ function theplay(id) {
 
     $(document).find(".agenda_dets_marker").hide();
     $(document).find("."+agenda[count]).show();
+    
+    $(document).find(".theagendalogo").removeClass("hl_logo");
+    $(document).find(".the_agenda_logo"+count).addClass("hl_logo");
 
     $(document).find(".thebgdiv").addClass(agenda[count]);
     $(document).find(".thebutton_div").addClass(agenda[count]);
