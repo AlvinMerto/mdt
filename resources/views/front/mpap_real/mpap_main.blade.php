@@ -8,8 +8,8 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
     <script>
-        var url = "{{url('')}}";
-        var asset = "{{asset('')}}";
+        var url = "{{url('tracker/')}}";
+        var asset = "{{asset('tracker/')}}";
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
