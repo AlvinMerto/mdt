@@ -135,8 +135,14 @@
                             <button id='nextbtn' class='prevnext_btn'> Next <i class="bi bi-chevron-compact-right"></i>  </button> -->
                         </div>
                         <div style="margin-top:30px;">
-                            <p class="thesystembtn"> <i class="bi bi-arrow-right-short"></i><a href="{{route('rbme.front')}}"> Digital Results-based Monitoring and Evaluation System </a> </p>
-                            <p class="thesystembtn"> <i class="bi bi-arrow-right-short"></i> <a href="{{route('mpap.front')}}"> Mindanao Programs and Projects </a> </p>
+                            <p class="thesystembtn"> 
+                                <i class="bi bi-arrow-right-short"></i>
+                                <a href="{{url('rbme')}}"> Digital Results-based Monitoring and Evaluation System </a> 
+                            </p>
+                            <p class="thesystembtn"> 
+                                <i class="bi bi-arrow-right-short"></i> 
+                                <a href="{{url('mpap')}}"> Mindanao Programs and Projects </a> 
+                            </p>
                         </div>
                     </div>
                 </div>
