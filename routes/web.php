@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route::get("/mpap/{panel?}",[FrontEndController::class,"front"])->name("mpap.front");
-Route::get("/mpap",[FrontEndController::class,"mpap_front"])->name("mpap.front");
-Route::get("/rbme",[FrontEndController::class,"front"])->name("rbme.front");
+Route::get("/tracker/mpap",[FrontEndController::class,"mpap_front"])->name("mpap.front");
+Route::get("/tracker/rbme",[FrontEndController::class,"front"])->name("rbme.front");
 Route::get("/programs",[FrontEndController::class,"programs"])->name("programs");
 Route::get("/default", [FrontEndController::class,"getpins"])->name("default");
 Route::get("/getdetails",[FrontEndController::class,"get_details"])->name("getdetails");
