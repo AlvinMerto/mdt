@@ -66,7 +66,7 @@
 <div class="the_mindanao_agenda">
     <ul class="ma_icons"> 
         <?php foreach($ma as $m) { 
-            $link     = "storage/images/ma_icons/{$m->thelogo}";
+            $link     = "tracker/storage/images/ma_icons/{$m->thelogo}";
             $ma_icons = asset($link);
         ?>
         <li class='iconagenda' data-maid="<?php echo $m->agendaid; ?>"> <img src=<?php echo $ma_icons; ?> id="iconagenda_<?php echo $m->agendaid; ?>"> </li>
