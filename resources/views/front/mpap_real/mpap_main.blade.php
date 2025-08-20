@@ -26,14 +26,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link href="{{url('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{url('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{url('style/logframe.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('tracker/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('tracker/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('tracker/style/logframe.css')}}" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="{{url('style/generalstyle.css')}}" />
-    <link rel="stylesheet" href="{{url('style/mpapstyle.css')}}" />
+    <link rel="stylesheet" href="{{url('tracker/style/generalstyle.css')}}" />
+    <link rel="stylesheet" href="{{url('tracker/style/mpapstyle.css')}}" />
 
     <div id="top_navigation_ma_rbme">
         <ul>
