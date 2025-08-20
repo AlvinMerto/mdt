@@ -8,8 +8,8 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
     <script>
-        var url = "{{url('tracker/')}}";
-        var asset = "{{asset('tracker/')}}";
+        var url = "{{url('')}}";
+        var asset = "{{asset('')}}";
     </script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -26,14 +26,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link href="{{url('tracker/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{url('tracker/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{url('tracker/style/logframe.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url('style/logframe.css')}}" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="{{url('tracker/style/generalstyle.css')}}" />
-    <link rel="stylesheet" href="{{url('tracker/style/mpapstyle.css')}}" />
+    <link rel="stylesheet" href="{{url('style/generalstyle.css')}}" />
+    <link rel="stylesheet" href="{{url('style/mpapstyle.css')}}" />
 
     <div id="top_navigation_ma_rbme">
         <ul>
@@ -162,7 +162,7 @@
 
     <div class="row left_box px-5 py-5">
         <div class="logodiv col-md-12 pb-10 d-flex">
-            <img src="{{asset('tracker/images/mdt_logo.png')}}" style="width:150px;"/>
+            <img src="{{asset('images/mdt_logo.png')}}" style="width:150px;"/>
             <div style="align-content: center;width: 100%;text-align: center;">
                 <!-- <h3 style="text-shadow: 0px 1px 2px #929292;"> Mindanao Development Tracker </h3> -->
             </div>
@@ -470,10 +470,10 @@
     <script>
         var marker = [];
     </script>
-    <script src="{{url('tracker/app/polygons.js')}}"> </script>
+    <script src="{{url('app/polygons.js')}}"> </script>
 
-    <script src="{{url('tracker/app/front_mpap.js')}}"> </script>
-    <script src="{{url('tracker/app/mpap_real.js')}}"> </script>
+    <script src="{{url('app/front_mpap.js')}}"> </script>
+    <script src="{{url('app/mpap_real.js')}}"> </script>
 
 
 </body>

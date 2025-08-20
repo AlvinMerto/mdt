@@ -137,11 +137,11 @@
                         <div style="margin-top:30px;">
                             <p class="thesystembtn"> 
                                 <i class="bi bi-arrow-right-short"></i>
-                                <a href="{{url('rbme')}}"> Digital Results-based Monitoring and Evaluation System </a> 
+                                <a href="{{url('tracker/rbme')}}"> Digital Results-based Monitoring and Evaluation System </a> 
                             </p>
                             <p class="thesystembtn"> 
                                 <i class="bi bi-arrow-right-short"></i> 
-                                <a href="{{url('mpap')}}"> Mindanao Programs and Projects </a> 
+                                <a href="{{url('tracker/mpap')}}"> Mindanao Programs and Projects </a> 
                             </p>
                         </div>
                     </div>
@@ -178,19 +178,18 @@
             2. Mindanao Programs and Projects (MPAP) Database - This component consolidates data on Official Development Assistance (ODA) and government-funded programs and projects across Mindanao. It provides both a financial lens and a project management perspective, showing where investments are directed, how resources are utilized, and which areas remain underserved. By mapping initiatives geographically and thematically, the MPAP becomes a vital tool for coordinating interventions, avoiding overlaps, and identifying priority areas for future support. Moreover, with the introduction of a new data-sharing framework with partners such as the Bangsamoro Planning and Development Authority (BPDA), the system makes data sharing seamless, efficient, and optimized. This ensures that stakeholders operate from a single source of truth, and that development information remains transparent, consistent, and actionable. The framework also makes it easier to update datasets and monitor programs and projects in real time, strengthening accountability and enabling MinDA and its partners to respond more quickly to emerging needs and opportunities.
             Ultimately, the Mindanao Development Tracker is more than just a monitoring tool—it is a platform for transparency, collaboration, and informed decision-making. By integrating performance tracking through the RBME system and investment mapping through the MPAP database, the MDT enables MinDA, government agencies, development partners, and local stakeholders to work from a common foundation of reliable data. In doing so, it strengthens accountability, ensures resources are strategically directed, and accelerates the realization of a more inclusive, resilient, and prosperous Mindanao that contributes fully to national development.
         </p>
-
     </div>
 
     <div class="pop_window" id="aboutma">
         <h2> Introduction <i class="bi bi-x-lg closewindow" data-window='aboutma' style="float: right;"></i> </h2>
 
-        <h3 style="margin: 25px 0px;"> Overview of Mindanao’s Current Trends, Patterns and Challenges </h3>
+        <h3 style="margin: 25px 0px;text-align: left;"> Overview of Mindanao's Current Trends, Patterns and Challenges </h3>
 
         <h4> Context, Demographic Trends and Patterns </h4>
 
         <p>
-            Mindanao is the second-largest island in the Philippines, comprising 34% of the country’s land area. It plays a crucial role in the economic development and investment of the country due to its abundant natural resources, strategic location, and skilled workforce.
-            Mindanao is the major food producer of the country. 36% of the country’s farm area is from Mindanao, and it also accounts for 43% of the country’s food needs while contributing 30% of the country’s food trade. More impressive is that it accounts for 60% of the country’s total agricultural exports. Mindanao continues to be the leading supplier of major crops such as rubber, corn, pineapple, bananas, coffee, cassava, and coconut among others.
+            Mindanao is the second-largest island in the Philippines, comprising 34% of the country's land area. It plays a crucial role in the economic development and investment of the country due to its abundant natural resources, strategic location, and skilled workforce.
+            Mindanao is the major food producer of the country. 36% of the country's farm area is from Mindanao, and it also accounts for 43% of the country’s food needs while contributing 30% of the country’s food trade. More impressive is that it accounts for 60% of the country’s total agricultural exports. Mindanao continues to be the leading supplier of major crops such as rubber, corn, pineapple, bananas, coffee, cassava, and coconut among others.
             Mindanao has rich natural resources and major river basins. It hosts eight major river basins that provide water for domestic, agricultural, and industrial use. It is home to several major protected areas such as watershed forests and wildlife sanctuaries.
         </p>
 

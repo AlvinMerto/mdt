@@ -24,9 +24,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-		<link href="{{url('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{url('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{url('style/logframe.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{url('tracker/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{url('tracker/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{url('tracker/style/logframe.css')}}" rel="stylesheet" type="text/css" />
         
 <style>
     /* .open-sans-bold {
@@ -50,8 +50,8 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<link rel="stylesheet" href="{{url('style/generalstyle.css')}}"/>
-<link rel="stylesheet" href="{{url('style/mpapstyle.css')}}"/>
+<link rel="stylesheet" href="{{url('tracker/style/generalstyle.css')}}"/>
+<link rel="stylesheet" href="{{url('tracker/style/mpapstyle.css')}}"/>
 
 <div id="top_navigation_ma_rbme">
     <ul>
@@ -214,13 +214,13 @@
     });
 </script>
 
-<script src="{{url('app/polygons.js')}}"> </script>
-<script src="{{url('app/polygon_map.js')}}"> </script>
+<script src="{{url('tracker/app/polygons.js')}}"> </script>
+<script src="{{url('tracker/app/polygon_map.js')}}"> </script>
 
-<script src="{{url('app/graphs_mpap.js')}}"> </script>
-<script src="{{url('app/front_mpap.js')}}"> </script>
-<script src="{{url('app/mpap_events.js')}}"> </script>
-<script src="{{url('app/rbme.js')}}"> </script>
+<script src="{{url('tracker/app/graphs_mpap.js')}}"> </script>
+<script src="{{url('tracker/app/front_mpap.js')}}"> </script>
+<script src="{{url('tracker/app/mpap_events.js')}}"> </script>
+<script src="{{url('tracker/app/rbme.js')}}"> </script>
 
 </body>
 </html>
