@@ -137,11 +137,11 @@
                         <div style="margin-top:30px;">
                             <p class="thesystembtn"> 
                                 <i class="bi bi-arrow-right-short"></i>
-                                <a href="{{url('tracker/rbme')}}"> Digital Results-based Monitoring and Evaluation System </a> 
+                                <a href="{{url('rbme')}}"> Digital Results-based Monitoring and Evaluation System </a> 
                             </p>
                             <p class="thesystembtn"> 
                                 <i class="bi bi-arrow-right-short"></i> 
-                                <a href="{{url('tracker/mpap')}}"> Mindanao Programs and Projects </a> 
+                                <a href="{{url('mpap')}}"> Mindanao Programs and Projects </a> 
                             </p>
                         </div>
                     </div>
