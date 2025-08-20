@@ -109,6 +109,9 @@ function get_(getwhat, d, somefunc = false) {
         url: url + "/" + getwhat,
         type: "get",
         data: d,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         dataType: "json",
         success: function (data, jqXHR) {
             if (somefunc != false) {
@@ -209,93 +212,93 @@ function the_status(percent) {
 
 function display_pin(data) {
     var preparing = null;
-// console.log(data);
-   // map.on("load", function () {
-        // $(document).find(".left_box").show("fast");
+    // console.log(data);
+    // map.on("load", function () {
+    // $(document).find(".left_box").show("fast");
 
-        for (var o = 0; o <= data[0].length - 1; o++) {
-          
-            // var thelogo_pin = data[0][o].pin+"_"+data[0][o].status+".png";
+    for (var o = 0; o <= data[0].length - 1; o++) {
 
-            // if (preparing == null) {
-            //     preparing = data[0][o].masterid;
-            // } else {
-            //     if (preparing == data[0][o].masterid) {
-            //         continue;
-            //     }
-            //     preparing = data[0][o].masterid;
-            // }
+        // var thelogo_pin = data[0][o].pin+"_"+data[0][o].status+".png";
 
-            var status      = data[0][o].status;
-            var thelogo_pin = data[0][o].logo + ".png";
-            var id          = data[0][o].masterid;
-            var devpart     = data[0][o].abbr;
+        // if (preparing == null) {
+        //     preparing = data[0][o].masterid;
+        // } else {
+        //     if (preparing == data[0][o].masterid) {
+        //         continue;
+        //     }
+        //     preparing = data[0][o].masterid;
+        // }
 
-            devpart = devpart.replace(/\s/g, "");
-    
-            if (data[0][o].typeofobj == "point") {
-                
-                var pin = map_pin(thelogo_pin, function (id, devpart, lat, lng, thelogo_pin, status) {
-                    // logo, somefunc = false, id = false, devpart = false, status = false, lat = false, lng = false
-                    selectedloc = [lng, lat];
+        var status = data[0][o].status;
+        var thelogo_pin = data[0][o].logo + ".png";
+        var id = data[0][o].masterid;
+        var devpart = data[0][o].abbr;
 
-                    var detailsbox = $(document).find(".details_box");
+        devpart = devpart.replace(/\s/g, "");
 
-                    $(document).find("#" + devpart).siblings().removeClass("li_selected");
-                    $(document).find("#" + devpart).addClass("li_selected");
+        if (data[0][o].typeofobj == "point") {
 
-                    get_("getdetails", { ii : id }, function (dd) {
-                        display_details_mpap(dd, id, devpart, status, thelogo_pin);
-                    });
+            var pin = map_pin(thelogo_pin, function (id, devpart, lat, lng, thelogo_pin, status) {
+                // logo, somefunc = false, id = false, devpart = false, status = false, lat = false, lng = false
+                selectedloc = [lng, lat];
 
-                    // addblacker(function(){
-                    //     $(document).find(".search_result").hide("fast");
-                    // }, "black_it");
+                var detailsbox = $(document).find(".details_box");
 
-                    detailsbox.animate({
-                        "width": "35" + "%",
-                        "padding-left": "20px",
-                        "padding-right": "20px",
-                        "padding-top": "20px"
-                    }, 300);
+                $(document).find("#" + devpart).siblings().removeClass("li_selected");
+                $(document).find("#" + devpart).addClass("li_selected");
 
-                }, id, devpart, status, data[0][o].lat, data[0][o].lng);
+                get_("getdetails", { ii: id }, function (dd) {
+                    display_details_mpap(dd, id, devpart, status, thelogo_pin);
+                });
 
-                const m = new mapboxgl.Marker(pin).setLngLat([data[0][o].lng, data[0][o].lat]).addTo(map);
- 
-                marker.push(m);
+                // addblacker(function(){
+                //     $(document).find(".search_result").hide("fast");
+                // }, "black_it");
 
-            } else if (data[0][o].typeofobj == "line") {
-   
-                var lat = parseCoordinates(data[0][o].lat);
+                detailsbox.animate({
+                    "width": "35" + "%",
+                    "padding-left": "20px",
+                    "padding-right": "20px",
+                    "padding-top": "20px"
+                }, 300);
 
-                var pin = map_pin(thelogo_pin, function (id, devpart, status_, lat, lng, thelogo_pin, status) {
-                    var detailsbox = $(document).find(".details_box");
+            }, id, devpart, status, data[0][o].lat, data[0][o].lng);
 
-                    $(document).find("#" + devpart).siblings().removeClass("li_selected");
-                    $(document).find("#" + devpart).addClass("li_selected");
-                 
-                    get_("getdetails", { ii: id }, function (dd) {
-                        display_details_mpap(dd, id, devpart, status, thelogo_pin, status);
-                    });
+            const m = new mapboxgl.Marker(pin).setLngLat([data[0][o].lng, data[0][o].lat]).addTo(map);
 
-                    detailsbox.animate({
-                        "width": "35" + "%",
-                        "padding-left": "20px",
-                        "padding-right": "20px",
-                        "padding-top": "20px"
-                    }, 300);
+            marker.push(m);
 
-                }, id, devpart, status, lat[0][1], lat[0][0]);
+        } else if (data[0][o].typeofobj == "line") {
 
-                // create_line(lat, "line" + o, returnColor(data[0][o].status), 4);
+            var lat = parseCoordinates(data[0][o].lat);
 
-                const m = new mapboxgl.Marker(pin).setLngLat([lat[0][0], lat[0][1]]).addTo(map);
+            var pin = map_pin(thelogo_pin, function (id, devpart, status_, lat, lng, thelogo_pin, status) {
+                var detailsbox = $(document).find(".details_box");
 
-                marker.push(m);
-            }
+                $(document).find("#" + devpart).siblings().removeClass("li_selected");
+                $(document).find("#" + devpart).addClass("li_selected");
+
+                get_("getdetails", { ii: id }, function (dd) {
+                    display_details_mpap(dd, id, devpart, status, thelogo_pin, status);
+                });
+
+                detailsbox.animate({
+                    "width": "35" + "%",
+                    "padding-left": "20px",
+                    "padding-right": "20px",
+                    "padding-top": "20px"
+                }, 300);
+
+            }, id, devpart, status, lat[0][1], lat[0][0]);
+
+            // create_line(lat, "line" + o, returnColor(data[0][o].status), 4);
+
+            const m = new mapboxgl.Marker(pin).setLngLat([lat[0][0], lat[0][1]]).addTo(map);
+
+            marker.push(m);
         }
-  
+    }
+
     //});// map
 }
 
@@ -375,5 +378,5 @@ function formatNumber(num) {
 }
 
 function roundToOneDecimal(num) {
-  return Math.round(num * 10) / 10;
+    return Math.round(num * 10) / 10;
 }
