@@ -77,7 +77,7 @@
 <div class="macro_indicators pt-10" id="macro_indicators">
     <div class="d-flex flex-column" style="height: 100%;">  
         <h2 class='pl-25 macrotitle mt-15' style="flex:0;"> MACRO <span class="color-blue"> ECONOMIC INDICATORS </span> </h2>
-        <div class="the_indicators mt-20" style="flex:1; overflow:scroll; padding-right: 25px; padding-top: 10px;">
+        <div class="the_indicators mt-20" style="flex:1; overflow:auto; padding-right: 25px; padding-top: 10px;">
             <?php if (count($macro) > 0) { ?>
                 <?php foreach($macro as $m) { 
                     $up   = "ki-outline ki-arrow-up fs-5 green-it text-success";

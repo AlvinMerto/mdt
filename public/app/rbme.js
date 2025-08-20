@@ -147,7 +147,7 @@ function mindanao_agenda(theid) {
         a.show("fast"); 
         a.addClass("agenda_"+theid+"_div");
     
-    get_("get_agenda_details",{ agendaid : theid }, function(data) {
+    get_("tracker/get_agenda_details",{ agendaid : theid }, function(data) {
 
         display_info(data);
         thereadables(data);
