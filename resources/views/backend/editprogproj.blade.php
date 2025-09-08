@@ -31,12 +31,12 @@
 		<!--begin::Page-->
 		<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 			<!--begin::Header-->
-			@include('backend.sidebar_mobile')
+			@include('front.mainnavs',['navigation'=>'mindaconnect'])
 			<!--end::Header-->
 
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-				@include('backend.sidebar_screen')
+				@include('front.mainnavs',['navigation'=>'mindaconnect'])
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
 					<!--begin::Content wrapper-->

@@ -1,10 +1,11 @@
 <table class="table align-middle table-row-dashed fs-6 gy-3 dataTable no-footer thesearchresults">
         <thead>
             <tr>
-                <th> Name </th>
-                <th> Description </th>
-                <th> Location </th>
-                <th style="width: 20%;"> Timeline </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Project Amount </th>
+                <th scope="col"> Location </th>
+                <th scope="col"> Development Partner </th>
+                <th scope="col" style="width: 20%;"> Status </th>
             </tr>
         </thead>
         <tbody class="fw-bold text-gray-600">
@@ -44,7 +45,7 @@
                             }
                             $preparing = $c->masterid;
                         }
-                        echo "<tr >";
+                        echo "<tr class='opendetails' data-mid='{$c->masterid}' data-devpart='{$c->id}' data-logo='{$c->logo}' data-status='{$c->status}'>";
                             echo "<td class='text-start'> ";
                                 if ($display) {
                                     echo $c->title;
@@ -52,11 +53,16 @@
                             echo "</td>";
                             echo "<td class='text-start'>";
                                 if ($display) {
-                                    echo $c->description;
+                                    // echo $c->description;
+                                    echo "$".number_format($c->projectamount,2);
                                 } 
                             echo "</td>";
                             echo "<td class='text-start'>";
                                 echo $c->columnplace;
+                            echo "</td>";
+                            echo "<td style='text-align: center;'>";
+                                $img = asset("images/icons/{$c->logo}.png");
+                                echo "<img src='{$img}' style='height:40px;'/>";
                             echo "</td>";
                             echo "<td>
                                     <div class='d-flex align-items-center w-100 mw-125px'>

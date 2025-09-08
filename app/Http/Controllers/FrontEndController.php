@@ -43,47 +43,154 @@ class FrontEndController extends Controller
 
         $sectors          = sectortbl::all();
         $devparts         = DevPartners::all();
-       
+
+        $regions          = DB::select("SELECT s.thesector, 
+                                        COALESCE(SUM(f.projectamount), 0) AS total_amount, 
+                                        region, MAX(m.type_of_financing) AS type_of_financing
+                                        FROM sectortbls s 
+                                        LEFT JOIN master__data m ON s.sectorid = m.sector 
+                                        LEFT JOIN financetbls f ON m.masterid = f.masterid 
+                                        LEFT JOIN geolocation g ON f.fid = g.md_projectsid 
+                                        GROUP BY s.thesector, g.region 
+                                        ORDER BY g.region");
+
+        $collection = collect($regions);
+
         return view("front.mpap_real.mpap_main")->with(["allprojects"      => 0, 
                                                         "loangrant"        => 0, 
                                                         "loangrant_amount" => 0,
                                                         "gfpy"             => $gfpy,
                                                         "sector"           => $sectors,
                                                         "devparts"         => $devparts,
-                                                        "alllocs"          => 0]);   
+                                                        "alllocs"          => 0,
+                                                        "persector"        => $collection]);   
     }
 
     function allprojects(Request $req) {
+        $filter = (array) $req->input("filter");
+        // return response()->json( $filter['buff']);
+
         $where = null;
 
-        if (null != $req->input("year")) {
-            $where = ["year(master__data.project_start)" => $req->input('year'), "layertype" => 1 ];
-        } else {
-            $where = ["layertype" => 1];
+        if (count($filter) > 1) {
+            $where = "";
+            if (isset($filter["year"]) ) {
+                $where .= " year(master__data.project_start) <= ". $filter["year"] . " ";
+                // $where = ["year(master__data.project_start)" => $req->input('year'), "layertype" => 1 ];
+            }
+
+            if (isset($filter["region"])) {
+                if (isset($filter["year"]) ) {
+                    $where .= " and ";
+                }
+
+                $where .= " geolocation.region = '". $filter["region"] ."'";
+            }
+
+            if ($where != null) {
+                $where  = " where ".$where;
+            }
         }
 
-        $allprojects      = master__data::where($where)->count();
+        $sql                 = "select count(tbl1.type_of_financing) as cnt, tbl1.type_of_financing from 
+                                            (select type_of_financing, master__data.masterid from master__data 
+                                            join financetbls on master__data.masterid = financetbls.masterid 
+                                            join geolocation on financetbls.fid = geolocation.md_projectsid 
+                                            {$where} GROUP by master__data.type_of_financing, master__data.masterid) as tbl1 group by tbl1.type_of_financing";
+      
+        $allprojects         = DB::select($sql);
+    
+        // $allprojects      = DB::select("select count(type_of_financing) as cnt, type_of_financing from master__data {$where} group by type_of_financing");
+        
+        // $alllocs          = master__data::where($where)
+        //                                 ->join("financetbls","financetbls.masterid","=","master__data.masterid")
+        //                                 ->join("geolocation","geolocation.md_projectsid","=","financetbls.fid")
+        //                                 ->count();
+        
+        return response()->json(['allprojects' => $allprojects]);
+    }
 
-        $alllocs          = master__data::where($where)
-                                        ->join("financetbls","financetbls.masterid","=","master__data.masterid")
-                                        ->join("geolocation","geolocation.md_projectsid","=","financetbls.fid")
-                                        ->count();
+    function topoda(Request $req) {
+        // $tops = DB::select("select count(masterid) as prjcnt, devpartner, logo, id 
+        //                     from master__data join dev_partners on master__data.development_partner = dev_partners.id 
+        //                     group by devpartner, logo, id 
+        //                     HAVING COUNT(masterid) > 1 
+        //                     order by prjcnt DESC");
 
-        return response()->json(['allprojects' => $allprojects, "alllocs" => $alllocs]);
+        $filter =  (array) $req->input("filter");
+
+        $where  = null;
+
+        if (count($filter) > 1) {
+            $where = " where ";
+            if (isset($filter['region'])) {
+                $where .= " g.region = '".$filter['region']."'";
+            }
+
+            if (isset($filter['year'])) {
+                if (isset($filter['region'])) {
+                    $where .= " and ";
+                }
+                $where .= " year(master__data.project_start) <= ". $filter["year"] . " ";
+            }
+        }
+
+        // $where  = "";
+
+        // if ($req->input("region") != null || $req->input("region") != NULL) {
+        //     $where = " where g.region = '".$req->input('region')."'";
+        // }
+
+        $sql  = "SELECT d.devpartner, d.logo, d.id, 
+                            COUNT(DISTINCT m.masterid) AS prjcnt, 
+                            COUNT(g.geolocationid) AS location_count 
+                            FROM dev_partners d JOIN master__data m ON d.id = m.development_partner 
+                            JOIN financetbls f ON m.masterid = f.masterid 
+                            JOIN geolocation g ON f.fid = g.md_projectsid 
+                            {$where}
+                            GROUP BY d.devpartner, d.logo, d.id 
+                            HAVING COUNT(DISTINCT m.masterid) > 1 
+                            ORDER BY prjcnt DESC";
+        // return response()->json($sql);
+        $tops = DB::select($sql);
+
+        $doms = view("front.mpap_real.widgets.topoda")->with(["tops" => $tops])->render();
+        return response()->json($doms);
     }
 
     function getodagrant_figures(Request $req) {
+        $filter = (array) $req->input("filter");
+
         $where = null;
 
-        if (null != $req->input("year")) {
-            $where = "where year(master__data.project_start) = '{$req->input('year')}' and layertype = 1";
-        } else {
-            $where = "where layertype = 1";
-        }
+        // if (null != $req->input("year")) {
+        //     $where = "where year(master__data.project_start) = '{$req->input('year')}' and layertype = 1";
+        // } else {
+        //     $where = "where layertype = 1";
+        // }
 
-        $loangrant        = DB::select("SELECT count(masterid) as thecount, type_of_financing FROM `master__data` {$where} group by type_of_financing");
+        if (count($filter) > 1) {
+            $where = " where";
+
+            if (isset($filter['year'])) {
+                $where .= " year(master__data.project_start) <= '".$filter['year']."' and layertype = 1";
+            }
+
+            if (isset($filter['region'])) {
+                if (isset($filter['year'])) {
+                    $where .= " and ";
+                }
+
+                $where .= " geolocation.region = '".$filter['region']."'";
+            }
+        }
+       
+        // $loangrant     = DB::select("SELECT count(masterid) as thecount, type_of_financing FROM `master__data` {$where} group by type_of_financing");
+        $loangrant        = 0;
         $loangrant_amount = DB::select("SELECT ROUND(sum(projectamountpersite),2) as amount, type_of_financing 
-                                        FROM `master__data` join financetbls on master__data.masterid = financetbls.masterid 
+                                        FROM `master__data` 
+                                        join financetbls on master__data.masterid = financetbls.masterid 
+                                        join geolocation on financetbls.fid = geolocation.md_projectsid
                                         {$where} 
                                         group by type_of_financing");
 
@@ -94,7 +201,7 @@ class FrontEndController extends Controller
         $keyword     = $req->input("keyword");
 
         $sql         = "SELECT `master__data`.*, `geolocation`.`lat`, `geolocation`.`columnplace`,`geolocation`.`lng`, `dev_partners`.`pin`, 
-                                    `dev_partners`.`logo`, `dev_partners`.`abbr` 
+                                    `dev_partners`.`logo`, `dev_partners`.`abbr`,`financetbls`.`projectamount`,`dev_partners`.`id`
                                     from `master__data` 
                                     inner join `financetbls` on `master__data`.`masterid` = `financetbls`.`masterid`
                                     inner join `geolocation` on `financetbls`.`fid` = `geolocation`.`md_projectsid` 
@@ -205,7 +312,7 @@ class FrontEndController extends Controller
 
         if (null !== $req->input("theyear")) {
             // $where    .= " {$connector} where year(master__data.project_start) = '{$req->input('theyear')}'";
-            array_push($values,"year(master__data.project_start) = '{$req->input('theyear')}'");
+            array_push($values,"year(master__data.project_start) <= '{$req->input('theyear')}'");
         }
 
         // if (null !== $req->input("sector")) {
@@ -247,7 +354,11 @@ class FrontEndController extends Controller
         if (count($filters) > 0) {
             $where_string = " where ";
             foreach($filters as $key => $value) {
-                $where_string .= $key ."='".$value."'";
+                if ($key == "year") {
+                    $where_string .= "year(master__data.project_start) <= '{$value}'";    
+                } else {
+                    $where_string .= $key ."='".$value."'";
+                }
 
                 if ($count != count($filters)-1) {
                     $where_string .= " and ";

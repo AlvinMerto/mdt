@@ -53,39 +53,50 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-5 thebgdiv_" style="padding: 0px;position: relative;z-index: 9999999999999;">
+            <div class="col-md-5 thebgdiv_" style="padding: 0px;position: relative;z-index: 9999999999999; display:none;">
 
                 <div class="wrap-flex flex-column height-100 px-20 thecolorbg_">
                     <div class="logodiv">
                         <img src="{{asset('images/mdt_logo.png')}}" style="width: 215px;" />
-                        <!-- <p style="font-weight: bold;color: #fff;text-shadow: 0px 1px 1px #000;"> Mindanao Development Tracker </p> -->
                     </div>
                     <div class="maindiv row" style="flex:4;">
-                        <!-- <h1 class="thetitle mt-40"> The Mindanao Agenda </h1> -->
-                        <!-- <div class="col-md-6">
-                            <div class="ma_holder">
-                                <img src="{{asset('storage/images/the_ma.jpg')}}" style="width: 350px;"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <p> hello world </p>
-                        </div> -->
+
                     </div>
                 </div>
             </div>
-            <div class="col-md-7 thebgblack_ thebgdiv" style="padding: 0px;position: relative;z-index: 9999999999999;">
-                <div class="wrap-flex flex-column height-100 ">
+            <div class="col-md-12 thebgblack_ thebgdiv" style="padding: 0px;position: relative;z-index: 9999999999999;">
+                <div class="wrap-flex flex-column height-100 centerall">
                     <div class="wrap-flex flex-row gap-5 navdiv pagenavs pt-25">
-                        <a class='thenavlink pop_window_btn' data-window="aboutwindow"> ABOUT MDT </a>
+                        <img src="{{asset('images/mdt_logo.png')}}" style="width: 215px;" />
+                        <img class='' src="{{asset('images/partners/minda_small.png')}}" />
+                        <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" />
+                        <!-- <a class='thenavlink pop_window_btn' data-window="aboutwindow"> ABOUT MDT </a>
                         <a class='thenavlink pop_window_btn' data-window="aboutma"> THE MINDANAO AGENDA </a>
-                        <a class='thenavlink pop_window_btn' data-window="report_window"> REPORTS </a>
+                        <a class='thenavlink pop_window_btn' data-window="report_window"> REPORTS </a> -->
                     </div>
                     <div class="maindiv thenavigation wrap-flex flex-column pl-20" style="position: relative;">
-                        <div>
-                            <h6 class='white-it' style="font-size: 22px;text-shadow: 0px 1px 2px #000;"> THE </h6>
-                            <h1 class='white-it big-ma-text bold-it'> MINDANAO AGENDA <small style="font-size: 1.9rem !important;"> 2023-2028 </small> </h1>
+                        <div class='centertext'>
+                            <!-- <h6 class='white-it' style="font-size: 22px;text-shadow: 0px 1px 2px #000;"> THE </h6> -->
+                            <h1 class='white-it big-ma-text bold-it'> MDT </h1>
+                            <h4 class='white-it' style="text-shadow: 0px 1px 2px #000;"> MINDANAO DEVELOPMENT TRACKER </h4> 
                         </div>
-                        <ul class='thelogo_small'>
+                        <div class="w-80-p auto-marg">
+                            <p>
+                               The Mindanao Development Tracker is your all-in-one platform for monitoring and contributing 
+                               to Mindanao's development. This system integrates agenda tracking, project management, 
+                               and stakeholder engagement to transform data into actionable insights. This innovative platform is the 
+                               flagship initiative of the Mindanao Development Authority (MinDA), 
+                                designed to centralize tracking, monitoring, and collaboration across all development efforts in 
+                                the region. As the Philippine government's primary coordinating body for Mindanao's socioeconomic 
+                                development, MinDA has created this comprehensive system to ensure transparent implementation of 
+                                the Mindanao Agenda while fostering meaningful partnerships among government agencies, development 
+                                partners, local stakeholders, and communities. The tracker represents MinDA's commitment to 
+                                data-driven decision-making and inclusive development that addresses the unique needs and 
+                                opportunities across Mindanao's diverse landscape. <small class='pop_window_btn' data-window="aboutwindow"> Read More </small>
+                            </p>
+                        </div>
+                        <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> THE MINDANAO AGENDA <small class='pop_window_btn' data-window="aboutma"> Read More </small></h5> 
+                        <ul class='thelogo_small centertext'>
                             <?php
                             if (count($agenda) > 0) {
                                 $count = 1;
@@ -95,7 +106,7 @@
                                             <?php $image = asset('storage/images/ma_icons/') . "/" . $a->thelogo; ?>
                                             <img style="width:65px;" data-imgcnt="<?php echo $count; ?>" class='theagendalogo the_agenda_logo<?php echo $count; ?>' src="<?php echo $image; ?>" />
                                         </div>
-                                        <div class="col-md-12 agenda_dets_marker <?php echo "the_agenda" . $count; ?>" style="position:absolute; display:none;">
+                                        <div class="agenda_dets_marker <?php echo "the_agenda" . $count; ?>" style="position:absolute; display:none;">
                                             <p> <?php echo $a->agendatitle; ?> </p>
                                             <h6 class="lh-25 theagendaname_small"> <?php echo $a->agendaname; ?> </h6>
                                             <p> <?php echo $a->thegoal; ?> </p>
@@ -105,6 +116,7 @@
                                 } ?>
                             <?php } ?>
                         </ul>
+                        
                         <!-- <div>
                             <a href="{{url('mpap')}}"> <p class='thebutton_div'> PROGRAMS AND PROJECTS <i class="bi bi-arrow-right"></i> </p> </a>
                             <a href="{{url('rbme')}}"> <p class='thebutton_div'> EXPLORE DATA <i class="bi bi-arrow-right"></i> </p> </a>
@@ -113,12 +125,12 @@
                     </div>
                     <div class="logodetailsdiv pl-20" style="flex:4;">
                         <!-- <h6 class='mb-20 theagenda'> The Mindanao Agenda </h6>  classname = agendalist -->
-
-                        <div class='wrap-flex flex-row gap_3 prevnextbtn'>
-                            <div class="d-flex sponsors-img">
-                                <img class='' src="{{asset('images/partners/minda_small.png')}}" />
-                                <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" />
-                                <img class='' src="{{asset('images/partners/eu_small.png')}}" />
+                         <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> THE IMPLIMENTING PARTNERS </h5> 
+                        <div class='wrap-flex flex-row gap_3 centerall'>
+                            <div class="d-flex sponsors-img theagendalogo">
+                                <!-- <img class='' src="{{asset('images/partners/minda_small.png')}}" />
+                                <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" /> -->
+                                <img class='' src="{{asset('images/partners/eu_small.jpg')}}" />
                                 <img class='' src="{{asset('images/partners/gizcoop_small.png')}}" />
                                 <img class='' src="{{asset('images/partners/giz_small.png')}}" />
                                 <img class="" src="{{asset('images/partners/usaid_small.png')}}" />
@@ -135,14 +147,20 @@
                             <button id='nextbtn' class='prevnext_btn'> Next <i class="bi bi-chevron-compact-right"></i>  </button> -->
                         </div>
                         <div style="margin-top:30px;">
-                            <p class="thesystembtn"> 
-                                <i class="bi bi-arrow-right-short"></i>
-                                <a href="{{url('rbme')}}"> Digital Results-based Monitoring and Evaluation System </a> 
-                            </p>
-                            <p class="thesystembtn"> 
-                                <i class="bi bi-arrow-right-short"></i> 
-                                <a href="{{url('mpap')}}"> Mindanao Programs and Projects </a> 
-                            </p>
+                            <ul class='btn_navigation'>
+                                <li class="thesystembtn"> 
+                                    <i class="bi bi-arrow-right-short"></i>
+                                    <a href="{{url('tracker/rbme')}}"> Track the Mindanao Agenda </a> 
+                                </li>
+                                <li class="thesystembtn"> 
+                                    <i class="bi bi-arrow-right-short"></i> 
+                                    <a href="{{url('tracker/mpap')}}"> Mindanao Programs and Projects </a> 
+                                </li>
+                                <li class="thesystembtn"> 
+                                    <i class="bi bi-arrow-right-short"></i> 
+                                    <a href="{{route('dashboard')}}"> Minda Connect </a> 
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -153,30 +171,40 @@
     <div class="pop_window" id="aboutwindow">
         <h2> Mindanao Development Tracker <i class="bi bi-x-lg closewindow" data-window='aboutwindow' style="float: right;"></i></h2>
 
-        <h4> Rationale </h4>
+        <h4> Welcome to the Future of Regional Development </h4>
 
         <p>
-            Mindanao is a region rich in natural resources, cultural diversity, and economic potential. It serves as a vital driver of national growth, with its vast agricultural base, emerging industries, and its strategic role in regional integration through BIMP-EAGA. However, despite its promise, Mindanao continues to face development challenges that hinder its full participation in the country’s progress.
-            These challenges include the uneven distribution of development opportunities, weak infrastructure connectivity, limited access to quality education and social services, inadequate preparedness for natural disasters and climate-related risks, and the persistent burden of armed conflict and fragility in certain areas. Such conditions have perpetuated cycles of poverty and underdevelopment, widening the gap between Mindanao and the rest of the country.
-            In this regard, the Mindanao Development Authority (MinDA) has crafted the Mindanao Agenda, a strategic framework designed to align Mindanao’s development priorities with the Philippine Development Plan (PDP) under the Marcos Jr. Administration. This Agenda underscores the region’s role as a key partner in achieving national development goals while ensuring that growth is inclusive, sustainable, and peace-promoting.
-            As part of this effort, MinDA is introducing the Mindanao Development Tracker (MDT), which integrates two major components:
+           The Mindanao Development Tracker represents a new approach to monitoring, collaborating, and advancing development initiatives across Mindanao. We at the Mindanao Development Authority (MinDA) have designed this platform to serve as the central nervous system for all development activities in the region, embodying our commitment to coordinated regional progress.
         </p>
 
+        <h5> Our Journey </h5>
         <p>
-            1. Digital Results-Based Monitoring and Evaluation (RBME) System - This component ensures that the Mindanao Agenda is systematically monitored and assessed. Each agenda is broken down into measurable outcomes, which are further tracked through specific indicators. The RBME system computes the achievement percentage of each indicator by comparing the baseline, current, and target values, providing a clear, evidence-based measure of progress.
+            Established in 2023 as a response to the growing need for coordinated development tracking, the Mindanao Development Tracker evolved from a simple monitoring tool into an integrated ecosystem. By bringing together government agencies, development partners, local stakeholders, and communities on a single platform, we've created a powerful engine for positive change.
+            The Mindanao Development Tracker's evolution has been significantly strengthened through strategic partnerships with international development organizations. Our collaboration with the Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) has provided technical expertise in digital monitoring systems, while funding from the German Federal Ministry for Economic Cooperation and Development (BMZ) and the European Union (EU) has enabled platform expansion and capacity-building initiatives across stakeholder groups. These partnerships exemplify our commitment to international best practices and sustainable development approaches for Mindanao.
         </p>
 
+        <h5> What We Offer </h5>
         <p>
-            To effectively communicate and display results, the system generates a choropleth map that visually illustrates the level of progress across regions. This allows stakeholders to quickly see disparities, monitor development performance, and better appreciate how Mindanao’s development is unfolding spatially.
+            The Mindanao Development Tracker goes beyond traditional monitoring systems by providing a comprehensive, user-friendly interface that transforms complex data into clear, actionable insights. Through our three integrated pillars, we're revolutionizing how development work happens in Mindanao.
         </p>
 
-        <p>
-            The system also allows agenda holders to update the values of their indicators directly, ensuring that data remains timely, accurate, and reflective of on-the-ground realities. This dynamic updating feature strengthens accountability and supports more informed decision-making.
-        </p>
+        <h5> Our Three Pillars </h5>
+        <ul>
+            <li>
+                <strong> Mindanao Agenda Tracker:</strong> A visualization tool that displays Mindanao's development goals, tracks progress, and shows project implementation across different regions.
+            </li>
+            <li>
+                <strong> Program & Project Database:</strong> A searchable database of development projects in Mindanao. Find projects by location, focus area, or partners. Includes project timelines and impact data.
+            </li>
+            <li>
+                <strong> Mindanao Connect:</strong> A secure platform where users can update project information, share stories, and find partners. Features a gamification system that rewards active contributors while maintaining data quality.
+            </li>
+        </ul>
 
+        <h5>Join Our Development Journey </h5>
         <p>
-            2. Mindanao Programs and Projects (MPAP) Database - This component consolidates data on Official Development Assistance (ODA) and government-funded programs and projects across Mindanao. It provides both a financial lens and a project management perspective, showing where investments are directed, how resources are utilized, and which areas remain underserved. By mapping initiatives geographically and thematically, the MPAP becomes a vital tool for coordinating interventions, avoiding overlaps, and identifying priority areas for future support. Moreover, with the introduction of a new data-sharing framework with partners such as the Bangsamoro Planning and Development Authority (BPDA), the system makes data sharing seamless, efficient, and optimized. This ensures that stakeholders operate from a single source of truth, and that development information remains transparent, consistent, and actionable. The framework also makes it easier to update datasets and monitor programs and projects in real time, strengthening accountability and enabling MinDA and its partners to respond more quickly to emerging needs and opportunities.
-            Ultimately, the Mindanao Development Tracker is more than just a monitoring tool—it is a platform for transparency, collaboration, and informed decision-making. By integrating performance tracking through the RBME system and investment mapping through the MPAP database, the MDT enables MinDA, government agencies, development partners, and local stakeholders to work from a common foundation of reliable data. In doing so, it strengthens accountability, ensures resources are strategically directed, and accelerates the realization of a more inclusive, resilient, and prosperous Mindanao that contributes fully to national development.
+            Your voice matters in shaping Mindanao's future. We invite you to explore the platform, contribute your insights, and share your feedback. By participating actively, you help create a more transparent, efficient, and impactful development ecosystem across Mindanao.
+Experience the difference today — because better data leads to better decisions, and better decisions create a better Mindanao for all.
         </p>
     </div>
 

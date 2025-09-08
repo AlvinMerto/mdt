@@ -95,7 +95,11 @@ $(document).on("click",".bring_down", function() {
     var m_id = $(this).data('arrowdata');
 
     $(document).find(".devpart"+m_id).children().remove();
+    $("<span> Loading... </span>").appendTo(".devpart"+m_id);
+
     get_("prjsunderdevpart", {devpart : m_id }, function(data) {
+        $(document).find(".devpart"+m_id).children().remove();
+        $(document).find(".devpart"+m_id).children().remove();
         $(data).appendTo(".devpart"+m_id);
     });
 });

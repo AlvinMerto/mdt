@@ -85,6 +85,15 @@ $(document).ready(function() {
 
         $(document).find("#"+window).hide();
     });
+
+    $(document).on("mouseover",".theagendalogo", function() {
+        $(document).find(".agenda_dets_marker").hide();
+        $(this).parent().parent().find(".agenda_dets_marker").show();
+    });
+
+    $(document).on("mouseout",".theagendalogo", function() {
+        $(document).find(".agenda_dets_marker").hide();
+    });
 });
 
 function remove_class() {
@@ -135,8 +144,9 @@ function theplay(id) {
         "margin-left" : marginleft+"px"
     });
 
-    $(document).find(".agenda_dets_marker").hide();
-    $(document).find("."+agenda[count]).show();
+
+    // $(document).find(".agenda_dets_marker").hide();
+    // $(document).find("."+agenda[count]).show();
     
     $(document).find(".theagendalogo").removeClass("hl_logo");
     $(document).find(".the_agenda_logo"+count).addClass("hl_logo");

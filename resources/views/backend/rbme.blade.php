@@ -30,14 +30,14 @@
 			<!--begin::Header-->
 			<div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize" data-kt-sticky-animation="false" data-kt-sticky-offset="{default: '0px', lg: '0px'}">
 				<!--begin::Header container-->
-				@include('backend.sidebar_mobile')
+				@include('front.mainnavs',['navigation'=>'mindaconnect'])
 				<!--end::Header container-->
 			</div>
 			<!--end::Header-->
 			<!--begin::Wrapper-->
 			<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
 				<!--begin::Sidebar-->
-				@include('backend.sidebar_screen')
+				@include('front.mainnavs',['navigation'=>'mindaconnect'])
 				<!--end::Sidebar-->
 				<!--begin::Main-->
 				<div class="app-main flex-column flex-row-fluid" id="kt_app_main">

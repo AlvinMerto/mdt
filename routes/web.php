@@ -10,10 +10,10 @@ use App\Http\Controllers\TheAgendaController;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Extension\FrontMatter\FrontMatterParser;
 
-Route::get('/', [FrontEndController::class,"main_window"])->name("main_window");
-// Route::get('/', function() {
-//     return redirect()->route("main_window");
-// });
+Route::get('/tracker', [FrontEndController::class,"main_window"])->name("main_window");
+Route::get('/', function() {
+    return redirect()->route("main_window");
+});
 
 Route::get("/test", function(){
     // $name = "Alvin";
@@ -93,9 +93,11 @@ Route::get("/tracker/trend",[TheAgendaController::class,"trend"])->name("trend")
 
 // the graphs
 Route::get("/tracker/progress_status",[GenerateGraphs::class,"progress_status"])->name("progress_status");
-Route::get("/tracker/number_of_projects",[GenerateGraphs::class,"number_of_projects"])->name("number_of_projects");
+Route::get("/tracker/amount_per_projects",[GenerateGraphs::class,"amount_per_projects"])->name("amount_per_projects");
 Route::get("/tracker/sum_of_projects_per_region",[GenerateGraphs::class,"sum_of_projects_per_region"])->name("sum_of_projects_per_region");
+Route::get("/tracker/countOfProjects", [GenerateGraphs::class,"countOfProjects"])->name("countOfProjects");
 Route::get("/tracker/loan_grants",[GenerateGraphs::class,"loan_grants"])->name('loan_grants');
+Route::get("/tracker/generate",[GenerateGraphs::class,"generateData"])->name("generateData");
 
 Route::get("/tracker/show_location", [Dashboard::class,"show_location"])->name('show_location');
 Route::post("/tracker/show_location",[Dashboard::class,"show_location"])->name("show_location");
@@ -104,6 +106,7 @@ Route::get("/tracker/thesearchresults", [FrontEndController::class,"thesearchres
 Route::get("/tracker/searchresults",[FrontEndController::class,"searchresults"])->name("searchresults");
 Route::get("/tracker/filter_it", [FrontEndController::class,"filter_it"])->name("filter_it");
 Route::get("/tracker/generatereport", [FrontEndController::class,"generatereport"])->name("generatereport");
+Route::get("/tracker/topoda", [FrontEndController::class,"topoda"])->name("topoda");
 
 // widgets 
 Route::get("/tracker/allprojects", [FrontEndController::class,"allprojects"])->name('allprojects');

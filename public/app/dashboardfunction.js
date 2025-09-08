@@ -10,25 +10,27 @@ function kpi_window(outcomeid) {
 }
 
 function get_(getwhat, d, somefunc = false) {
+        //     headers: {
+        //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        // },
     $.ajax({
-        url: url + "/" + getwhat,
+        url: url + "/tracker/" + getwhat,
         type: "get",
         data: d,
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
         dataType: "json",
         success: function (data) {
             if (somefunc != false) {
                 somefunc(data);
             }
+        }, error : function(a,b,c) {
+            console.log(a+b+c);
         }
     });
 }
 
 function post_(getwhat, d, somefunc = false) {
     $.ajax({
-        url: url + "/" + getwhat,
+        url: url + "/tracker/" + getwhat,
         type: "post",
         data: d,
         headers: {
@@ -45,7 +47,7 @@ function post_(getwhat, d, somefunc = false) {
 
 function save_(script, d, somefunc = false) {
     $.ajax({
-        url: url + "/" + script,
+        url: url + "/tracker/" + script,
         type: "post",
         data: d,
         headers: {

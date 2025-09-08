@@ -6,7 +6,7 @@
                 <!-- <tr class="odd"> -->
                 <li class='d-flex'> 
                     <i class="ki-outline ki-right-square fs-6 text-gray-600 me-2 mt-1"> </i> 
-                    <a href="{{url('dashboard/mpap/edit')}}/<?php echo $p->masterid; ?>" class="text-dark text-hover-primary"><?php echo strtolower($p->title); ?></a> 
+                    <a href="{{url('tracker/dashboard/mpap/edit')}}/<?php echo $p->masterid; ?>" class="text-dark text-hover-primary"><?php echo strtolower($p->title); ?></a> 
                 </li>
                 <!-- </tr> -->
             <?php } ?>

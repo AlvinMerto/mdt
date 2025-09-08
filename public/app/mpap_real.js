@@ -6,6 +6,9 @@ var stroke;
 var all_sector = "all";
 var global_devpart = "all";
 
+var global_theyear = false;
+var global_region_sel = false;
+
 am4core.color("#e63946"),
     am4core.color("#f1faee"),
     am4core.color("#a8dadc"),
@@ -30,17 +33,17 @@ var global_region = [9, 10, 11, 12, 13, "barmm"];
 $(document).ready(function () {
     // initiate widgets
     numberofprojects();
-    getodagrant_figures();
+    getodagrant_figures(2025, false);
 
     // initCounts(); // animation effect
     loadYears();
     initializeDefaultMap();
     initialize_graph();
     initiate_map_heat("#333");
-    project_dist();
-    stacked_sector();
 
-    // thetimeseries();
+    initializeEvents();
+    topoda();
+    thetimeseries();
 
     // map.on("load", function () {
     //     create_line([
@@ -54,6 +57,47 @@ $(document).ready(function () {
     // });
 
 });
+
+function initializeEvents() {
+    $(document).on("click", "#the_nav_chart li", function () {
+        $(this).siblings().removeClass("small_tab_select");
+        $(this).addClass("small_tab_select");
+    });
+
+    $(document).on("click", ".closethiswindow", function () {
+        var thewindow = $(this).data("window");
+
+        // reset window 
+        loadprojects();
+
+        $(document).find(thewindow).hide();
+    })
+
+    $(document).on("click", ".loaddist", function () {
+        var tof = $(this).data("typeoffinancing");
+
+        $(document).find(".loaddist").removeClass("strongit");
+        $(this).addClass("strongit");
+        distributiongraph(tof);
+    })
+
+    $(document).on("click", ".numofprojs", function () {
+        var tof = $(this).data("typeoffinancing");
+
+        $(document).find(".numofprojs").removeClass("strongit");
+        $(this).addClass("strongit");
+        countofprojects(tof);
+    });
+}
+
+function loadprojects() {
+    get_("default", { status: "all" }, function (data) {
+        removemarker();
+
+        display_pin(data);
+        $("#show_mpap").addClass("top_nav_selected");
+    });
+}
 
 function initCounts() {
     animateCount("#count_allprojects", $("#count_allprojects").text(), 2000);
@@ -71,14 +115,23 @@ function loadYears() {
 
 function initializeDefaultMap() {
     map.on("load", function () {
-        get_("default", { status: "all" }, function (data) {
-            removemarker();
-
-            display_pin(data);
-            $("#show_mpap").addClass("top_nav_selected");
-        });
+        loadprojects();
     });
 }
+
+$(document).on("click", ".theyear_mpap", function () {
+    removemarker();
+
+    global_theyear = $(this).text();
+
+    $(this).parent().parent().siblings().removeClass("selected_timeline");
+    $(this).parent().parent().addClass("selected_timeline");
+
+    numberofprojects(global_theyear, global_region_sel);
+    get_odas("all", global_theyear);
+
+    getodagrant_figures(global_theyear, false);
+});
 
 $(document).on("click", "#mpap_years li", function () {
     const year = $(this).text().trim();
@@ -123,6 +176,22 @@ $(document).on("blur", "#searchbtnbig", function () {
     $(document).find(".search_box").removeAttr("style");
 });
 
+$(document).on("click", ".opendetails", function () {
+    var id          = $(this).data("mid");
+    var devpart     = $(this).data("devpart");
+    var thelogo_pin = $(this).data("logo")+".png";
+    var status      = $(this).data("status");
+    
+    themainnav("hide");
+
+    get_("getdetails", { ii: id }, function (dd) {
+        display_details_mpap(dd, id, devpart, status, thelogo_pin);
+    });
+
+    var detailsbox = $(document).find(".details_box").addClass("showdiv");
+
+    $("#search_result").modal("hide");
+})
 // $(document).on("click", "#generatereport", function () {
 // $(document).find(".search_result").show();
 // });
@@ -133,12 +202,14 @@ $(document).on("keydown", "#searchbtnbig", function (e) {
     if (enter == "Enter") {
         var thekeyword = $(this).val();
 
-        addblacker(function () {
-            $(document).find(".search_result").hide("fast");
-        }, "black_it");
+        // addblacker(function () {
+        //     $(document).find(".search_result").hide("fast");
+        // }, "black_it");
+        $("#search_result").modal("show");
 
-        $(document).find(".search_result").show("fast");
+        // $(document).find(".search_result").show("fast");
         // thesearchresults
+
         $(document).find("#thesearchresults").children().remove();
         get_("thesearchresults", { keyword: thekeyword }, function (data) {
             $(data).appendTo("#thesearchresults");
@@ -158,6 +229,20 @@ $(document).on("click", "#showinlist", function () {
     get_("searchresults", { filters: prepareParams() }, function (data) {
         $(data).appendTo("#thesearchresults");
     });
+});
+
+$(document).on("click", "#the_nav_chart li", function () {
+    var thewindow = $(this).data('window');
+
+    $(this).siblings().removeClass("small_tab_select");
+    $(this).addClass("small_tab_select");
+
+    // change the window
+    // $(document).find(".thewindow").removeClass("showthiswindow");
+    // $(document).find("#"+thewindow).addClass("showthiswindow");
+
+    $(document).find(".thewindow").hide();
+    $(document).find("#" + thewindow).show();
 });
 
 $(document).on("change", "#sector_change", function () {
@@ -207,11 +292,11 @@ $(document).on("change", "#devpart_change", function () {
 
 // });
 
-$(document).on("click","#generatereport_btn", function() {
+$(document).on("click", "#generatereport_btn", function () {
     // generatereport
     //  console.log(JSON.stringify(prepareParams()));
 
-    console.log( $.param(prepareParams()) );
+    console.log($.param(prepareParams()));
 });
 
 $(document).on("click", '#displayOnMap', function () {
@@ -231,15 +316,15 @@ $(document).on("click", '#displayOnMap', function () {
 });
 
 $(document).on("click", ".theclosebtn", function () {
-    var detailsbox = $(document).find(".details_box");
 
-
-    detailsbox.animate({
-        "width": "0" + "%",
-        "padding-left": "0px",
-        "padding-right": "0px",
-        "padding-top": "0px"
-    }, 300);
+    themainnav("show");
+    var detailsbox = $(document).find(".details_box").removeClass("showdiv");
+    // detailsbox.animate({
+    //     "width": "0" + "%",
+    //     "padding-left": "0px",
+    //     "padding-right": "0px",
+    //     "padding-top": "0px"
+    // }, 300);
 
     get_("default", { status: "all" }, function (data) {
         removemarker();
@@ -249,7 +334,39 @@ $(document).on("click", ".theclosebtn", function () {
     });
 });
 
-function numberofprojects(year = false) {
+var windowopen = false;
+$(document).on("click", ".opengenstat", function () {
+    if (windowopen) {
+        $(document).find(".left_box").removeClass("h-90");
+        windowopen = false;
+    } else {
+        $(document).find(".left_box").addClass("h-90");
+        windowopen = true;
+    }
+});
+
+$(document).on("click", ".showprojs", function () {
+    removemarker();
+
+    var devpart = $(this).data('devpart');
+
+    // get_("default", { devpart : devpart }, function(data) {
+    //     display_pin(data);
+    // });
+
+    var params = {};
+    params.development_partner = devpart;
+
+    get_("filter_it", { filters: params }, function (data) {
+        var dd = [];
+        dd.push(data[0]);
+        display_pin(dd);
+    });
+
+});
+
+function topoda(region = false, year = false) {
+    // theodalist
     let params = Object();
     params.buff = true;
 
@@ -257,13 +374,18 @@ function numberofprojects(year = false) {
         params.year = year;
     }
 
-    get_("allprojects", params, function (data) {
-        $(document).find("#count_allprojects").text(data['allprojects']);
-        $(document).find("#numoflocs").text(data['alllocs']);
+    if (region != false) {
+        params.region = region;
+    }
+
+    $(document).find(".theodalist").children().remove();
+    get_("topoda", { filter: params }, function (data) {
+        // console.log(data);
+        $(document).find(".theodalist").html(data);
     });
 }
 
-function getodagrant_figures(year = false) {
+function numberofprojects(year = false, region = false) {
     let params = Object();
     params.buff = true;
 
@@ -271,7 +393,56 @@ function getodagrant_figures(year = false) {
         params.year = year;
     }
 
-    get_("getodagrant_figures", params, function (data) {
+    if (region != false) {
+        params.region = region;
+    }
+
+    $(document).find("#totalnumprojs").text("---");
+    $(document).find("#odagrant_projects").text("---");
+    $(document).find("#odaloan_projects").text("---");
+
+    get_("allprojects", { filter: params }, function (data) {
+
+        // $(document).find("#count_allprojects").text(data['allprojects']);
+        // total_num_projects 
+        // $(document).find("#numoflocs").text(data['alllocs']);
+
+        var totalnumprojs = 0;
+
+        for (var i = 0; i <= Object.keys(data.allprojects).length - 1; i++) {
+            var displayto = null;
+            if (data.allprojects[i].type_of_financing == "loan") {
+                displayto = "#odaloan_projects";
+                totalnumprojs += data.allprojects[i].cnt;
+            } else if (data.allprojects[i].type_of_financing == "grant") {
+                displayto = "#odagrant_projects";
+                totalnumprojs += data.allprojects[i].cnt;
+            }
+
+            $(document).find("#totalnumprojs").text(totalnumprojs);
+            $(document).find(displayto).text(data.allprojects[i].cnt);
+        }
+
+    });
+}
+
+function getodagrant_figures(year = false, region = false) {
+    let params = Object();
+    params.buff = true;
+
+    if (year != false) {
+        params.year = year;
+    }
+
+    if (region != false) {
+        params.region = region;
+    }
+
+    $(document).find("#odagrant").text("---");
+    $(document).find("#odaloan").text("---");
+    $(document).find("#total_total").text("---");
+
+    get_("getodagrant_figures", { filter: params }, function (data) {
         var thelen = data.loangrant_amount.length;
         var total_amnt_grant = 0; // grant
         var total_amnt_loan = 0; // loan
@@ -291,29 +462,31 @@ function getodagrant_figures(year = false) {
                 total_amnt_loan += data.loangrant_amount[i].amount;
             }
 
-
             // formatNumber(data.loangrant_amount[i].amount)
             // data.loangrant[i].thecount
 
         }
 
+        var unit = "B";
         var inbillion_grant = roundToOneDecimal(total_amnt_grant / 1000000000); // grant
         var inbillion_loan = roundToOneDecimal(total_amnt_loan / 1000000000); // loan
 
         if (inbillion_grant == 0) {
+            unit = "M";
             inbillion_grant = roundToOneDecimal(total_amnt_grant / 1000000); // grant
         }
 
         if (inbillion_loan == 0) {
+            unit = "M";
             inbillion_loan = roundToOneDecimal(total_amnt_loan / 1000000); // loan
         }
 
         var total_l_g = roundToOneDecimal(inbillion_grant + inbillion_loan);
 
         // $(document).find("#" + display_count).text("");
-        $(document).find("#odagrant").text(inbillion_grant + "B");
-        $(document).find("#odaloan").text(inbillion_loan + "B");
-        $(document).find("#total_total").text(total_l_g + "B");
+        $(document).find("#odagrant").text(inbillion_grant + unit);
+        $(document).find("#odaloan").text(inbillion_loan + unit);
+        $(document).find("#total_total").text(total_l_g + unit);
 
         // $(document).find("#odaloan").text(data['loangrant']);
         // $(document).find("#odagrant").text(data['loangrant_amount']);
@@ -344,7 +517,7 @@ function prepareParams() {
     if (sta_sel != "none") {
         params.status = sta_sel;
     }
-    console.log(params);
+
     return params;
 }
 function get_odas(status, year) {
@@ -381,223 +554,35 @@ function initialize_graph() {
 }
 
 function distributiongraph(type_of_financing) {
+    getHeat(type_of_financing, "amount_per_projects", "Amount of " + type_of_financing + " Distribution per Island Region");
+}
+
+function countofprojects(type_of_financing) {
+    getHeat(type_of_financing, "countOfProjects", "Number of Projects of " + type_of_financing + " Distribution per Island Region");
+}
+
+function getHeat(type_of_financing, apiEndpoint, word) {
     $("#distributiongraph").show();
     disposeRoot("distributiongraph");
 
     var chart = am4core.create("distributiongraph", am4charts.PieChart);
 
-    get_("number_of_projects", { type_of_financing: type_of_financing }, function (data) {
+    $(document).find(".dist_name").html(word);
+
+    get_(apiEndpoint, { type_of_financing: type_of_financing }, function (data) {
         // Add and configure Series
         chart.data = data;
 
         var pieSeries = chart.series.push(new am4charts.PieSeries());
         pieSeries.dataFields.value = "total";
         pieSeries.dataFields.category = "theregion";
+        pieSeries.labels.template.disabled = true;
 
         pieSeries.slices.template.events.on("hit", function (ev) {
             distributiongraph_region(ev.target.dataItem.dataContext.theregion, type_of_financing);
             removemarker();
         });
     });
-
-}
-
-function stacked_sector() {
-    // Create root element
-    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-    var root = am5.Root.new("stacked_sector");
-
-    var myTheme = am5.Theme.new(root);
-
-    myTheme.rule("Grid", ["base"]).setAll({
-        strokeOpacity: 0.1
-    });
-
-    // Set themes
-    // https://www.amcharts.com/docs/v5/concepts/themes/
-    root.setThemes([
-        am5themes_Animated.new(root),
-        myTheme
-    ]);
-
-    // Create chart
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/
-    var chart = root.container.children.push(am5xy.XYChart.new(root, {
-        panX: false,
-        panY: false,
-        wheelX: "panY",
-        wheelY: "zoomY",
-        paddingLeft: 0,
-        layout: root.verticalLayout
-    }));
-
-    var data = [{
-        "year": "2021",
-        "europe": 2.5,
-        "namerica": 2.5,
-        "asia": 2.1,
-        "lamerica": 1,
-        "meast": 0.8,
-        "africa": 0.4
-    }, {
-        "year": "2022",
-        "europe": 2.6,
-        "namerica": 2.7,
-        "asia": 2.2,
-        "lamerica": 0.5,
-        "meast": 0.4,
-        "africa": 0.3
-    }, {
-        "year": "2023",
-        "europe": 2.8,
-        "namerica": 2.9,
-        "asia": 2.4,
-        "lamerica": 0.3,
-        "meast": 0.9,
-        "africa": 0.5
-    }]
-
-
-    // Create axes
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    var yRenderer = am5xy.AxisRendererY.new(root, {});
-    var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-        categoryField: "year",
-        renderer: yRenderer,
-        tooltip: am5.Tooltip.new(root, {})
-    }));
-
-    yRenderer.grid.template.setAll({
-        location: 1
-    })
-
-    yAxis.data.setAll(data);
-
-    var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-        min: 0,
-        maxPrecision: 0,
-        renderer: am5xy.AxisRendererX.new(root, {
-            minGridDistance: 40,
-            strokeOpacity: 0.1
-        })
-    }));
-
-    // Add legend
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-    var legend = chart.children.push(am5.Legend.new(root, {
-        centerX: am5.p50,
-        x: am5.p50
-    }));
-
-    // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-    function makeSeries(name, fieldName) {
-        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-            name: name,
-            stacked: true,
-            xAxis: xAxis,
-            yAxis: yAxis,
-            baseAxis: yAxis,
-            valueXField: fieldName,
-            categoryYField: "year"
-        }));
-
-        series.columns.template.setAll({
-            tooltipText: "{name}, {categoryY}: {valueX}",
-            tooltipY: am5.percent(90)
-        });
-        series.data.setAll(data);
-
-        // Make stuff animate on load
-        // https://www.amcharts.com/docs/v5/concepts/animations/
-        series.appear();
-
-        series.bullets.push(function () {
-            return am5.Bullet.new(root, {
-                sprite: am5.Label.new(root, {
-                    text: "{valueX}",
-                    fill: root.interfaceColors.get("alternativeText"),
-                    centerY: am5.p50,
-                    centerX: am5.p50,
-                    populateText: true
-                })
-            });
-        });
-
-        legend.data.push(series);
-    }
-
-    makeSeries("Europe", "europe");
-    makeSeries("North America", "namerica");
-    makeSeries("Asia", "asia");
-    makeSeries("Latin America", "lamerica");
-    makeSeries("Middle East", "meast");
-    makeSeries("Africa", "africa");
-
-
-    // Make stuff animate on load
-    // https://www.amcharts.com/docs/v5/concepts/animations/
-    chart.appear(1000, 100);
-}
-function project_dist() {
-    // Create root element
-    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-    var root = am5.Root.new("pie_map");
-
-    // Set themes
-    // https://www.amcharts.com/docs/v5/concepts/themes/
-    root.setThemes([
-        am5themes_Animated.new(root)
-    ]);
-
-    // Create chart
-    // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
-    var chart = root.container.children.push(
-        am5percent.PieChart.new(root, {
-            endAngle: 270
-        })
-    );
-
-    // Create series
-    // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
-    var series = chart.series.push(
-        am5percent.PieSeries.new(root, {
-            valueField: "value",
-            categoryField: "category",
-            endAngle: 270
-        })
-    );
-
-    series.states.create("hidden", {
-        endAngle: -90
-    });
-
-    // Set data
-    // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
-    series.data.setAll([{
-        category: "Lithuania",
-        value: 501.9
-    }, {
-        category: "Czechia",
-        value: 301.9
-    }, {
-        category: "Ireland",
-        value: 201.1
-    }, {
-        category: "Germany",
-        value: 165.8
-    }, {
-        category: "Australia",
-        value: 139.9
-    }, {
-        category: "Austria",
-        value: 128.3
-    }, {
-        category: "UK",
-        value: 99
-    }]);
-
-    series.appear(1000, 100);
 }
 
 function distributiongraph_region(region, type_of_financing) {
@@ -606,7 +591,10 @@ function distributiongraph_region(region, type_of_financing) {
         return;
     }
 
-    $("#distributiongraph_region").show();
+    // $("#distributiongraph_region").show();
+    $(document).find("#dist_per_reg").show();
+    $(document).find(".dist_name_reg").html(type_of_financing);
+
     disposeRoot("distributiongraph_region");
 
     var root = am5.Root.new("distributiongraph_region");
@@ -630,6 +618,10 @@ function distributiongraph_region(region, type_of_financing) {
             let percentage = (normalized * 100);
             let points = percentage / 100;
 
+            // if (points == 0) {
+            //     points = 1;
+            // }
+
             paint_it(data[o].region, "#67b7dc", points);
         }
 
@@ -639,12 +631,13 @@ function distributiongraph_region(region, type_of_financing) {
         pieSeries.dataFields.category = "region";
 
         // Let's cut a hole in our Pie chart the size of 40% the radius
-        chart.innerRadius = am4core.percent(40);
+        chart.innerRadius = am4core.percent(0);
 
         // Set up fills
         pieSeries.slices.template.fillOpacity = 1;
 
-        // pieSeries.labels.template.disabled = true;
+        pieSeries.labels.template.disabled = true;
+        pieSeries.slices.template.tooltipText = "Region {region}"; //with ${value}
         // pieSeries.ticks.template.disabled = true;
 
         var hs = pieSeries.slices.template.states.getKey("hover");
@@ -783,7 +776,7 @@ function initMainGraph() {
 
         var series1 = chart.series.push(
             am5xy.ColumnSeries.new(root, {
-                name: "Income",
+                name: "FINANCIAL ASSISTANCE",
                 xAxis: xAxis,
                 yAxis: yAxis,
                 valueYField: "total",
@@ -816,12 +809,13 @@ function initMainGraph() {
 
         // Make stuff animate on load
         // https://www.amcharts.com/docs/v5/concepts/animations/
-        chart.appear(1000, 100);
-        series1.appear();
 
         series1.columns.template.events.on("click", function (ev) {
             distributiongraph(ev.target.dataItem.dataContext.type_of_financing);
         });
+
+        chart.appear(1000, 100);
+        series1.appear();
     });
 }
 
@@ -834,27 +828,176 @@ function thetimeseries() {
 
 function initiate_map_heat(color) {
     map.on('load', () => {
-        barmm_map(false, color, 0);
-        region9_map(false, color, 0);
-        region10_map(false, color, 0);
-        region11_map(false, color, 0);
-        region12_map(false, color, 0);
-        region13_map(false, color, 0);
+        barmm_map(false, color, 0, function () {
+            var params = Object();
+            params.region = "barmm";
+
+            // if (global_theyear == false) {
+            //     params.year     = global_theyear;
+            // }
+
+            global_region_sel = "barmm";
+
+            get_("filter_it", { filters: params }, function (data) {
+                removemarker();
+
+                var dd = [];
+                dd.push(data[0]);
+                display_pin(dd);
+
+                // get odas 
+                topoda("barmm");
+
+                // the numbers 
+                numberofprojects(global_theyear, "barmm");
+
+                // amount
+                getodagrant_figures(global_theyear, global_region_sel);
+            });
+        });
+
+        region9_map(false, color, 0, function () {
+            var params = Object();
+            params.region = 9;
+
+            // if (global_theyear == false) {
+            //     params.year     = global_theyear;
+            // }
+
+            global_region_sel = 9;
+
+            get_("filter_it", { filters: params }, function (data) {
+                removemarker();
+
+                var dd = [];
+                dd.push(data[0]);
+                display_pin(dd);
+
+                // get odas 
+                topoda(9);
+
+                // the numbers 
+                numberofprojects(global_theyear, 9);
+
+                // amount
+                getodagrant_figures(global_theyear, global_region_sel);
+
+            });
+        });
+
+        region10_map(false, color, 0, function () {
+            var params = Object();
+            params.region = 10;
+
+            // if (global_theyear == false) {
+            //     params.year     = global_theyear;
+            // }
+
+            global_region_sel = 10;
+
+            get_("filter_it", { filters: params }, function (data) {
+                removemarker();
+
+                var dd = [];
+                dd.push(data[0]);
+                display_pin(dd);
+
+                // get odas 
+                topoda(10);
+
+                // the numbers 
+                numberofprojects(global_theyear, 10);
+
+                // amount
+                getodagrant_figures(global_theyear, global_region_sel);
+            });
+        });
+
+        region11_map(false, color, 0, function () {
+            var params = Object();
+            params.region = 11;
+
+            // if (global_theyear == false) {
+            //     params.year     = global_theyear;
+            // }
+
+            global_region_sel = 11;
+
+            get_("filter_it", { filters: params }, function (data) {
+                removemarker();
+
+                var dd = [];
+                dd.push(data[0]);
+                display_pin(dd);
+
+                // get odas 
+                topoda(11);
+
+                // the numbers 
+                numberofprojects(global_theyear, 11);
+
+                // amount
+                getodagrant_figures(global_theyear, global_region_sel);
+            });
+        });
+
+        region12_map(false, color, 0, function () {
+            var params = Object();
+            params.region = 12;
+
+            // if (global_theyear == false) {
+            //     params.year     = global_theyear;
+            // }    
+
+            global_region_sel = 12;
+
+            get_("filter_it", { filters: params }, function (data) {
+                removemarker();
+
+                var dd = [];
+                dd.push(data[0]);
+                display_pin(dd);
+
+                // get odas 
+                topoda(12);
+
+                // the numbers 
+                numberofprojects(global_theyear, 12);
+
+                // amount
+                getodagrant_figures(global_theyear, global_region_sel);
+            });
+        });
+
+        region13_map(false, color, 0, function () {
+            var params = Object();
+            params.region = 13;
+
+            // if (global_theyear == false) {
+            //     params.year     = global_theyear;
+            // }
+
+            global_region_sel = 13;
+
+            get_("filter_it", { filters: params }, function (data) {
+                removemarker();
+
+                var dd = [];
+                dd.push(data[0]);
+
+                display_pin(dd);
+
+                // get odas 
+                topoda(13);
+
+                // the numbers 
+                numberofprojects(global_theyear, 13);
+
+                // amount
+                getodagrant_figures(global_theyear, global_region_sel);
+            });
+        });
     });
-
-    // global_region.forEach((k)=> {
-    //     map.on("mousemove", 'region'+k, (e) => {
-    //         paint_it(k,"#000",0.6);
-    //     });
-
-    //     map.on("mouseleave", 'region'+k, (e)=> {
-    //         paint_it(k,"#000",0);
-    //     });
-
-    //     map.on("click","region"+k, (e) => {
-
-    //     });
-    // });       
 }
 
 function paint_it(region, color, opacity) {

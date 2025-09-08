@@ -9,13 +9,13 @@
 			<!--begin::Page-->
 			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 				<!--begin::Header-->
-				@include('backend.sidebar_mobile')
+					@include('front.mainnavs',['navigation'=>'mindaconnect'])
 				<!--end::Header-->
 				<!--begin::Wrapper-->
 				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
 					<!--begin::Sidebar-->
 					<div id="kt_app_sidebar" class="app-sidebar flex-column mt-lg-4 ps-2 pe-2 ps-lg-7 pe-lg-4" data-kt-drawer="true" data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
-						@include('backend.sidebar_screen')
+						@include('front.mainnavs',['navigation'=>'mindaconnect'])
 					</div>
 					<!--end::Sidebar-->
 					<!--begin::Main-->

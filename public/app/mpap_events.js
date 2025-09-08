@@ -60,10 +60,21 @@ $(document).ready(function() {
             // },
         });
         
-        map.flyTo({zoom:7, center: [ 122.5358935236059, 7.626732092541126 ]});
+        map.flyTo({zoom:7, center: [ 124.28911350752976, 7.9722259513218505]});
         // map.scrollZoom.disable();
     }
 
+});
+
+var bring_up_mi = false;
+$(document).on("click",".bring_up_mi", function() {
+    if(bring_up_mi){
+        bring_up_mi = false;
+        $(document).find("#macro_indicators").removeClass("show_up");
+    } else {
+        bring_up_mi = true;
+        $(document).find("#macro_indicators").addClass("show_up");
+    }
 });
 
 var playing__;
@@ -113,6 +124,7 @@ $(document).on("click",".legendspan", function() {
         display_pin(data);
     });
 });
+
 
 $(document).on("click",".marker", function(){
     $(this).siblings().removeClass("marker_active");
@@ -243,10 +255,6 @@ function details_to_boxsituation() {
         $(document).find("#box_situation").children().remove();
         $(document).find("#box_situation").append(d);
     });
-}
-
-function get_projects(year, region) {
-
 }
 
 function macro_indicators(action = false) {

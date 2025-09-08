@@ -36,6 +36,16 @@ $(document).on("click",".iconagenda", function(e) {
    mindanao_agenda(agendaid);
 });
 
+$(document).on("click",".hidewindow", function() {
+    var hidewindow = $(this).data("hidewindow");
+    var showwindow = $(this).data("showdwindow");
+
+    $(document).find(hidewindow).hide("fast");
+    $(document).find(showwindow).show("fast");
+
+    ma_status();
+});
+
 $(document).on("click",".peroutcome", function() {
         var outcomeid = $(this).data("outcomeid");
 
@@ -227,7 +237,6 @@ function reset_map() {
     map.setPaintProperty("region12", 'fill-color', '#000000');
     map.setPaintProperty("region13", 'fill-color', '#000000');
     map.setPaintProperty("regionbarmm", 'fill-color', '#000000');
-
 }
 
 function thereadables(data) {
@@ -283,6 +292,7 @@ function ma_status() {
     var height = 0;
 
     get_("ma_status",{}, function(data) {
+        
         for(var i = 0; i <= data.length-1; i++) {
             var box = box_situation(width+"px", height+"px", "region_"+data[i].thelocation+"_box");
             var m   =  new mapboxgl.Marker(box).setLngLat(region[data[i].thelocation]).addTo(map);

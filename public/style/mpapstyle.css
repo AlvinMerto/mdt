@@ -3,7 +3,7 @@
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #map {
@@ -100,14 +100,14 @@ body {
     box-shadow: 0px 0px 15px #aeaeae;
     border-radius: 20px;
     /* left: -500px; */
-    z-index: 1000000;
+    z-index: 1000;
     padding: 12px;
 }
 
 .box_situation:hover {
     background-color: #fff;
     cursor: pointer;
-    border:2px solid #333;
+    border: 2px solid #333;
 }
 
 .box_large {
@@ -195,7 +195,7 @@ body {
 }
 
 .logodiv img {
-    width: 15%;
+    width: 65%;
 }
 
 .p-0 {
@@ -290,6 +290,10 @@ body {
     font-size: 88px !important;
 }
 
+.font-1-9rem {
+    font-size: 1.9rem !important;
+}
+
 .white-font {
     color: #fff;
 }
@@ -329,7 +333,7 @@ body {
     bottom: 7px;
     border-radius: 4px;
     display: none;
-    z-index: 9999999;
+    z-index: 999;
 }
 
 #top_navigation_ma_rbme {
@@ -337,14 +341,15 @@ body {
     top: 18px;
     right: 523px;
     z-index: 1000;
+    width: 35%;
 }
 
 #bottom_navigation_ma_rbme {
     position: fixed;
-    bottom: 30px;
+    bottom: 50px;
     right: 523px;
     z-index: 1000000000;
-    width:70vh;
+    width: 70vh;
 }
 
 #top_navigation_ma_rbme ul {
@@ -409,7 +414,7 @@ body {
 #agenda_info_show {
     position: fixed;
     top: 5px;
-    left: 5px;
+    right: 5px;
     bottom: 0px;
     width: 500px;
     z-index: 0;
@@ -534,9 +539,10 @@ body {
     font-size: 16px;
 }
 
-.search_box input[type="text"]:focus > .search_box{
-     background: #ffffff;
-}
+/* .search_box input[type="text"]:focus {
+    background: #ffffff;
+    width:50% !important;
+} */
 
 .search_box {
     border: 0px;
@@ -546,6 +552,8 @@ body {
     margin: 0px;
     /* background: #ffffff3d; */
     background: #ffffff;
+    width: 100%;
+    overflow: hidden;
 }
 
 .search_box input[type="text"]::placeholder {
@@ -705,10 +713,10 @@ body {
    height:80px !important;
    position:relative !important;
    z-index: 1000000000 !important; */
-    border:2px solid #000;
+    border: 2px solid #000;
     position: relative !important;
     z-index: 1000000000 !important;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 /* .marker:hover:after {
@@ -936,52 +944,52 @@ body {
 
 .agenda_1_div {
     background: #afb838;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(175, 184, 56, 0.52) 100%, rgb(213, 217, 91) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, rgba(175, 184, 56, 0.52) 100%, rgb(213, 217, 91) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_2_div {
     background: #de8b35;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #de8b3561 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #de8b3561 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_3_div {
     background: #e73b2b;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #e73b2b61 100%, rgb(231, 59, 43) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #e73b2b61 100%, rgb(231, 59, 43) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_4_div {
     background: #e12887;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #e1288761 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #e1288761 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_5_div {
     background: #47a7be;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #47a7be61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #47a7be61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_6_div {
     background: #fbb81f;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #fbb81f61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #fbb81f61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_7_div {
     background: #7c7f37;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #7c7f3761 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #7c7f3761 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_8_div {
     background: #b56216;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #b5621661 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #b5621661 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_9_div {
     background: #7e2a1f;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #7e2a1f61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #7e2a1f61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .agenda_10_div {
     background: #bb0868;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #bb086861 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(0, 0, 0, 0) 0%, #bb086861 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
 }
 
 .white_it {
@@ -1024,7 +1032,7 @@ body {
     left: 0;
     width: 0;
     height: 100%;
-    overflow:hidden;
+    overflow: hidden;
     /* background:#fff;
     box-shadow: -3px 0px 16px #686464; */
     /* border-radius: 0px 10px 10px 0px; */
@@ -1245,7 +1253,7 @@ body {
 .macro_indicators {
     position: fixed;
     top: 0px;
-    left: 0px;
+    right: 0px;
     height: 100%;
     width: 25%;
     display: none;
@@ -1253,7 +1261,7 @@ body {
 
 .permacro {
     /* background: #ffffff6e; */
-    background: linear-gradient(270deg, rgba(200, 200, 200, 0) 0%, rgba(166, 166, 166, 0.52) 100%, rgb(185, 185, 185) 100%, rgba(157, 157, 157, 0.13) 54%);
+    background: linear-gradient(-270deg, rgba(200, 200, 200, 0) 0%, rgba(166, 166, 166, 0.52) 100%, rgb(185, 185, 185) 100%, rgba(157, 157, 157, 0.13) 54%);
     border-radius: 10px 10px 10px 10px;
     margin-bottom: 10px;
 }
@@ -1274,6 +1282,11 @@ body {
     color: var(--cb);
 }
 
+.color-yellow {
+    color: #796025;
+    text-shadow: 0px 1px 1px #fff;
+}
+
 .color-grey {
     color: #b3b3b3 !important;
 }
@@ -1281,7 +1294,7 @@ body {
 .macrotitle::after {
     position: absolute;
     content: "";
-    border: 5px solid #3dc1b0;
+    border: 5px solid #f8d174;
     top: 20px;
     left: 0;
     width: 35%;
@@ -1402,6 +1415,10 @@ body {
     border: 3px dotted #ffffff5c;
 }
 
+.thechallenges li {
+    list-style: none;
+}
+
 .btntool {
     font-size: 13px;
     padding: 5px 9px;
@@ -1485,7 +1502,7 @@ body {
 }
 
 .boxes_div {
-    background: #fff;
+    background: #ffffffbf;
     border-radius: 6px;
     padding: 12px;
     /* box-shadow: 0px 0px 50px #0003; */
@@ -1532,19 +1549,25 @@ body {
 }
 
 #distributiongraph {
-    position: fixed;
+    /* position: fixed;
     top: 10px;
-    left: 10px;
+    left: 10px; */
+    height: 235px;
     display: none;
 }
 
-#distributiongraph_region {
+#dist_per_reg {
     position: fixed;
     left: 10px;
     margin-top: 15px;
     z-index: 10000;
     display: none;
-    top: 180px;
+    top: 0px;
+    box-shadow: 0px 0px 50px #000;
+}
+
+#distributiongraph_region {
+    height: 250px;
 }
 
 .proj_locs {
@@ -1588,6 +1611,7 @@ body {
     z-index: 100000000000000;
     overflow: auto;
     box-shadow: 0px 0px 41px #00000087;
+    border-radius: 0px 10px 10px 0px;
 }
 
 .thesearchresults {}
@@ -1604,9 +1628,12 @@ body {
     font-size: 14px !important;
 }
 
+.showprojs {
+    color: #a58945;
+}
+
 .showprojects_click {
     cursor: pointer;
-
 }
 
 .showprojects_click:hover {
@@ -1622,20 +1649,631 @@ body {
 }
 
 .theclosebtn:hover {
-    color:red;
+    color: red;
     cursor: pointer;
 }
 
 .borderclass_amnt {
-    width: 20px; 
-    margin-right:5px;
+    width: 20px;
+    margin-right: 5px;
     border: 0px;
     border-top: 2px solid #5d5d5d;
 }
 
-#total_total {
-    border-right:1px solid #ccc;
+.grandtotal {
+    border-right: 1px solid #ccc;
     padding-right: 10px;
     padding-top: 4px;
     padding-bottom: 4px;
+    color: #cea544;
+    text-shadow: 0px 1px 0px #836620;
 }
+
+.the_nav_chart {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding-left: 0px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 15px;
+}
+
+.the_nav_chart li {
+    cursor: pointer;
+    list-style: none;
+    padding: 5px 8px;
+    border-right: 1px solid #ccc;
+    border-radius: 5px 5px 0px 0px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom: 0px solid #fff;
+}
+
+.small_tab_select {
+    font-weight: bold;
+    background: #fff;
+}
+
+.hideit {
+    display: none;
+}
+
+.closethiswindow {
+    float: right;
+    font-size: 18px !important;
+    color: #a4a3a3 !important;
+}
+
+.closethiswindow:hover {
+    cursor: pointer;
+    color: #000;
+}
+
+.loaddist,
+.numofprojs {
+    cursor: pointer;
+}
+
+.loaddist:hover,
+.numofprojs:hover {
+    font-weight: bold;
+    color: #000;
+}
+
+.strongit {
+    font-weight: bold;
+}
+
+.hidewindow {
+    position: absolute;
+    left: -39px;
+    font-size: 38px !important;
+    margin-top: 25px;
+    color: #333;
+}
+
+.hidewindow:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.thewindow {
+    display: none;
+}
+
+.showthiswindow {
+    display: block;
+}
+
+.theodalist {
+    padding: 0px;
+    margin: 0px;
+}
+
+.theodalist li {}
+
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
+
+.showprojs:hover {
+    cursor: pointer;
+    color: #666;
+}
+
+/* chart */
+.chart {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.barchart {
+    display: flex;
+    height: 10px;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #eee;
+    margin-top: -13px;
+}
+
+.segmentbar {
+    height: 100%;
+}
+
+.a1 {
+    background: #4caf50;
+}
+
+.a2 {
+    background: #2196f3;
+}
+
+.a3 {
+    background: #ff9800;
+}
+
+.a4 {
+    background: #af4c96;
+}
+
+.barchart[data-a1][data-a2][data-a3][data-a4] .a1 {
+    width: attr(data-a1 %);
+}
+
+.barchart[data-a1][data-a2][data-a3][data-a4] .a2 {
+    width: attr(data-a2 %);
+}
+
+.barchart[data-a1][data-a2][data-a3][data-a4] .a3 {
+    width: attr(data-a3 %);
+}
+
+.barchart[data-a1][data-a2][data-a3][data-a4] .a4 {
+    width: attr(data-a4 %);
+}
+
+/* Fallback: custom properties */
+.barchart {
+    --a1: 30;
+    --a2: 50;
+    --a3: 20;
+    --a4: 10;
+}
+
+.barchart .a1 {
+    width: calc(var(--a1) * 1%);
+}
+
+.barchart .a2 {
+    width: calc(var(--a2) * 1%);
+}
+
+.barchart .a3 {
+    width: calc(var(--a3) * 1%);
+}
+
+.barchart .a4 {
+    width: calc(var(--a4) * 1%);
+}
+
+.labelchart {
+    text-align: left;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+/* end chart*/
+
+/* timeline design */
+.timeline-mpap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.timeline-mpap::after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    background-color: #555;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: -1;
+}
+
+.container-mpap {
+    position: relative;
+    width: 30%;
+    text-align: center;
+}
+
+.container-mpap:hover>.content-mpap h6 {
+    cursor: pointer;
+    color: #8c702d;
+}
+
+.container-mpap:hover::after {
+    border: 4px solid #f8d174;
+}
+
+.selected_timeline::after {
+    border: 4px solid #f8d174 !important;
+}
+
+.selected_timeline h6 {
+    color: #8c702d;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.container-mpap::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 4px solid #555;
+    top: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.theyear_mpap {
+    text-shadow: 0px 1px 1px #fff;
+    font-weight: normal;
+}
+
+.content-mpap {
+    padding: 10px;
+    /* background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); */
+}
+
+.content-mpap h3 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.opengenstat {
+    display: none;
+    float: right;
+    font-size: 2rem !important;
+    margin-top: -4px;
+}
+
+.opengenstat:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.h-90 {
+    height: 90% !important;
+    transition: 1s height;
+}
+
+.bring_up_mi {
+    display: none;
+    float: right;
+    font-size: 31px !important;
+    position: relative;
+    right: 10px;
+}
+
+.bring_up_mi:hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: #000;
+}
+
+.show_up {
+    bottom: -400px !important;
+    top: unset  !important;
+    width: 100%  !important;
+    height: 80vh !important;
+    position: relative  !important;
+    z-index: 0  !important;
+    background-color: #fff  !important ;
+
+    transition: height 1s;
+}
+
+.borderradius {
+    border-radius: 0px 20px 20px 0px;
+}
+
+.showdiv {
+    width:35%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+.text-center {
+    justify-content: center;
+}
+
+.float-right {
+    float:right;
+}
+
+@media only screen and (max-width: 1100px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    #map {
+        position: relative;
+        height: 100vh;
+    }
+
+    .left_box {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 8px;
+        right: 0;
+        width: 95%;
+        height: 13%;
+        border-radius: 30px 30px 0 0;
+        box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        padding: 10px;
+        overflow-y: auto;
+        z-index: 1000;
+        background: #ffffff;
+        margin: auto;
+    }
+
+    .logodiv img {
+        width: 25%;
+    }
+
+    .box_situation {
+        width: 90%;
+        left: 5%;
+    }
+
+    .opengenstat {
+        display: block;
+    }
+
+    .search_box .mid_box {
+        display: none;
+    }
+    
+    .timeline-mpap {}
+
+    .container-mpap {
+        position: relative;
+        width: 100%;
+        margin-bottom: 8px;
+        background: #fff;
+        padding: 3px 11px;
+        border-radius: 99px;
+        box-shadow: 0px 1px 1px #333;
+        margin-right: 8px;
+    }
+
+    #top_navigation_ma_rbme {
+        position: absolute;
+        top: 10px;
+        right: unset;
+        width: 100% !important;
+    }
+
+    .font-30,
+    .font-35,
+    .font-38,
+    .font-40,
+    .font-50,
+    .mdt_logo.png .font-55,
+    .font-60,
+    .font-80,
+    .font-88 {
+        font-size: 20px !important;
+    }
+
+    .program_title {
+        font-size: 14px;
+    }
+
+    .program_details {
+        font-size: 10px;
+    }
+
+    .thenavigation li {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .btn-divs button {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .the_mindanao_agenda {
+        width: 100%;
+        left: 0;
+        bottom: 0px;
+        text-align: center;
+        background-color: #fff;
+    }
+
+    .macro_indicators {
+        /* bottom: 0px;
+        top: unset;
+        width: 100%;
+        height: 25vh;  */
+        bottom: 0px;
+        top: unset;
+        width: 100%;
+        z-index: 1111;
+        background: #fff;
+        position: absolute !important;
+    }
+    
+    .macrotitle {
+        text-align: center;
+    }
+
+    .bring_up_mi {
+        display: block;
+    }
+
+    #agenda_info_show {
+        z-index: 999999999999999999999999999;
+    }
+
+    .filterbtn {
+        display: block;
+        position: absolute;
+        width: 33%;
+        right: 10px;
+        height: 54px;
+    }
+
+    .search_box {
+        border-radius: 100px;
+        box-shadow: none;
+    }
+
+    .search_result {
+        width: 95%;
+        border-radius: 10px;
+        position: absolute;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .searchMotherDiv {
+       width: 65%;
+        margin: auto;
+        border-radius: 100px;
+        overflow: hidden;
+        box-shadow: 0px 2px 2px #9f9f9f;
+    }
+
+    .body_details p{
+        font-size:1.3rem;   
+    }
+
+    .left_box p,
+    .left_box h1, 
+    .left_box h2,
+    .left_box h3,
+    .left_box h4,
+    .left_box h5,
+    .left_box h6,
+    .left_box li,
+    .left_box .labelchart{
+        font-size: 1.6rem !important;
+    }
+
+    .removepadding {
+        padding:0px;
+    }
+
+    #bottom_navigation_ma_rbme {
+        top: 80px;
+            width: 100%;
+            right: unset;
+            z-index: 1000;
+            bottom: unset;
+            overflow-x: auto;
+            height: 85px;
+    }
+
+    .content-mpap {
+        padding:2px;
+    }
+
+    .theyear_mpap {
+        margin:0px;
+        font-size: 1.3rem !important;
+    }
+
+    .timeline-mpap {
+        width: 86%;
+        margin: auto;
+    }
+
+    #dist_per_reg {
+        position: unset;
+        box-shadow: none;
+    }
+
+    #dist_per_reg .closethiswindow {
+        /* display:none; */
+    }
+
+    .showdiv {
+        width:100%;
+    }
+
+    /* RBME */
+    #agenda_info_show {
+        width: unset;
+    }
+
+    .hidewindow {
+        right:0px;
+        top: -30px;
+        left:unset;
+    }
+
+    .agenda_1_div {
+        background: linear-gradient(-270deg, rgba(255, 255, 255, 0.97) 0%, rgba(175, 184, 56, 0.5) 100%, rgb(213, 217, 91) 100%, rgba(0, 0, 0, 0.26) 54%);
+    }
+
+    .agenda_2_div {
+        background: #de8b35;
+        background: linear-gradient(-270deg, rgba(255, 255, 255, 0.97) 0%, #de8b3561 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_3_div {
+        background: #e73b2b;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #e73b2b61 100%, rgb(231, 59, 43) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_4_div {
+        background: #e12887;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #e1288761 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_5_div {
+        background: #47a7be;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #47a7be61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_6_div {
+        background: #fbb81f;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #fbb81f61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_7_div {
+        background: #7c7f37;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #7c7f3761 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_8_div {
+        background: #b56216;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #b5621661 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_9_div {
+        background: #7e2a1f;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #7e2a1f61 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    .agenda_10_div {
+        background: #bb0868;
+        background: linear-gradient(-270deg,  rgba(255, 255, 255, 0.97) 0%, #bb086861 100%, rgb(222, 139, 53) 100%, rgba(0, 0, 0, 0.13) 54%);
+    }
+
+    #welcomediv {
+        z-index: 9999999;
+    }
+
+    .permacro h3, 
+    .permacro h1,
+    .permacro span{
+        font-size: 1.5rem !important;
+    }
+    /* end of RBME */
+}
+
+/* mobile design */

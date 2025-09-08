@@ -105,18 +105,20 @@ function box_situation(width = false, height = false, css_class) {
 }
 
 function get_(getwhat, d, somefunc = false) {
+    //     headers: {
+    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    // },
     $.ajax({
-        url: url + "/" + getwhat,
+        url: url + "/tracker/" + getwhat,
         type: "get",
         data: d,
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
         dataType: "json",
         success: function (data, jqXHR) {
             if (somefunc != false) {
                 somefunc(data, jqXHR);
             }
+        }, error: function (a, b, c) {
+            console.log(a + b + c);
         }
     });
 }
@@ -235,14 +237,12 @@ function display_pin(data) {
         var devpart = data[0][o].abbr;
 
         devpart = devpart.replace(/\s/g, "");
-
+        
         if (data[0][o].typeofobj == "point") {
 
             var pin = map_pin(thelogo_pin, function (id, devpart, lat, lng, thelogo_pin, status) {
                 // logo, somefunc = false, id = false, devpart = false, status = false, lat = false, lng = false
                 selectedloc = [lng, lat];
-
-                var detailsbox = $(document).find(".details_box");
 
                 $(document).find("#" + devpart).siblings().removeClass("li_selected");
                 $(document).find("#" + devpart).addClass("li_selected");
@@ -250,18 +250,20 @@ function display_pin(data) {
                 get_("getdetails", { ii: id }, function (dd) {
                     display_details_mpap(dd, id, devpart, status, thelogo_pin);
                 });
-
+                var detailsbox = $(document).find(".details_box").addClass("showdiv");
                 // addblacker(function(){
                 //     $(document).find(".search_result").hide("fast");
                 // }, "black_it");
+                
+                
+                // detailsbox.animate({
+                //     "width": "35" + "%",
+                //     "padding-left": "20px",
+                //     "padding-right": "20px",
+                //     "padding-top": "20px"
+                // }, 300);
 
-                detailsbox.animate({
-                    "width": "35" + "%",
-                    "padding-left": "20px",
-                    "padding-right": "20px",
-                    "padding-top": "20px"
-                }, 300);
-
+                themainnav("hide");
             }, id, devpart, status, data[0][o].lat, data[0][o].lng);
 
             const m = new mapboxgl.Marker(pin).setLngLat([data[0][o].lng, data[0][o].lat]).addTo(map);
@@ -273,7 +275,7 @@ function display_pin(data) {
             var lat = parseCoordinates(data[0][o].lat);
 
             var pin = map_pin(thelogo_pin, function (id, devpart, status_, lat, lng, thelogo_pin, status) {
-                var detailsbox = $(document).find(".details_box");
+                var detailsbox = $(document).find(".details_box").addClass("showdiv");
 
                 $(document).find("#" + devpart).siblings().removeClass("li_selected");
                 $(document).find("#" + devpart).addClass("li_selected");
@@ -282,13 +284,13 @@ function display_pin(data) {
                     display_details_mpap(dd, id, devpart, status, thelogo_pin, status);
                 });
 
-                detailsbox.animate({
-                    "width": "35" + "%",
-                    "padding-left": "20px",
-                    "padding-right": "20px",
-                    "padding-top": "20px"
-                }, 300);
-
+                // detailsbox.animate({
+                //     "width": "35" + "%",
+                //     "padding-left": "20px",
+                //     "padding-right": "20px",
+                //     "padding-top": "20px"
+                // }, 300);
+                themainnav("hide");
             }, id, devpart, status, lat[0][1], lat[0][0]);
 
             // create_line(lat, "line" + o, returnColor(data[0][o].status), 4);
@@ -300,6 +302,14 @@ function display_pin(data) {
     }
 
     //});// map
+}
+
+function themainnav(whattodo) {
+    if (whattodo == 'show') {
+        $(document).find(".major_navigation").show("fast");
+    } else if (whattodo == "hide") {
+        $(document).find(".major_navigation").hide("fast");
+    }
 }
 
 function returnColor(status) {
@@ -319,6 +329,14 @@ function parseCoordinates(coordString) {
 
 function display_details_mpap(data, id, devpart, status, thelogo_pin) {
 
+    // var detailsbox = $(document).find(".details_box");
+    // detailsbox.animate({
+    //     "width": "35" + "%",
+    //     "padding-left": "20px",
+    //     "padding-right": "20px",
+    //     "padding-top": "20px"
+    // }, 300);
+
     $(document).find("#projecttitle").text(data[0][0].title);
     $(document).find("#thedescs").text(data[0][0].description);
     $(document).find("#projectstatus").text(data[0][0].status);
@@ -330,7 +348,7 @@ function display_details_mpap(data, id, devpart, status, thelogo_pin) {
     $(document).find("#proj_locs").children().remove();
 
     for (var i = 0; i <= data[1].length - 1; i++) {
-        $("<li class='markerhover' data-markhov='marker_id_" + data[1][i].geolocationid + "'> <div><i class='bi bi-geo-alt font-30'></i></div> <div> <h4 class='mb-0'>" + data[1][i].columnplace + "</h4> <span> " + formatNumber(data[1][i].projectamountpersite) + " </span></div> </li>")
+        $("<li class='markerhover' data-markhov='marker_id_" + data[1][i].geolocationid + "'> <div><i class='bi bi-geo-alt font-30'></i></div> <div> <h4 class='mb-0'>" + data[1][i].columnplace + "</h4> $ <span> " + formatNumber(data[1][i].projectamountpersite) + " </span></div> </li>")
             .appendTo("#proj_locs");
     }
 

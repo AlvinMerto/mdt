@@ -129,94 +129,103 @@ body {
 }
 
 .the_agenda1 {
-    background: #AFB838;
-    background: linear-gradient(266deg, rgba(175, 184, 56, 0.5) 27%, rgba(175, 184, 56, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background:rgba(72, 78, 0, 0.79);
+    /* background: #AFB838; */
+    /*background: linear-gradient(0deg, rgba(72, 78, 0, 0.79) 27%, rgba(175, 184, 56, 0.24) 59%, rgba(255, 255, 255, 0) 100%);*/
     /* 
     background: #AFB838;
     background: linear-gradient(20deg, rgba(175, 184, 56, 0.99) 20%, rgba(0, 0, 0, 0.13) 70%); */
 }
 
 p.the_agenda1:hover {
-    background: linear-gradient(266deg, rgba(175, 184, 56, 0.5) 27%, rgba(175, 184, 56, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
-
+    background: linear-gradient(0deg, rgba(175, 184, 56, 0.14) 27%, rgba(175, 184, 56, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda2 {
-    background: #de8b35;
-    background: linear-gradient(266deg, rgb(222, 139, 53, 0.5) 27%, rgb(222, 139, 53, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background-color: rgba(50, 28, 5, 0.79);
+    /* background: #de8b35;
+    background: linear-gradient(0deg, rgba(50, 28, 5, 0.79) 27%, rgba(222, 139, 53, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
 }
 
 p.the_agenda2:hover {
-    background: linear-gradient(266deg, rgb(222, 139, 53, 0.5) 27%, rgb(222, 139, 53, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(222, 139, 53, 0.14) 27%, rgb(222, 139, 53, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda3 {
-    background: #e73b2b;
-    background: linear-gradient(266deg, rgb(231, 59, 43, 0.5) 27%, rgb(231, 59, 43, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    /* background: #e73b2b;
+    background: linear-gradient(0deg, rgba(33, 10, 8, 0.79) 27%, rgba(231, 59, 43, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
+    background-color: rgba(33, 10, 8, 0.79);
 }
 
 p.the_agenda3:hover {
-    background: linear-gradient(266deg, rgb(231, 59, 43, 0.5) 27%, rgb(231, 59, 43, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(231, 59, 43, 0.14) 27%, rgb(231, 59, 43, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda4 {
-    background: #e12887;
-    background: linear-gradient(266deg, rgb(225, 40, 135, 0.5) 27%, rgb(225, 40, 135, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background-color: rgba(93, 16, 55, 0.79);
+    /* background: #e12887;
+    background: linear-gradient(0deg, rgba(93, 16, 55, 0.79) 27%, rgba(225, 40, 135, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
 }
 
 p.the_agenda4:hover {
-    background: linear-gradient(266deg, rgb(225, 40, 135, 0.5) 27%, rgb(225, 40, 135, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(225, 40, 135, 0.14) 27%, rgb(225, 40, 135, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda5 {
-    background: #47a7bf;
-    background: linear-gradient(266deg, rgb(71, 167, 191, 0.5) 27%, rgb(71, 167, 191, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background-color: rgba(25, 60, 69, 0.79);
+    /* background: #47a7bf;
+    background: linear-gradient(0deg, rgba(25, 60, 69, 0.79) 27%, rgba(71, 167, 191, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
 }
 
 p.the_agenda5:hover {
-    background: linear-gradient(266deg, rgb(71, 167, 191, 0.5) 27%, rgb(71, 167, 191, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(71, 167, 191, 0.14) 27%, rgb(71, 167, 191, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda6 {
-    background: #fbb81f;
-    background: linear-gradient(266deg, rgb(251, 184, 31, 0.5) 27%, rgb(251, 184, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background-color: rgba(78, 56, 7, 0.79);
+    /* background: #fbb81f;
+    background: linear-gradient(0deg, rgba(78, 56, 7, 0.79) 27%, rgba(251, 184, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
 }
 
 p.the_agenda6:hover {
-    background: linear-gradient(266deg, rgb(251, 184, 31, 0.5) 27%, rgb(251, 184, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(251, 184, 31, 0.14) 27%, rgb(251, 184, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda7 {
-    background: #7c7f37;
-    background: linear-gradient(266deg, rgb(124, 127, 55, 0.5) 27%, rgb(124, 127, 55, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background-color: rgba(63, 65, 28, 0.79);
+    /* background: #7c7f37;
+    background: linear-gradient(0deg, rgba(63, 65, 28, 0.79) 27%, rgba(124, 127, 55, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
 }
 
 p.the_agenda7:hover {
-    background: linear-gradient(266deg, rgb(124, 127, 55, 0.5) 27%, rgb(124, 127, 55, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(124, 127, 55, 0.14) 27%, rgb(124, 127, 55, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda8 {
-    background: #b56216;
-    background: linear-gradient(266deg, rgb(181, 98, 22, 0.5) 27%, rgb(181, 98, 22, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    /* background: #b56216;
+    background: linear-gradient(0deg, rgba(63, 0, 0, 0.79) 27%, rgba(181, 98, 22, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
+    background-color: rgba(63, 0, 0, 0.79) ;
 }
 
 p.the_agenda8:hover {
-    background: linear-gradient(266deg, rgb(181, 98, 22, 0.5) 27%, rgb(181, 98, 22, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(181, 98, 22, 0.14) 27%, rgb(181, 98, 22, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda9 {
-    background: #7e2a1f;
-    background: linear-gradient(266deg, rgb(126, 42, 31, 0.5) 27%, rgb(126, 42, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    /* background: #7e2a1f;
+    background: linear-gradient(0deg, rgba(57, 19, 14, 0.79) 27%, rgba(126, 42, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
+    background-color: rgba(57, 19, 14, 0.79);
     /* color:#fff; */
 }
 
 p.the_agenda9:hover {
-    background: linear-gradient(266deg, rgb(126, 42, 31, 0.5) 27%, rgb(126, 42, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgb(126, 42, 31, 0.14) 27%, rgb(126, 42, 31, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
 }
 
 .the_agenda10 {
-    background: #bb0868;
-    background: linear-gradient(266deg, rgb(187, 8, 104, 0.5) 27%, rgb(187, 8, 104, 0.24) 59%, rgba(255, 255, 255, 0) 100%);
+    /* background: #bb0868;
+    background: linear-gradient(0deg, rgba(82, 4, 46, 0.79) 27%, rgba(187, 8, 104, 0.24) 59%, rgba(255, 255, 255, 0) 100%); */
+    background-color: rgba(82, 4, 46, 0.79);
     /* color:#fff; */
 }
 
@@ -228,6 +237,7 @@ p.the_agenda10:hover {
     height: 100%;
     width: 100%;
     background-size: cover;
+    opacity: 0.8;
 }
 
 .thecolorbg {
@@ -372,7 +382,7 @@ p.the_agenda10:hover {
 }
 
 .big-ma-text {
-    font-size: 3.5rem;
+    font-size: 6.5rem;
     text-shadow: 0px 2px 2px #000;
 }
 
@@ -392,7 +402,7 @@ p.the_agenda10:hover {
 
 .sponsors-img img {
     width: fit-content;
-    height: 50px;
+    height: 40px;
     margin-right: 10px;
 }
 
@@ -433,6 +443,17 @@ p.the_agenda10:hover {
     text-align:justify;
 }
 
+.pop_window_btn {
+    color: yellow;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pop_window_btn:hover {
+    color:#fff;
+}
+
 .thenavlink {
     cursor: pointer;
 }
@@ -447,18 +468,21 @@ p.the_agenda10:hover {
 }
 
 .hl_logo {
-    width: 80px !important;
-    position: relative !important;
+    /* width: 80px !important;
+    position: relative !important; */
+    position: relative; 
+    z-index: 100000;
+    scale: 1.5;
+    transition: .5s scale;
 
-    transition: 1s width;
+    /* transition: 1s width; */
 }
 
 .thesystembtn {
-background: #fef4f4 !important;
   width: fit-content;
-  padding: 6px 15px;
+  padding: 13px 20px;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 18px;
   box-shadow: 0px 3px 1px #33333352;
 }
 
@@ -474,8 +498,57 @@ background: #fef4f4 !important;
 
 .theagendalogo:hover {
     cursor:pointer;
-    width:80px !important;
-    position: relative;
+    /* width:80px !important; */
+    position: relative; 
+    z-index: 100000;
+    scale: 1.5;
+    transition: .5s scale;
 
-     transition: .5s width;
+}
+
+.centerall{
+    text-align: center;
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+
+.centertext {
+    text-align:center;
+}
+
+.w-80-p {
+    width:80%;
+}
+
+.auto-marg {
+    margin:auto;
+}
+
+.btn_navigation {
+    
+}
+
+.btn_navigation li {
+display: inline-block;
+  border-radius: 99px;
+  background: #ffba17;
+}
+
+.btn_navigation li:hover {
+    background:#fff;
+
+    transition: 1s background-color;
+}
+
+@media (max-width: 1100px) {
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+        padding: 0;
+        margin: 0;
+    }
 }

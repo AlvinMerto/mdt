@@ -6,6 +6,7 @@ use App\Models\MasterData;
 use Illuminate\Http\Request;
 
 use DB;
+use Svg\Tag\Rect;
 
 class GenerateGraphs extends Controller
 {
@@ -51,9 +52,9 @@ class GenerateGraphs extends Controller
         return response()->json($collection);
     }
 
-    function number_of_projects(Request $req) {
+    function amount_per_projects(Request $req) {  // number_of_projects
         $collection = DB::select("select 
-                                    CASE WHEN region < 9 THEN 'Other' 
+                                    CASE WHEN region < 9 and region <> 'barmm' THEN 'Other' 
                                         WHEN region = 'barmm' THEN 'barmm' 
                                         WHEN region = 'nationwide' then 'nationwide' 
                                         WHEN region >= 9 THEN 'Mindanao Specific' 
@@ -64,6 +65,21 @@ class GenerateGraphs extends Controller
                                     where master__data.type_of_financing = '{$req->input('type_of_financing')}'
                                     GROUP by theregion");
 
+        return response()->json($collection);
+    }
+
+    function countOfProjects(Request $req) {
+        $collection = DB::select("select 
+                                    CASE WHEN region < 9 and region <> 'barmm' THEN 'Other' 
+                                        WHEN region = 'barmm' THEN 'barmm' 
+                                        WHEN region = 'nationwide' then 'nationwide' 
+                                        WHEN region >= 9 THEN 'Mindanao Specific' 
+                                    END as theregion, 
+                                    count(geolocation.geolocationid) as total from master__data 
+                                    join financetbls on master__data.masterid = financetbls.masterid 
+                                    join geolocation on financetbls.fid = geolocation.md_projectsid
+                                    where master__data.type_of_financing = '{$req->input('type_of_financing')}'
+                                    GROUP by theregion");
         return response()->json($collection);
     }
 
@@ -102,5 +118,10 @@ class GenerateGraphs extends Controller
                                     where master__data.type_of_financing = 'grant' 
                                     GROUP by YEAR(project_start)");
         return response()->json($collection);
+    }
+
+    function generateData(Request $req) {
+        // $report = view("front.mpap_real.report")->render();
+        return view("front.mpap_real.report");
     }
 }
