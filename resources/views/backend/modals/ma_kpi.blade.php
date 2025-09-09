@@ -26,7 +26,7 @@
                 data-dbid="<?php echo ($collection != "new")?$collection[0]->ma_id:""; ?> "/> 
         <!--end::Input-->
         <!--begin::Description-->
-        <div class="text-muted fs-7">Enter the product SKU.</div>
+        <div class="text-muted fs-7">&nbsp;</div>
         <!--end::Description-->
         <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
     </div>
@@ -46,7 +46,7 @@
                 data-dbid="<?php echo ($collection != "new")?$collection[0]->ma_id:""; ?> "/> 
         <!--end::Input-->
         <!--begin::Description-->
-        <div class="text-muted fs-7">Enter the product SKU.</div>
+         <div class="text-muted fs-7">&nbsp;</div>
         <!--end::Description-->
         <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
     </div>
@@ -66,7 +66,7 @@
                 data-dbid="<?php echo ($collection != "new")?$collection[0]->ma_id:""; ?> "/> 
         <!--end::Input-->
         <!--begin::Description-->
-        <div class="text-muted fs-7">Enter the product SKU.</div>
+         <div class="text-muted fs-7">&nbsp;</div>
         <!--end::Description-->
         <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
     </div>
@@ -98,7 +98,7 @@
         </select>
         <!--end::Input-->
         <!--begin::Description-->
-        <div class="text-muted fs-7">Enter the product SKU.</div>
+         <div class="text-muted fs-7">&nbsp;</div>
         <!--end::Description-->
         <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
     </div>
@@ -129,7 +129,7 @@
         </select>
         <!--end::Input-->
         <!--begin::Description-->
-        <div class="text-muted fs-7">Enter the product SKU.</div>
+         <div class="text-muted fs-7">&nbsp;</div>
         <!--end::Description-->
         <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
     </div>

@@ -543,12 +543,34 @@ display: inline-block;
     transition: 1s background-color;
 }
 
+.mdtlogo {
+    width:215px !important;
+}
+
 @media (max-width: 1100px) {
     body {
         width: 100%;
         height: 100%;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         padding: 0;
         margin: 0;
+    }
+
+    .navdiv {
+
+    }
+
+    .mdtlogo {
+        height:10px;
+        display:none;    
+    }
+
+    .navdiv img {
+        width:12vh !important;
+    }
+
+    .btn_navigation li {
+        margin-bottom:10px;
     }
 }

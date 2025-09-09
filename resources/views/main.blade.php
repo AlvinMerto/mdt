@@ -67,7 +67,7 @@
             <div class="col-md-12 thebgblack_ thebgdiv" style="padding: 0px;position: relative;z-index: 9999999999999;">
                 <div class="wrap-flex flex-column height-100 centerall">
                     <div class="wrap-flex flex-row gap-5 navdiv pagenavs pt-25">
-                        <img src="{{asset('images/mdt_logo.png')}}" style="width: 215px;" />
+                        <img class="mdtlogo" src="{{asset('images/mdt_logo.png')}}"/>
                         <img class='' src="{{asset('images/partners/minda_small.png')}}" />
                         <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" />
                         <!-- <a class='thenavlink pop_window_btn' data-window="aboutwindow"> ABOUT MDT </a>

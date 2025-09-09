@@ -31,7 +31,7 @@
 		<!--begin::Page-->
 		<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 			<!--begin::Header-->
-			@include('front.mainnavs',['navigation'=>'mindaconnect'])
+
 			<!--end::Header-->
 
 			<!--begin::Wrapper-->
@@ -85,6 +85,7 @@
 						<div id="kt_app_content" class="app-content flex-column-fluid">
 							<!--begin::Content container-->
 							<div id="kt_app_content_container" class="app-container container-fluid">
+							@include('backend.topbar')
 								<div class="card mb-5">
 									<div class="card-body pt-9 pb-0">
 										<!--begin::Details-->

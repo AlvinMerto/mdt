@@ -30,7 +30,7 @@
 			<!--begin::Header-->
 			<div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize" data-kt-sticky-animation="false" data-kt-sticky-offset="{default: '0px', lg: '0px'}">
 				<!--begin::Header container-->
-				@include('front.mainnavs',['navigation'=>'mindaconnect'])
+				
 				<!--end::Header container-->
 			</div>
 			<!--end::Header-->
@@ -113,13 +113,13 @@
 															<td>
 																<div class="d-flex">
 																	<!--begin::Thumbnail-->
-																	<a href="{{url('dashboard/rbme')}}/<?php echo $agenda[$i]->agendaid; ?>" class="symbol symbol-50px">
+																	<a href="{{url('tracker/dashboard/rbme')}}/<?php echo $agenda[$i]->agendaid; ?>" class="symbol symbol-50px">
 																		<span class="symbol-label" style="background-image:url(<?php echo $agendaicon; ?>);"></span>
 																	</a>
 																	<!--end::Thumbnail-->
 																	<div class="ms-5">
 																		<!--begin::Title-->
-																		<a href="{{url('dashboard/rbme')}}/<?php echo $agenda[$i]->agendaid; ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">
+																		<a href="{{url('tracker/dashboard/rbme')}}/<?php echo $agenda[$i]->agendaid; ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">
 																			<?php echo $agenda[$i]->agendatitle; ?>
 																		</a>
 																		<!--end::Title-->
@@ -141,7 +141,7 @@
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="{{url('dashboard/rbme')}}/<?php echo $agenda[$i]->agendaid; ?>" class="menu-link px-3">Edit</a>
+																		<a href="{{url('tracker/dashboard/rbme')}}/<?php echo $agenda[$i]->agendaid; ?>" class="menu-link px-3">Edit</a>
 																	</div>
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->

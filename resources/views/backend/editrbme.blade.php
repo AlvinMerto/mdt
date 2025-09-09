@@ -8,12 +8,12 @@
 			<!--begin::Page-->
 			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 				<!--begin::Header-->
-                @include('backend.sidebar_mobile')
+                
 				<!--end::Header-->
 				<!--begin::Wrapper-->
 				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
 					<!--begin::Sidebar-->
-					@include('backend.sidebar_screen')
+					@include('front.mainnavs',['navigation'=>'mindaconnect'])
 					<!--end::Sidebar-->
 					<!--begin::Main-->
 					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
@@ -60,6 +60,7 @@
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-fluid">
+								@include('backend.topbar')
 									<!--begin::Form-->
 									<div id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
 										<!--begin::Aside column-->
