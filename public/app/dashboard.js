@@ -281,6 +281,17 @@ $(document).on("click", ".tabindex_year li", function () {
     });
 });
 
+$(document).on("change",".thelocation", function() {
+    if (theyear == null) { return; }
+    $(document).find("#currentextfld").children().remove();
+
+    var loc = $(this).val();
+
+    get_("get_year_val", { val_id: val_id, theyear: theyear, thelocation: loc }, function (data) {
+        $(data).appendTo("#currentextfld");
+    });
+});
+
 $(document).on("click", ".savenewvalue", function () {
     var thecurrent = $(document).find(".fieldtext_new").val();
 

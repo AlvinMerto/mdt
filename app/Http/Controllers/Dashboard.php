@@ -428,7 +428,8 @@ class Dashboard extends Controller
         //                               join the_values on the_values.fkdeepvalueid = the_deep_values.dv_id 
         //                               where the_deep_values.fkoutputid = '{$kpiid}' group by the_deep_values.dv_id, the_deep_values.thedisaggregation");
 
-        $disaggregation = the_deep_values::where(["the_deep_values.fkoutputid" => $kpiid])->get();
+        // $disaggregation = the_deep_values::where(["the_deep_values.fkoutputid" => $kpiid])->get();
+        $disaggregation = TheValues::where(["the_values.fkoutputid" => $kpiid])->get();
 
         $html           = view("backend.modals.disaggregation", compact("disaggregation", "outcomeid"))->render();
 
@@ -445,7 +446,9 @@ class Dashboard extends Controller
         //                                     ->where(["the_deep_values.dv_id" => $val_id])
         //                                     ->get();
 
-        $collection    = the_deep_values::where(["the_deep_values.dv_id" => $val_id])->get();
+        // $collection    = the_deep_values::where(["the_deep_values.dv_id" => $val_id])->get();
+
+        $collection    = TheValues::where(["the_values.valuesid" => $val_id])->get();
 
         $outcome_years = TheOutcome::where(["outcomeid" => $outcomeid])->get(["yearstart", "yearend"]);
 
@@ -456,11 +459,11 @@ class Dashboard extends Controller
 
     function get_year_val(Request $req)
     {
-        $deep_id  = $req->input("val_id");
-        $theyear  = $req->input("theyear");
-        $location = $req->input("thelocation");
+        $val_id     = $req->input("val_id");
+        $theyear    = $req->input("theyear");
+        $location   = $req->input("thelocation");
 
-        $collection = TheValues::where(["fkdeepvalueid" => $deep_id, "theyear" => $theyear, "thelocation" => $location])->get();
+        $collection = TheValues::where(["valuesid" => $val_id, "theyear" => $theyear, "thelocation" => $location])->get();
 
         $html       = view("backend.modals.currenttxtfld", compact("collection"))->render();
 

@@ -14,8 +14,8 @@
                 <ul class='disagg_list'>
                     <?php if (count($disaggregation)>0) { ?>
                         <?php for($i=0;$i<=count($disaggregation)-1;$i++) { ?>
-                            <li id="deepvals_<?php echo $disaggregation[$i]->dv_id; ?>" class='disagg_dets' data-outcomeid = "<?php echo $outcomeid; ?>" 
-                                                    data-dis_val="<?php echo $disaggregation[$i]->dv_id; ?>"> 
+                            <li id="deepvals_<?php echo $disaggregation[$i]->valuesid; ?>" class='disagg_dets' data-outcomeid = "<?php echo $outcomeid; ?>" 
+                                                    data-dis_val="<?php echo $disaggregation[$i]->valuesid; ?>"> 
                                                     <?php echo $disaggregation[$i]->thedisaggregation; ?> 
                             </li>
                         <?php } ?>
