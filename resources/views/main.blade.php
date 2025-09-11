@@ -59,24 +59,20 @@
                     <div class="logodiv">
                         <img src="{{asset('images/mdt_logo.png')}}" style="width: 215px;" />
                     </div>
-                    <div class="maindiv row" style="flex:4;">
+                    <!-- <div class="maindiv row" style="flex:4;">
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-md-12 thebgblack_ thebgdiv" style="padding: 0px;position: relative;z-index: 9999999999999;">
-                <div class="wrap-flex flex-column height-100 centerall">
+                <div class="wrap-flex flex-column height-100 centerall container-fluid">
                     <div class="wrap-flex flex-row gap-5 navdiv pagenavs pt-25">
                         <img class="mdtlogo" src="{{asset('images/mdt_logo.png')}}"/>
                         <img class='' src="{{asset('images/partners/minda_small.png')}}" />
                         <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" />
-                        <!-- <a class='thenavlink pop_window_btn' data-window="aboutwindow"> ABOUT MDT </a>
-                        <a class='thenavlink pop_window_btn' data-window="aboutma"> THE MINDANAO AGENDA </a>
-                        <a class='thenavlink pop_window_btn' data-window="report_window"> REPORTS </a> -->
                     </div>
-                    <div class="maindiv thenavigation wrap-flex flex-column pl-20" style="position: relative;">
+                    <div class="flex-column thenavigation wrap-flex pl-20">
                         <div class='centertext'>
-                            <!-- <h6 class='white-it' style="font-size: 22px;text-shadow: 0px 1px 2px #000;"> THE </h6> -->
                             <h1 class='white-it big-ma-text bold-it'> MDT </h1>
                             <h4 class='white-it' style="text-shadow: 0px 1px 2px #000;"> MINDANAO DEVELOPMENT TRACKER </h4> 
                         </div>
@@ -123,34 +119,21 @@
                             <a href="#"> <p class='thebutton_dixv'> MINDANAO CONNECT <i class="bi bi-arrow-right"></i> </p> </a>
                         </div> -->
                     </div>
-                    <div class="logodetailsdiv pl-20" style="flex:4;">
-                        <!-- <h6 class='mb-20 theagenda'> The Mindanao Agenda </h6>  classname = agendalist -->
+                    <div class="flex-column pl-20">
                          <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> THE IMPLIMENTING PARTNERS </h5> 
                         <div class='wrap-flex flex-row gap_3 centerall'>
                             <div class="d-flex sponsors-img theagendalogo">
-                                <!-- <img class='' src="{{asset('images/partners/minda_small.png')}}" />
-                                <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" /> -->
                                 <img class='' src="{{asset('images/partners/eu_small.jpg')}}" />
                                 <img class='' src="{{asset('images/partners/gizcoop_small.png')}}" />
                                 <img class='' src="{{asset('images/partners/giz_small.png')}}" />
                                 <img class="" src="{{asset('images/partners/usaid_small.png')}}" />
                             </div>
-                            <!-- <ul class='thelogo_small'>
-                                <li class='w-10-p mr-10'> <img class='w-100-p_' src="{{asset('images/partners/minda_small.png')}}"/> </li>
-                                <li class='w-10-p mr-10'> <img class='w-100-p_' src="{{asset('images/partners/bagongpil_small.png')}}"/> </li>
-                                <li class='w-10-p mr-10'> <img class='w-100-p_' src="{{asset('images/partners/eu_small.png')}}"/> </li>
-                                <li class='w-10-p mr-10'> <img class='w-100-p_' src="{{asset('images/partners/gizcoop_small.png')}}"/> </li>
-                                <li class='w-10-p mr-10'> <img class='w-100-p_' src="{{asset('images/partners/giz_small.png')}}"/> </li>
-                                <li class='w-10-p mr-10'> <img class='w-100-p_' src="{{asset('images/partners/usaid_small.png')}}"/> </li>
-                            </ul> -->
-                            <!-- <button id='prevbtn' class='prevnext_btn'> <i class="bi bi-chevron-compact-left"></i> Previous </button>
-                            <button id='nextbtn' class='prevnext_btn'> Next <i class="bi bi-chevron-compact-right"></i>  </button> -->
                         </div>
                         <div style="margin-top:30px;">
                             <ul class='btn_navigation'>
                                 <li class="thesystembtn"> 
                                     <i class="bi bi-arrow-right-short"></i>
-                                    <a href="{{url('tracker/rbme')}}"> Track the Mindanao Agenda </a> 
+                                    <a href="{{url('tracker/rbme')}}"> Mindanao Agenda Tracker </a> 
                                 </li>
                                 <li class="thesystembtn"> 
                                     <i class="bi bi-arrow-right-short"></i> 

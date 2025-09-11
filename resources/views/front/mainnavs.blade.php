@@ -84,7 +84,7 @@
     .systemtitle {
         text-shadow: 0px 1px 1px #fff;
         color: #3c2b03;
-
+        line-height: 40px;
         text-align: left;
         font-size: 25px;
     }
@@ -255,7 +255,7 @@ $title = null;
 
 if ($navigation == "rbme") {
     $rbme = "selected_nav";
-    $title = "TRACK THE MINDANAO AGENDA";
+    $title = "MINDANAO AGENDA TRACKER";
 } else if ($navigation == "mpap") {
     $mpap = "selected_nav";
     $title = "MINDANAO PROGRAMS AND PROJECTS";
@@ -280,7 +280,7 @@ if ($navigation == "rbme") {
         <ul class="mainnavigation">
             <li class="<?php echo $rbme; ?> rbmebtn">
                 <a href="{{url('tracker/rbme')}}">
-                    <p> <strong> TRACK THE MINDANAO AGENDA </strong> </p>
+                    <p> <strong> MINDANAO AGENDA TRACKER </strong> </p>
                     <small> Digital Results-based and Monitoring System</small>
                 </a>
             </li>
@@ -298,6 +298,7 @@ if ($navigation == "rbme") {
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     var bringdown = false;
     $(document).on("click",".bringdown", function() {

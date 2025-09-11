@@ -1274,7 +1274,10 @@ body {
     transition: background-color .3s;
 }
 
-.macrotitle {}
+.macrotitle {
+    background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 29%, rgba(255, 195, 0, 0.23) 54%, rgba(255, 195, 0, 0.33) 79%);
+  padding: 10px 0px;
+}
 
 .color-blue {
     --cb: #3dc1b0;

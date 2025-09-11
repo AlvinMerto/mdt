@@ -347,6 +347,27 @@ $(document).on("click", ".addnewoutcome_btn", function () {
     theoutcome_ = $(this).data("outcomeid");
 });
 
+$(document).on("click",".deletethis", function() {
+    var tbl  = $(this).data("tbl");
+    var kid  = $(this).data("keyid");
+    var kfld = $(this).data("keyfld");
+    
+    var clean  = $(this).data("clean");
+    var remove = $(this).data("remove");
+    var conf = confirm("Are you sure you want to delete?");
+
+    if (!conf) {
+        return;
+    }
+
+    post_("deleterbme", { tbl:tbl , kid:kid, kfld:kfld}, function(data){
+        if (data) {
+            $(document).find(remove).remove();
+            $(document).find(clean).children().remove();
+        }
+    });
+});
+
 $(document).on("click", ".saveindicator", function () {
     var indicatorname = $(document).find("#indicatorname").val();
     var indicatordefinition = $(document).find("#indicatordefinition").val();

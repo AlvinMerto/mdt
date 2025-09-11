@@ -27,6 +27,8 @@ use App\Models\sectortbl;
 use App\Models\sub_financing;
 use App\Models\sub_sectortbl;
 
+use App\Models\UniversalFunction;
+
 use Illuminate\Http\Request;
 
 use DB;
@@ -571,5 +573,28 @@ class Dashboard extends Controller
         $view       = view("backend.dashboard_modals.financing", compact("collection"))->render();
 
         return response()->json($view);
+    }
+
+    function deleterbme(Request $req) {
+        $uf = new UniversalFunction();
+        
+        $tbl  = $req->input("tbl");
+        $kid  = $req->input("kid");
+        $kfld = $req->input("kfld");
+
+        $deleted = false;
+        $sql  = "Delete from {$tbl} where {$kfld} = {$kid}";
+        if ($uf->canEdit()) {
+            $deleted = DB::delete($sql);
+            return response()->json($deleted);
+        }
+    }
+
+    function deleteOutcome($id) {
+
+    }
+
+    function deleteKpis($id) {
+
     }
 }

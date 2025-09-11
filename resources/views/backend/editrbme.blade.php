@@ -159,7 +159,6 @@
 												<!--end::Card body-->
 											</div>
 											<!--end::Status-->
-
 										</div>
 										<!--end::Aside column-->
 										<!--begin::Main column-->
@@ -326,7 +325,7 @@
                                                                     <tbody class="fw-semibold text-gray-600">
                                                                         <?php if (count($outcomes) > 0) { ?>
                                                                             <?php for($i=0;$i<=count($outcomes)-1;$i++) { ?>
-                                                                                <tr>
+                                                                                <tr id="outcometr_<?php echo $outcomes[$i]->outcomeid; ?>">
                                                                                     <td>
                                                                                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                                                                                             <input class="form-check-input" type="checkbox" value="1" />
@@ -370,10 +369,11 @@
                                                                                             <!--end::Menu item-->
                                                                                             <!--begin::Menu item-->
                                                                                             <div class="menu-item px-3">
-                                                                                                <a href="#" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">Delete</a>
+                                                                                                <a data-tbl="the_outcomes" data-remove="#outcometr_<?php echo $outcomes[$i]->outcomeid; ?>" data-keyfld="outcomeid" data-keyid="<?php echo $outcomes[$i]->outcomeid; ?>" class="menu-link px-3 deletethis" data-kt-ecommerce-product-filter="delete_row">Delete</a>
                                                                                             </div>
                                                                                             <!--end::Menu item-->
                                                                                         </div>
+																						
                                                                                         <!--end::Menu-->
                                                                                     </td>
                                                                                 </tr>

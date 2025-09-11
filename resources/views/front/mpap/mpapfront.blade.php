@@ -82,7 +82,7 @@
             <h2 class='pl-25 macrotitle mt-15' style="flex:0;"> MACRO <span class="color-yellow"> ECONOMIC INDICATORS </span> 
                 <i class="bi bi-three-dots bring_up_mi"></i>
             </h2>
-            <div class="the_indicators mt-20" style="flex:1; overflow:auto; padding-right: 25px; padding-left: 25px; padding-top: 10px;">
+            <div class="the_indicators mt-10" style="flex:1; overflow:auto; padding-right: 25px; padding-left: 25px; padding-top: 0px;">
                 <?php if (count($macro) > 0) { ?>
                     <?php foreach ($macro as $m) {
                         $up   = "ki-outline ki-arrow-up fs-5 green-it text-success";
@@ -95,19 +95,17 @@
                         if ($m->trend == "down") {
                             $lbl = $down;
                             $txt = "red-it";
-                            $ic  = "<i class='bi bi-graph-down-arrow font-30 {$txt}'></i>";
+                            $ic  = "<i class='bi-arrow-down-short font-30 {$txt}'></i>";
                         } else {
                             $lbl = $up;
                             $txt = "green-it";
-                            $ic  = "<i class='bi bi-graph-up-arrow font-30 {$txt}'></i>";
+                            $ic  = "<i class='bi-arrow-up-short font-30 {$txt}'></i>";
                         }
 
                     ?>
                         <div class="row permacro p-15 pl-25">
                             <div class="col-md-9">
                                 <h3> <span> <?php echo $m->theindicator; ?> </span>
-                                    <!-- <i class="<?php // echo $lbl; 
-                                                    ?> ms-n1 float-right font-21"></i> </h3> -->
                                     <h1 class='font-23 <?php echo $txt; ?>'> <?php echo $m->ma_value; ?> </h1>
                                     <span> <?php echo $m->smalltext; ?> </span>
                             </div>
@@ -213,7 +211,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body body_details">
-                    <h3 class="modal-title" id="modalLabel"> TRACK THE MINDANAO AGENDA <i class="bi bi-x-lg closethiswindow" data-bs-dismiss="modal" aria-label="Close"></i></h3> <br />
+                    <h3 class="modal-title" id="modalLabel"> MINDANAO AGENDA TRACKER <i class="bi bi-x-lg closethiswindow" data-bs-dismiss="modal" aria-label="Close"></i></h3> <br />
                     <p>
                         The Mindanao Agenda Tracker transforms complex development goals into accessible, interactive visualizations that anyone can understand. 
                     </p>

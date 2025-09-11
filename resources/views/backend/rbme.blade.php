@@ -30,7 +30,7 @@
 			<!--begin::Header-->
 			<div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize" data-kt-sticky-animation="false" data-kt-sticky-offset="{default: '0px', lg: '0px'}">
 				<!--begin::Header container-->
-				
+
 				<!--end::Header container-->
 			</div>
 			<!--end::Header-->
@@ -146,7 +146,7 @@
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="#" class="menu-link px-3" data-kt-ecommerce-category-filter="delete_row">Delete</a>
+																		<a data-agendaid ="<?php echo $agenda[$i]->agendaid; ?>" class="menu-link px-3" data-kt-ecommerce-category-filter="delete_row">Delete</a>
 																	</div>
 																	<!--end::Menu item-->
 																</div>

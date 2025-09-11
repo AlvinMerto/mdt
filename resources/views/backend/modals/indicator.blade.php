@@ -1,6 +1,6 @@
-<?php if (count($collection) > 0) { ?>
+<?php if (count($collection) > 0) { // dd($collection); ?>
     <?php for($i = 0; $i <= count($collection)-1; $i++) { ?>
-        <div class="odd px-3">
+        <div class="odd px-3" id="kpiid_<?php echo $i; ?>">
             <div class="row">
                 <div class="col-md-4 d-flex pe-0 align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_1">
                     <div class="" style="width: 100%;">
@@ -26,7 +26,7 @@
                                         data-displayto = "disaggregation_<?php echo $i; ?>"
                                         data-kpiid = "<?php echo $collection[$i]->outputid; ?>">
                                 <i class="ki-outline ki-pencil fs-30 text-hover-primary" > </i> Edit Disaggregation </label>
-                                <label class="btn btn-light btn-sm"> <i class="bi bi-trash3 fs-30 text-hover-danger"> </i> Delete </label>
+                                <label class="btn btn-light btn-sm deletethis" data-remove='#kpiid_<?php echo $i; ?>' data-tbl="the_outputs" data-keyfld="outputid" data-keyid="<?php echo $collection[$i]->outputid; ?>"> <i class="bi bi-trash3 fs-30 text-hover-danger"> </i> Delete </label>
                             </div>
                         </div>
                         <!-- <div class="text-muted fs-7">SKU: 04423008</div> -->    

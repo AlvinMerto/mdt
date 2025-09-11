@@ -81,12 +81,15 @@ Route::middleware("auth")->group(function() {
     Route::post("/tracker/savelocation",[Dashboard::class,"savelocation"])->name("savelocation");
 
     Route::get("/tracker/prjsunderdevpart",[Dashboard::class,"prjsunderdevpart"])->name("prjsunderdevpart");
+
+    Route::post("/tracker/deleterbme",[Dashboard::class,"deleterbme"])->name("deleterbme");
 });
 
 Route::get("/tracker/get_agenda", [TheAgendaController::class,"get_agenda"])->name("get_agenda");
 Route::get("/tracker/get_agenda_details",[TheAgendaController::class,"get_agenda_details"])->name("get_agenda_details");
 Route::get("/tracker/get_kpis", [TheAgendaController::class,"get_kpis"])->name("get_kpis");
 Route::get("/tracker/get_kpi_info", [TheAgendaController::class,"get_kpi_info"])->name("get_kpi_info");
+Route::get("/tracker/get_per_outcome",[TheAgendaController::class,"get_per_outcome"])->name("get_per_outcome");
 Route::get("/tracker/ma_status",[TheAgendaController::class,"ma_status"])->name("ma_status");
 Route::get("/tracker/avg_allregion_peragenda",[TheAgendaController::class,"avg_allregion_peragenda"])->name('avg_allregion_peragenda');
 Route::get("/tracker/trend",[TheAgendaController::class,"trend"])->name("trend");

@@ -111,15 +111,43 @@ class TheAgendaController extends Controller
             $year   = " and the_values.theyear = '{$req->input('theyear')}'";
         }
 
-        $collection = DB::select("SELECT the_values.thelocation, 
+        $sql        = "SELECT the_values.thelocation, 
                                   ROUND(avg({$wv}),2) as thevalue 
                                   from the_deep_values
                                   join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
                                   join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
                                   where the_outputs.outputid = {$outputid} {$year}
-                                  group by the_values.thelocation");
+                                  group by the_values.thelocation";
+        // return response()->json($sql);
+        $collection = DB::select($sql);
 
         return response()->json(["values"=>$collection]); 
+    }
+
+    function get_per_outcome(Request $req) {
+        $fm     = new TheFormulas();
+        $wv     = $fm->weighted_value();
+
+        $outcomeid = $req->input("outcomeid");
+
+        $year   = null;
+
+        if (null != $req->input("theyear")) {
+            $year   = " and the_values.theyear = '{$req->input('theyear')}'";
+        }
+
+        $sql    = "SELECT the_values.thelocation,
+                    ROUND(avg({$wv}),2) as thevalue 
+                    FROM the_deep_values
+                    join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
+                    join the_values on the_values.fkdeepvalueid = the_deep_values.dv_id 
+                    join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
+                    WHERE the_outcomes.outcomeid = '{$outcomeid}' {$year}
+                    GROUP BY the_values.thelocation";
+
+        $collection = DB::select($sql);
+
+        return response()->json(["values" => $collection]);
     }
 
     function get_agenda_per_region() {
@@ -130,9 +158,11 @@ class TheAgendaController extends Controller
         
     }
 
-    function ma_status() {
+    function ma_status(Request $req) {
         $fm         = new TheFormulas();
         $wv         = $fm->weighted_value();
+
+        $year       = $req->input("year");
 
         $collection = DB::select("SELECT the_values.thelocation, ROUND(avg({$wv}),2) as thevalue 
                                     FROM the_deep_values 
