@@ -474,15 +474,22 @@ class Dashboard extends Controller
     {
         $theyear        = $req->input("theyear");
         $thelocation    = $req->input("thelocation");
+        $baseline       = $req->input("baseline");
+        $target         = $req->input("target");
+        $name           = $req->input("name");
         $val_id         = $req->input("val_id");
         $thecurrent     = $req->input("thecurrent");
 
-        $tv                 = new TheValues();
-        $tv->fkdeepvalueid  = $val_id;
-        $tv->current        = $thecurrent;
-        $tv->theyear        = $theyear;
-        $tv->thelocation    = $thelocation;
-        $saved              =  $tv->save();
+        $tv                     = new TheValues();
+        $tv->fkoutputid         = $val_id;
+        $tv->fkdeepvalueid      = 0;
+        $tv->current            = $thecurrent;
+        $tv->baseline           = $baseline;
+        $tv->target             = $target;
+        $tv->thedisaggregation  = $name;
+        $tv->theyear            = $theyear;
+        $tv->thelocation        = $thelocation;
+        $saved                  =  $tv->save();
 
         return response()->json($saved);
     }
@@ -499,6 +506,12 @@ class Dashboard extends Controller
         $baselinetxt    = $req->input("baselinetxt");
         $targettxt      = $req->input("targettxt");
         $fkoutputid     = $req->input("fkoutputid");
+        $disaggtxt      = $req->input("disaggtxt");
+        $baselinetxt    = $req->input("baselinetxt");
+        $targettxt      = $req->input("targettxt");
+        $currenttxt     = $req->input("currenttxt");
+        $yeartxt        = $req->input("yeartxt");
+        $locationtxt    = $req->input("locationtxt");
 
         // $tdv                        = new the_deep_values();
         // $tdv->fkoutputid            = $fkoutputid;
@@ -511,6 +524,11 @@ class Dashboard extends Controller
         $tdv                        = new TheValues();
         $tdv->fkoutputid            = $fkoutputid;
         $tdv->thedisaggregation     = $disaggtxt;
+        $tdv->baseline              = $baselinetxt;
+        $tdv->current               = $targettxt;
+        $tdv->target                = $currenttxt;
+        $tdv->theyear               = $yeartxt;
+        $tdv->thelocation           = $locationtxt;
         $tdv->status                = 1;
         $save                       = $tdv->save();
 

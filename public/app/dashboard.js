@@ -293,14 +293,20 @@ $(document).on("change",".thelocation", function() {
 });
 
 $(document).on("click", ".savenewvalue", function () {
-    var thecurrent = $(document).find(".fieldtext_new").val();
+    var thecurrent = $(document).find("#currentval").val();
+    var baseline   = $(document).find("#baselineval").val();
+    var target     = $(document).find("#targetval").val();
+    var name       = $(document).find("#nameval").val();
 
-    if (thecurrent.length == 0) {
-        alert("Current Value could not be found");
-        return;
-    }
+    thelocation = $(document).find("#thelocation").val();
 
-    post_("savenew_year", { theyear: theyear, thelocation: thelocation, val_id: val_id, thecurrent: thecurrent }, function (data) {
+    post_("savenew_year", { theyear: theyear, 
+                            thelocation: thelocation, 
+                            val_id: kpiid, 
+                            thecurrent: thecurrent, 
+                            baseline : baseline , 
+                            target : target, 
+                            name : name }, function (data) {
         if (data) {
             alert("New data for " + theyear + " for Region " + thelocation + " has been saved");
         }
@@ -312,16 +318,30 @@ $(document).on("click", "#addnewdisagg", function () {
 
     get_("new_disagg", {}, function (data) {
         $(data).appendTo("#disagg_details");
-    })
+    });
+    
+    // get_("disagg_details", { val_id: null, outcomeid: outcomeid }, function (data) {
+    //     $(data).appendTo("#disagg_details");
+    // });
 })
 
 $(document).on("click", "#savenewdisagg", function () {
-    var disaggtxt = $(document).find("#disaggtxt").val();
-    // var baselinetxt = $(document).find("#baselinetxt").val();
-    // var targettxt = $(document).find("#targettxt").val();
+    var disaggtxt   = $(document).find("#disaggtxt").val();
+    var baselinetxt = $(document).find("#baselinetxt").val();
+    var targettxt   = $(document).find("#targettxt").val();
+    var currenttxt  = $(document).find("#currenttxt").val();
+    var yeartxt     = $(document).find("#yeartxt").val();
+    var locationtxt = $(document).find("#locationtxt").val();
+    
     var fkoutputid = kpiid;
 
-    post_("savenewdisagg", { fkoutputid: fkoutputid, disaggtxt: disaggtxt }, function (data) {
+    post_("savenewdisagg", { fkoutputid: fkoutputid, 
+                             disaggtxt: disaggtxt,
+                             baselinetxt: baselinetxt,
+                             targettxt : targettxt,
+                             currenttxt : currenttxt,
+                             yeartxt : yeartxt,
+                             locationtxt : locationtxt }, function (data) {
         if (data) {
             alert("New Disaggregation has been saved!");
             $(document).find(".disaggregationdiv").children().remove();

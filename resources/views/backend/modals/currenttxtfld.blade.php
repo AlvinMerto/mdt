@@ -18,6 +18,7 @@
 <div>
     <label> Current </label>
      <input type="text" class='form-control mb-2 <?php echo $class; ?>' 
+            id = "currentval"
             data-field="current" 
             data-table = "the_values"
             data-keyid_fld = "valuesid"
@@ -27,7 +28,8 @@
 
 <div>
         <label> Name </label>
-        <input type="text" class='form-control fieldtext'
+        <input type="text" class='form-control <?php echo $class; ?>'
+            id = "nameval";
             data-field="thedisaggregation"
             data-table="the_values"
             data-keyid_fld="valuesid"
@@ -38,6 +40,7 @@
 <div>
         <label> Baseline </label>
         <input type="text" class='form-control mb-2 <?php echo $class; ?>'
+            id = "baselineval"
             data-field="baseline"
             data-table="the_values"
             data-keyid_fld="valuesid"
@@ -47,6 +50,7 @@
     <div>
         <label> Target </label>
         <input type="text" class='form-control mb-2 <?php echo $class; ?>'
+            id = "targetval"
             data-field="target"
             data-table="the_values"
             data-keyid_fld="valuesid"

@@ -12,8 +12,7 @@ class TheValues extends Model
     protected $fillable = [
         "fkoutputid",
         "fkdeepvalueid",
-        "fkoutcomeid",
-        "thekpi",
+        "thedisaggregation",
         "baseline",
         "current",
         "target","frequency","type","theyear","thelocation","status","created_at","updated_at"
