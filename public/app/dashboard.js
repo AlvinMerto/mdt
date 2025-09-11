@@ -317,11 +317,11 @@ $(document).on("click", "#addnewdisagg", function () {
 
 $(document).on("click", "#savenewdisagg", function () {
     var disaggtxt = $(document).find("#disaggtxt").val();
-    var baselinetxt = $(document).find("#baselinetxt").val();
-    var targettxt = $(document).find("#targettxt").val();
+    // var baselinetxt = $(document).find("#baselinetxt").val();
+    // var targettxt = $(document).find("#targettxt").val();
     var fkoutputid = kpiid;
 
-    post_("savenewdisagg", { fkoutputid: fkoutputid, disaggtxt: disaggtxt, baselinetxt: baselinetxt, targettxt: targettxt }, function (data) {
+    post_("savenewdisagg", { fkoutputid: fkoutputid, disaggtxt: disaggtxt }, function (data) {
         if (data) {
             alert("New Disaggregation has been saved!");
             $(document).find(".disaggregationdiv").children().remove();

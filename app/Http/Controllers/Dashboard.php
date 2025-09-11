@@ -500,12 +500,18 @@ class Dashboard extends Controller
         $targettxt      = $req->input("targettxt");
         $fkoutputid     = $req->input("fkoutputid");
 
-        $tdv                        = new the_deep_values();
+        // $tdv                        = new the_deep_values();
+        // $tdv->fkoutputid            = $fkoutputid;
+        // $tdv->thedisaggregation     = $disaggtxt;
+        // $tdv->baseline              = $baselinetxt;
+        // $tdv->target                = $targettxt;
+        // $tdv->thestatus             = 1;
+        // $save                       = $tdv->save();
+
+        $tdv                        = new TheValues();
         $tdv->fkoutputid            = $fkoutputid;
         $tdv->thedisaggregation     = $disaggtxt;
-        $tdv->baseline              = $baselinetxt;
-        $tdv->target                = $targettxt;
-        $tdv->thestatus             = 1;
+        $tdv->status                = 1;
         $save                       = $tdv->save();
 
         return response()->json($save);
