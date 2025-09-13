@@ -203,11 +203,12 @@ function the_status(percent) {
         status['label'] = "Major Challenges Remain";
         status['loading'] = "red_loading";
         status['color'] = "#ff0000";
-    } else {
-        status['label'] = "Information unavailable";
-        status['loading'] = "grey_loading";
-        status['color'] = "#cccccc";
-    }
+    } 
+    // else {
+    //     status['label'] = "Information unavailable";
+    //     status['loading'] = "grey_loading";
+    //     status['color'] = "#cccccc";
+    // }
 
     return status;
 }
