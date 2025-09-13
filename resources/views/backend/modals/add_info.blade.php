@@ -18,7 +18,7 @@
             data-field="baseline"
             data-table="the_values"
             data-keyid_fld="valuesid"
-            value="<?php echo $collection[0]->baseline; ?>"
+            value="<?php echo number_format($collection[0]->baseline,2); ?>"
             data-dbid="<?php echo $collection[0]->dv_id; ?>" />
     </div>
 
@@ -29,7 +29,7 @@
             data-field="target"
             data-table="the_values"
             data-keyid_fld="valuesid"
-            value="<?php echo $collection[0]->target; ?>"
+            value="<?php echo number_format($collection[0]->target,2); ?>"
             data-dbid="<?php echo $collection[0]->dv_id; ?>" />
     </div>
 </div>

@@ -22,7 +22,7 @@
             data-field="current" 
             data-table = "the_values"
             data-keyid_fld = "valuesid"
-            value="<?php echo $current; ?>"
+            value="<?php echo number_format($current,2); ?>"
             data-dbid="<?php echo $dbid; ?>"/> 
 </div>
 
