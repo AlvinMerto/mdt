@@ -199,11 +199,11 @@ function the_status(percent) {
         status['label'] = "Significant Challenges Remain";
         status['loading'] = "pink_loading";
         status['color'] = "#f4b084";
-    } else if (percent <= 25) {
+    } else if (percent <= 26) {
         status['label'] = "Major Challenges Remain";
         status['loading'] = "red_loading";
         status['color'] = "#ff0000";
-    } 
+    }
     // else {
     //     status['label'] = "Information unavailable";
     //     status['loading'] = "grey_loading";
