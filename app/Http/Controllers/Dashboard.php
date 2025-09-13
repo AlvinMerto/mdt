@@ -463,7 +463,7 @@ class Dashboard extends Controller
 
         // $collection     = the_deep_values::where(["the_deep_values.dv_id" => $dv_id, "the_deep_values.thelocation" => $location])->get();
         // , "the_values.thelocation" => $location
-        $collection     = theValues::where(["the_values.fkdeepvalueid" => $dv_id])->get();
+        $collection     = theValues::where(["the_values.fkdeepvalueid" => $dv_id, "the_values.thelocation" => $location])->get();
 
         $html           = view("backend.modals.add_info",compact("collection"))->render();
         return response()->json($html);
