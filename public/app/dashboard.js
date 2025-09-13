@@ -12,7 +12,12 @@ $(document).on("blur", ".fieldtext", function () {
 
     var keyfield = $(this).data('field');
     var keyid = $(this).data('dbid');
+
     var thevalue = $(this).val();
+
+    if (checkInput(thevalue) == "number") {
+        thevalue = thevalue.replace(/,/g, "");
+    }
 
     var dis = $(this);
 
@@ -41,6 +46,21 @@ $(document).on("blur", ".fieldtext", function () {
         }
     });
 });
+
+function checkInput(value) {
+  // remove commas if present
+  let clean = value.replace(/,/g, "");
+
+  if (/^[0-9]+(\.[0-9]+)?$/.test(clean)) {
+    return "number";  // matches integers and decimals
+  } else if (/^[a-zA-Z]+$/.test(clean)) {
+    return "letters";
+  } else if (/^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/.test(clean)) {
+    return "mix";
+  } else {
+    return "invalid";
+  }
+}
 
 $(document).on("click", ".viewmadet", function () {
     var maid = $(this).data("mid");
