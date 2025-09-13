@@ -564,7 +564,6 @@ class Dashboard extends Controller
         $tdv->thedisaggregation     = $disaggtxt;
         $tdv->baseline              = "0";
         $tdv->target                = "0";
-        $tdv->thelocation           = "0";
         $tdv->thestatus             = 1;
         $save                       = $tdv->save();
 
