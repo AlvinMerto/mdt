@@ -48,8 +48,8 @@ $(document).on("blur", ".fieldtext", function () {
 });
 
 function checkInput(value) {
-  // remove commas if present
-  let clean = value.replace(/,/g, "");
+  // trim spaces and remove commas
+  let clean = value.trim().replace(/,/g, "");
 
   if (/^[0-9]+(\.[0-9]+)?$/.test(clean)) {
     return "number";  // matches integers and decimals
