@@ -383,13 +383,18 @@ $(document).on("click", "#savenewdisagg", function () {
     // var locationtxt = $(document).find("#locationtxt").val();
     
     var fkoutputid = kpiid;
+    
+    var dis        = $(this);
 
-    post_("savenewdisagg", { disaggtxt: disaggtxt }, function (data) {
+    dis.html("Saving.. please wait");
+    post_("savenewdisagg", { disaggtxt: disaggtxt , fkoutputid : fkoutputid }, function (data) {
         if (data) {
             alert("New Disaggregation has been saved!");
             $(document).find(".disaggregationdiv").children().remove();
             get_("disagg", { kpiid: kpiid, outcomeid: outcomeid }, function (data) {
                 $(data).appendTo("#" + displayto);
+
+                dis.html("Save new Disaggregation");
             });
         }
     })

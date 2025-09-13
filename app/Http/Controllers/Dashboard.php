@@ -552,7 +552,7 @@ class Dashboard extends Controller
         // $currenttxt     = $req->input("currenttxt");
         // $yeartxt        = $req->input("yeartxt");
 
-        // $fkoutputid     = $req->input("fkoutputid");
+        $fkoutputid     = $req->input("fkoutputid");
         // $baselinetxt    = $req->input("baselinetxt");
         // $targettxt      = $req->input("targettxt");
         // $locationtxt    = $req->input("locationtxt");
@@ -560,7 +560,7 @@ class Dashboard extends Controller
         $disaggtxt      = $req->input("disaggtxt");
 
         $tdv                        = new the_deep_values();
-        $tdv->fkoutputid            = "0";
+        $tdv->fkoutputid            = $fkoutputid;
         $tdv->thedisaggregation     = $disaggtxt;
         $tdv->baseline              = "0";
         $tdv->target                = "0";
