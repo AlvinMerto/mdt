@@ -159,7 +159,7 @@ $("#thecsvfile").on("change", function () {
         form_data.append("masteridhide", masteridhide);
 
     $.ajax({
-        url: '/savelocation', // Laravel route
+        url: '/tracker/savelocation', // Laravel route
         type: 'POST',
         data: form_data,
         contentType: false,
