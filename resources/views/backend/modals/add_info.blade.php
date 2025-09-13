@@ -8,7 +8,7 @@
             data-table="the_values"
             data-keyid_fld="valuesid"
             value="<?php echo $collection[0]->thedisaggregation; ?>"
-            data-dbid="<?php echo $collection[0]->dv_id; ?>" />
+            data-dbid="<?php echo $collection[0]->valuesid; ?>" />
     </div>
 
     <div class="col-md-4">
@@ -19,7 +19,7 @@
             data-table="the_values"
             data-keyid_fld="valuesid"
             value="<?php echo number_format($collection[0]->baseline,2); ?>"
-            data-dbid="<?php echo $collection[0]->dv_id; ?>" />
+            data-dbid="<?php echo $collection[0]->valuesid; ?>" />
     </div>
 
     <div class="col-md-4">
@@ -30,7 +30,7 @@
             data-table="the_values"
             data-keyid_fld="valuesid"
             value="<?php echo number_format($collection[0]->target,2); ?>"
-            data-dbid="<?php echo $collection[0]->dv_id; ?>" />
+            data-dbid="<?php echo $collection[0]->valuesid; ?>" />
     </div>
 </div>
 <?php } else { ?>
