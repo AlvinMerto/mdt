@@ -160,6 +160,7 @@ $("#thecsvfile").on("change", function () {
 var kpiid = null;
 var outcomeid = null;
 var displayto = null;
+var val_id    = null; // the_deep_value primary ID
 
 $(document).on("click", ".kpitab", function () {
     kpiid = $(this).data('kpiid');
@@ -173,7 +174,7 @@ $(document).on("click", ".kpitab", function () {
 });
 
 $(document).on("click", ".disagg_dets", function () {
-    var val_id = $(this).data("dis_val");
+    val_id    = $(this).data("dis_val");
     var outcomeid = $(this).data("outcomeid");
 
     $(document).find("#disagg_details").children().remove();
@@ -184,6 +185,7 @@ $(document).on("click", ".disagg_dets", function () {
     get_("disagg_details", { val_id: val_id, outcomeid: outcomeid }, function (data) {
         $(data).appendTo("#disagg_details");
     });
+
 });
 
 $(document).on("click", "#gd_list li", function () {
@@ -264,12 +266,19 @@ function get_updates(masterid) {
 
 var theyear = null;
 var thelocation = null;
-var val_id = null;
+// var val_id = null;
 
 $(document).on("click", ".tabindex_year li", function () {
-    val_id = $(this).data("dvid");
+    // val_id = $(this).data("dvid");
+
     theyear = $(this).data("theval"); // year
+
     thelocation = $(document).find("#thelocation").val();
+
+    if (thelocation == 0) {
+        thelocation = null;
+        return;
+    }
 
     $(document).find("#currentextfld").children().remove();
 
@@ -282,13 +291,32 @@ $(document).on("click", ".tabindex_year li", function () {
 });
 
 $(document).on("change",".thelocation", function() {
-    if (theyear == null) { return; }
+    // if (theyear == null) { return; }
     $(document).find("#currentextfld").children().remove();
 
     var loc = $(this).val();
 
+    if (loc == 0) {
+        $(document).find("#currentextfld").html("");
+        $(document).find("#currentextfld").children().remove();
+        $(document).find("#addinfo_display").html("");
+        $(document).find("#addinfo_display").children().remove();
+        return;
+    }
+
+    $(document).find("#currentextfld").html("loading...");
+    $(document).find("#addinfo_display").html("loading...");
+
     get_("get_year_val", { val_id: val_id, theyear: theyear, thelocation: loc }, function (data) {
+        $(document).find("#currentextfld").html("");
+        $(document).find("#currentextfld").children().remove();
         $(data).appendTo("#currentextfld");
+    });
+
+    get_("addinfo_display", { dv_id : val_id , location : loc }, function(data) {
+        $(document).find("#addinfo_display").html("");
+        $(document).find("#addinfo_display").children().remove();
+        $(data).appendTo("#addinfo_display");
     });
 });
 
@@ -300,16 +328,37 @@ $(document).on("click", ".savenewvalue", function () {
 
     thelocation = $(document).find("#thelocation").val();
 
-    post_("savenew_year", { theyear: theyear, 
-                            thelocation: thelocation, 
-                            val_id: kpiid, 
-                            thecurrent: thecurrent, 
-                            baseline : baseline , 
-                            target : target, 
-                            name : name }, function (data) {
+    post_("savenew_year", { theyear : theyear, 
+                            thelocation : thelocation, 
+                            val_id : val_id, 
+                            thecurrent : thecurrent,
+                            outputid : kpiid,
+                            baseline : baseline,
+                            target : target,
+                            name : name
+                            }, function (data) {
         if (data) {
             alert("New data for " + theyear + " for Region " + thelocation + " has been saved");
         }
+    });
+});
+
+$(document).on("click","#savethisnewlocation", function() {
+    var nameval         = $(document).find("#nameval").val();
+    var baselineval     = $(document).find("#baselineval").val();
+    var targetval       = $(document).find("#targetval").val();
+    
+    var loc             = $(document).find("#thelocation").val();
+
+    post_("savedeep_value", { nameval : nameval , 
+                              baselineval : baselineval, 
+                              targetval : targetval,
+                              val_id : kpiid,
+                              location : loc }, function(data) {
+       if (data == true) { 
+            alert("New data Saved!");
+            $(document).find("#savethisnewlocation").remove();
+       }
     });
 });
 
@@ -323,25 +372,19 @@ $(document).on("click", "#addnewdisagg", function () {
     // get_("disagg_details", { val_id: null, outcomeid: outcomeid }, function (data) {
     //     $(data).appendTo("#disagg_details");
     // });
-})
+});
 
 $(document).on("click", "#savenewdisagg", function () {
     var disaggtxt   = $(document).find("#disaggtxt").val();
-    var baselinetxt = $(document).find("#baselinetxt").val();
-    var targettxt   = $(document).find("#targettxt").val();
-    var currenttxt  = $(document).find("#currenttxt").val();
-    var yeartxt     = $(document).find("#yeartxt").val();
-    var locationtxt = $(document).find("#locationtxt").val();
+    // var baselinetxt = $(document).find("#baselinetxt").val();
+    // var targettxt   = $(document).find("#targettxt").val();
+    // var currenttxt  = $(document).find("#currenttxt").val();
+    // var yeartxt     = $(document).find("#yeartxt").val();
+    // var locationtxt = $(document).find("#locationtxt").val();
     
     var fkoutputid = kpiid;
 
-    post_("savenewdisagg", { fkoutputid: fkoutputid, 
-                             disaggtxt: disaggtxt,
-                             baselinetxt: baselinetxt,
-                             targettxt : targettxt,
-                             currenttxt : currenttxt,
-                             yeartxt : yeartxt,
-                             locationtxt : locationtxt }, function (data) {
+    post_("savenewdisagg", { disaggtxt: disaggtxt }, function (data) {
         if (data) {
             alert("New Disaggregation has been saved!");
             $(document).find(".disaggregationdiv").children().remove();

@@ -54,15 +54,13 @@ class TheAgendaController extends Controller
         $fm         = new TheFormulas();
         $wv         = $fm->weighted_value();
 
-        /*
-        $peragenda  = DB::select("SELECT the_values.thelocation, ROUND(avg({$wv}),2) as thevalue 
-                                    FROM `the_outputs` 
-                                    join the_deep_values on the_outputs.outputid = the_deep_values.fkoutputid 
-                                    join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
-                                    join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
-                                    join the_agendas on the_outcomes.fkagendaid = the_agendas.agendaid 
-                                    where agendaid = {$agendaid} group by the_values.thelocation");
-        */
+        // $peragenda  = DB::select("SELECT the_values.thelocation, ROUND(avg({$wv}),2) as thevalue 
+        //                             FROM `the_outputs` 
+        //                             join the_deep_values on the_outputs.outputid = the_deep_values.fkoutputid 
+        //                             join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
+        //                             join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
+        //                             join the_agendas on the_outcomes.fkagendaid = the_agendas.agendaid 
+        //                             where agendaid = {$agendaid} group by the_values.thelocation");
 
         $peragenda  = DB::select("SELECT the_values.thelocation, ROUND(avg({$wv}),2) as thevalue 
                                     FROM `the_outputs` 
@@ -70,18 +68,17 @@ class TheAgendaController extends Controller
                                     join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
                                     join the_agendas on the_outcomes.fkagendaid = the_agendas.agendaid 
                                     where agendaid = {$agendaid} group by the_values.thelocation");
-        /*
-        $sql1       = "SELECT the_agendas.agendaid, the_agendas.agendatitle, 
-                                ROUND(avg({$wv}),2) as thevalue 
-                                FROM `the_outputs` 
-                                join the_deep_values on the_outputs.outputid = the_deep_values.fkoutputid 
-                                join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
-                                join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
-                                join the_agendas on the_outcomes.fkagendaid = the_agendas.agendaid 
-                                where the_agendas.agendaid = {$agendaid}
-                                group by the_agendas.agendaid, the_agendas.agendatitle";
-        */
-
+        
+        // $sql1       = "SELECT the_agendas.agendaid, the_agendas.agendatitle, 
+        //                         ROUND(avg({$wv}),2) as thevalue 
+        //                         FROM `the_outputs` 
+        //                         join the_deep_values on the_outputs.outputid = the_deep_values.fkoutputid 
+        //                         join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
+        //                         join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
+        //                         join the_agendas on the_outcomes.fkagendaid = the_agendas.agendaid 
+        //                         where the_agendas.agendaid = {$agendaid}
+        //                         group by the_agendas.agendaid, the_agendas.agendatitle";
+        
         $sql1       = "SELECT the_agendas.agendaid, the_agendas.agendatitle, 
                                 ROUND(avg({$wv}),2) as thevalue 
                                 FROM `the_outputs` 
@@ -109,16 +106,14 @@ class TheAgendaController extends Controller
             array_merge($where, ["the_values.thelocation" => $region]);
         }
 
-        /*
-            "SELECT the_outputs.outputid, the_outputs.kpi, 
-                                    ROUND(avg({$wv}),2) as thevalue 
-                                    from the_deep_values
-                                    join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
-                                    join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
-                                    where the_outputs.fkoutcomeid = {$outcomeid} 
-                                    group by the_outputs.outputid, the_outputs.kpi"
-         */
-
+        // $sql = "SELECT the_outputs.outputid, the_outputs.kpi, 
+        //                             ROUND(avg({$wv}),2) as thevalue 
+        //                             from the_deep_values
+        //                             join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
+        //                             join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
+        //                             where the_outputs.fkoutcomeid = {$outcomeid} 
+        //                             group by the_outputs.outputid, the_outputs.kpi";
+         
         $sql         = "SELECT the_outputs.outputid, the_outputs.kpi, 
                             ROUND(avg({$wv}),2) as thevalue 
                             from the_values
@@ -143,15 +138,14 @@ class TheAgendaController extends Controller
             $year   = " and the_values.theyear = '{$req->input('theyear')}'";
         }
 
-        /*
-        $sql        = "SELECT the_values.thelocation, 
-                                  ROUND(avg({$wv}),2) as thevalue 
-                                  from the_deep_values
-                                  join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
-                                  join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
-                                  where the_outputs.outputid = {$outputid} {$year}
-                                  group by the_values.thelocation";
-        */
+        // $sql        = "SELECT the_values.thelocation, 
+        //                           ROUND(avg({$wv}),2) as thevalue 
+        //                           from the_deep_values
+        //                           join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
+        //                           join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
+        //                           where the_outputs.outputid = {$outputid} {$year}
+        //                           group by the_values.thelocation";
+
         $sql        = "SELECT the_values.thelocation, 
                         ROUND(avg({$wv}),2) as thevalue 
                         from the_values
@@ -177,16 +171,15 @@ class TheAgendaController extends Controller
             $year   = " and the_values.theyear = '{$req->input('theyear')}'";
         }
 
-        /*
-        $sql    = "SELECT the_values.thelocation,
-                    ROUND(avg({$wv}),2) as thevalue 
-                    FROM the_deep_values
-                    join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
-                    join the_values on the_values.fkdeepvalueid = the_deep_values.dv_id 
-                    join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
-                    WHERE the_outcomes.outcomeid = '{$outcomeid}' {$year}
-                    GROUP BY the_values.thelocation";
-        */
+        
+        // $sql    = "SELECT the_values.thelocation,
+        //             ROUND(avg({$wv}),2) as thevalue 
+        //             FROM the_deep_values
+        //             join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
+        //             join the_values on the_values.fkdeepvalueid = the_deep_values.dv_id 
+        //             join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
+        //             WHERE the_outcomes.outcomeid = '{$outcomeid}' {$year}
+        //             GROUP BY the_values.thelocation";
 
         $sql    = "SELECT the_values.thelocation,
                     ROUND(avg({$wv}),2) as thevalue 
@@ -215,15 +208,13 @@ class TheAgendaController extends Controller
 
         $year       = $req->input("year");
 
-        /*
-            "SELECT the_values.thelocation, ROUND(avg({$wv}),2) as thevalue 
-                    FROM the_deep_values 
-                    join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
-                    join the_values on the_values.fkdeepvalueid = the_deep_values.dv_id 
-                    join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
-                    join the_agendas on the_outcomes.fkagendaid = the_agendas.agendaid 
-                    group by the_values.thelocation"        
-        */
+        // $sql = "SELECT the_values.thelocation, ROUND(avg({$wv}),2) as thevalue 
+        //             FROM the_deep_values 
+        //             join the_outputs on the_deep_values.fkoutputid = the_outputs.outputid 
+        //             join the_values on the_values.fkdeepvalueid = the_deep_values.dv_id 
+        //             join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
+        //             join the_agendas on the_outcomes.fkagendaid = the_agendas.agendaid 
+        //             group by the_values.thelocation";
 
         $sql = "SELECT the_values.thelocation, ROUND(avg({$wv}),2) as thevalue 
                 FROM the_values 
@@ -244,17 +235,15 @@ class TheAgendaController extends Controller
         $fm         = new TheFormulas();
         $wv         = $fm->weighted_value();
 
-        /*
-            "SELECT the_agendas.agendaid, the_agendas.agendatitle, 
-                ROUND(avg({$wv}),2) as thevalue 
-                FROM `the_outputs` 
-                join the_deep_values on the_outputs.outputid = the_deep_values.fkoutputid 
-                join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
-                join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
-                join the_agendas on fkagendaid = agendaid 
-                group by the_agendas.agendaid, the_agendas.agendatitle"
-        */
-        
+        // $sql = "SELECT the_agendas.agendaid, the_agendas.agendatitle, 
+        //         ROUND(avg({$wv}),2) as thevalue 
+        //         FROM `the_outputs` 
+        //         join the_deep_values on the_outputs.outputid = the_deep_values.fkoutputid 
+        //         join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
+        //         join the_outcomes on the_outputs.fkoutcomeid = the_outcomes.outcomeid 
+        //         join the_agendas on fkagendaid = agendaid 
+        //         group by the_agendas.agendaid, the_agendas.agendatitle";
+
         $sql        = "SELECT the_agendas.agendaid, the_agendas.agendatitle, 
                         ROUND(avg({$wv}),2) as thevalue 
                         FROM `the_outputs` 
@@ -277,14 +266,12 @@ class TheAgendaController extends Controller
                                 ->groupBy('the_outcomes.outcomeid',"yearstart","yearend")
                                 ->get();
 
-        /*
-            "SELECT sum(the_values.current) as current, the_values.theyear 
-                                    from the_deep_values join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
-                                    where the_deep_values.fkoutputid = '{$outpudid}' 
-                                    group by the_values.theyear 
-                                    ORDER by theyear ASC"
-         */
-        
+        // $sql = "SELECT sum(the_values.current) as current, the_values.theyear 
+        //                             from the_deep_values join the_values on the_deep_values.dv_id = the_values.fkdeepvalueid 
+        //                             where the_deep_values.fkoutputid = '{$outpudid}' 
+        //                             group by the_values.theyear 
+        //                             ORDER by theyear ASC";
+         
         $sql        = "SELECT sum(the_values.current) as current, the_values.theyear 
                         from the_values 
                         where the_values.fkoutputid = '{$outpudid}' 

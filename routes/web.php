@@ -79,6 +79,8 @@ Route::middleware("auth")->group(function() {
     Route::post("/tracker/saveupdate",[Dashboard::class,"saveupdate"])->name("saveupdate");
     Route::get("/tracker/getupdates",[Dashboard::class,"getupdates"])->name("getupdates");
     Route::post("/tracker/savelocation",[Dashboard::class,"savelocation"])->name("savelocation");
+    Route::get("/tracker/addinfo_display",[Dashboard::class,"addinfo_display"])->name("addinfo_display");
+    Route::post("/tracker/savedeep_value", [Dashboard::class,"savedeep_value"])->name('savedeep_value');
 
     Route::get("/tracker/prjsunderdevpart",[Dashboard::class,"prjsunderdevpart"])->name("prjsunderdevpart");
 

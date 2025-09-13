@@ -428,8 +428,8 @@ class Dashboard extends Controller
         //                               join the_values on the_values.fkdeepvalueid = the_deep_values.dv_id 
         //                               where the_deep_values.fkoutputid = '{$kpiid}' group by the_deep_values.dv_id, the_deep_values.thedisaggregation");
 
-        // $disaggregation = the_deep_values::where(["the_deep_values.fkoutputid" => $kpiid])->get();
-        $disaggregation = TheValues::where(["the_values.fkoutputid" => $kpiid])->get();
+        $disaggregation = the_deep_values::where(["the_deep_values.fkoutputid" => $kpiid])->get();
+        // $disaggregation = TheValues::where(["the_values.fkoutputid" => $kpiid])->get();
 
         $html           = view("backend.modals.disaggregation", compact("disaggregation", "outcomeid"))->render();
 
@@ -446,9 +446,9 @@ class Dashboard extends Controller
         //                                     ->where(["the_deep_values.dv_id" => $val_id])
         //                                     ->get();
 
-        // $collection    = the_deep_values::where(["the_deep_values.dv_id" => $val_id])->get();
+        $collection    = the_deep_values::where(["the_deep_values.dv_id" => $val_id])->get();
 
-        $collection    = TheValues::where(["the_values.valuesid" => $val_id])->get();
+        // $collection    = TheValues::where(["the_values.valuesid" => $val_id])->get();
 
         $outcome_years = TheOutcome::where(["outcomeid" => $outcomeid])->get(["yearstart", "yearend"]);
 
@@ -457,13 +457,47 @@ class Dashboard extends Controller
         return response()->json($html);
     }
 
+    function addinfo_display(Request $req) {
+        $location       = $req->input('location');
+        $dv_id          = $req->input("dv_id");
+
+        // $collection     = the_deep_values::where(["the_deep_values.dv_id" => $dv_id, "the_deep_values.thelocation" => $location])->get();
+        // , "the_values.thelocation" => $location
+        $collection     = theValues::where(["the_values.fkdeepvalueid" => $dv_id])->get();
+
+        $html           = view("backend.modals.add_info",compact("collection"))->render();
+        return response()->json($html);
+    }
+
+    function savedeep_value(Request $req) {
+        $nameval         = $req->input("nameval");
+        $baselineval     = $req->input("baselineval");
+        $targetval       = $req->input("targetval");
+        $val_id          = $req->input('val_id');
+        $location        = $req->input("location");
+        
+        $deep_val                    = new the_deep_values();
+        $deep_val->fkoutputid        = $val_id;
+        $deep_val->thedisaggregation = $nameval;
+        $deep_val->thestatus         = 1;
+        $saved                       = $deep_val->save();
+
+        // $deep_val->thelocation       = $location;
+        // $deep_val->baseline          = $baselineval;
+        // $deep_val->target            = $targetval;
+        
+
+        return response()->json($saved);
+    }
+
     function get_year_val(Request $req)
     {
         $val_id     = $req->input("val_id");
         $theyear    = $req->input("theyear");
         $location   = $req->input("thelocation");
 
-        $collection = TheValues::where(["valuesid" => $val_id, "theyear" => $theyear, "thelocation" => $location])->get();
+        // , "thelocation" => $location
+        $collection = TheValues::where(["fkdeepvalueid" => $val_id, "theyear" => $theyear, "thelocation" => $location])->get();
 
         $html       = view("backend.modals.currenttxtfld", compact("collection"))->render();
 
@@ -472,24 +506,34 @@ class Dashboard extends Controller
 
     function savenew_year(Request $req)
     {
-        $theyear        = $req->input("theyear");
-        $thelocation    = $req->input("thelocation");
-        $baseline       = $req->input("baseline");
-        $target         = $req->input("target");
-        $name           = $req->input("name");
-        $val_id         = $req->input("val_id");
-        $thecurrent     = $req->input("thecurrent");
+        $theyear                  = $req->input("theyear");
+        $thelocation              = $req->input("thelocation");
+        $baseline                 = $req->input("baseline");
+        $target                   = $req->input("target");
+        $name                     = $req->input("name");
+        $val_id                   = $req->input("val_id");
+        $thecurrent               = $req->input("thecurrent");
+        $outputid                 = $req->input("outputid");
+        
+        $tv                       = new TheValues();
+        $tv->fkoutputid           = $outputid;
+        $tv->fkdeepvalueid        = $val_id;
+        $tv->current              = $thecurrent;
+        $tv->baseline             = $baseline;
+        $tv->target               = $target;
+        $tv->thedisaggregation    = $name;
+        $tv->thelocation          = $thelocation;
+        $tv->theyear              = $theyear;
+        $saved                    =  $tv->save();
 
-        $tv                     = new TheValues();
-        $tv->fkoutputid         = $val_id;
-        $tv->fkdeepvalueid      = 0;
-        $tv->current            = $thecurrent;
-        $tv->baseline           = $baseline;
-        $tv->target             = $target;
-        $tv->thedisaggregation  = $name;
-        $tv->theyear            = $theyear;
-        $tv->thelocation        = $thelocation;
-        $saved                  =  $tv->save();
+        // $tdv                      = new the_deep_values();
+        // $tdv->fkoutputid          = 0;
+        // $tdv->thedisaggregation   = $name;
+        // $tdv->current             = "";
+        // $tdv->baseline            = "";
+        // $tdv->target              = "";
+        // $tdv->thestatus           = 1;
+        // $saved                    = $tdv->save();
 
         return response()->json($saved);
     }
@@ -502,34 +546,26 @@ class Dashboard extends Controller
 
     function savenewdisagg(Request $req)
     {
-        $disaggtxt      = $req->input("disaggtxt");
-        $baselinetxt    = $req->input("baselinetxt");
-        $targettxt      = $req->input("targettxt");
-        $fkoutputid     = $req->input("fkoutputid");
-        $disaggtxt      = $req->input("disaggtxt");
-        $baselinetxt    = $req->input("baselinetxt");
-        $targettxt      = $req->input("targettxt");
-        $currenttxt     = $req->input("currenttxt");
-        $yeartxt        = $req->input("yeartxt");
-        $locationtxt    = $req->input("locationtxt");
+        // $disaggtxt      = $req->input("disaggtxt");
+        // $baselinetxt    = $req->input("baselinetxt");
+        // $targettxt      = $req->input("targettxt");
+        // $currenttxt     = $req->input("currenttxt");
+        // $yeartxt        = $req->input("yeartxt");
 
-        // $tdv                        = new the_deep_values();
-        // $tdv->fkoutputid            = $fkoutputid;
-        // $tdv->thedisaggregation     = $disaggtxt;
-        // $tdv->baseline              = $baselinetxt;
-        // $tdv->target                = $targettxt;
-        // $tdv->thestatus             = 1;
-        // $save                       = $tdv->save();
+        // $fkoutputid     = $req->input("fkoutputid");
+        // $baselinetxt    = $req->input("baselinetxt");
+        // $targettxt      = $req->input("targettxt");
+        // $locationtxt    = $req->input("locationtxt");
 
-        $tdv                        = new TheValues();
-        $tdv->fkoutputid            = $fkoutputid;
+        $disaggtxt      = $req->input("disaggtxt");
+
+        $tdv                        = new the_deep_values();
+        $tdv->fkoutputid            = "0";
         $tdv->thedisaggregation     = $disaggtxt;
-        $tdv->baseline              = $baselinetxt;
-        $tdv->current               = $targettxt;
-        $tdv->target                = $currenttxt;
-        $tdv->theyear               = $yeartxt;
-        $tdv->thelocation           = $locationtxt;
-        $tdv->status                = 1;
+        $tdv->baseline              = "0";
+        $tdv->target                = "0";
+        $tdv->thelocation           = "0";
+        $tdv->thestatus             = 1;
         $save                       = $tdv->save();
 
         return response()->json($save);
