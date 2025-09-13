@@ -1,4 +1,29 @@
-<?php if (count($collection) > 0) {?>
+<?php
+    function checkinput($value) {
+        if (preg_match('/^-?[0-9]+(\.[0-9]+)?$/', $value)) {
+            return "int";
+        } else {
+            return "mix";
+        }
+    }
+
+    if (count($collection) > 0) {
+        $baseline = null;
+        $target   = null;
+
+        if (checkinput($collection[0]->baseline) == "int") {
+            $baseline = number_format($collection[0]->baseline,2);
+        } else {
+            $baseline = $collection[0]->baseline;
+        }
+
+        if (checkinput($collection[0]->target) == "int") {
+            $target   = number_format($collection[0]->target,2);
+        } else {
+            $target   = $collection[0]->target;
+        }
+
+    ?>
 <div class="row mb-2">
     <div class="col-md-4">
         <label> Name </label>
@@ -18,7 +43,7 @@
             data-field="baseline"
             data-table="the_values"
             data-keyid_fld="valuesid"
-            value="<?php echo number_format($collection[0]->baseline,2); ?>"
+            value="<?php echo $baseline; ?>"
             data-dbid="<?php echo $collection[0]->valuesid; ?>" />
     </div>
 
@@ -29,7 +54,7 @@
             data-field="target"
             data-table="the_values"
             data-keyid_fld="valuesid"
-            value="<?php echo number_format($collection[0]->target,2); ?>"
+            value="<?php echo $target; ?>"
             data-dbid="<?php echo $collection[0]->valuesid; ?>" />
     </div>
 </div>

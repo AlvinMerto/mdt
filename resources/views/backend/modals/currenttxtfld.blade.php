@@ -1,4 +1,12 @@
 <?php 
+    function checkinput($value) {
+        if (preg_match('/^-?[0-9]+(\.[0-9]+)?$/', $value)) {
+            return "int";
+        } else {
+            return "mix";
+        }
+    }
+
     $current  = null;
     // $baseline = null;
     // $target   = null;
@@ -13,6 +21,12 @@
         $name     = $collection[0]->thedisaggregation;
         $dbid     = $collection[0]->valuesid;
         $class    = "fieldtext";
+
+        if (checkinput($current) == "int") {
+            $current = number_format($current,2);
+        } else {
+            $current = $current;
+        }
     }
 ?>
 <div>
@@ -22,7 +36,7 @@
             data-field="current" 
             data-table = "the_values"
             data-keyid_fld = "valuesid"
-            value="<?php echo number_format($current,2); ?>"
+            value="<?php echo $current; ?>"
             data-dbid="<?php echo $dbid; ?>"/> 
 </div>
 
