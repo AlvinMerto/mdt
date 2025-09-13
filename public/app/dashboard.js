@@ -326,6 +326,10 @@ $(document).on("click", ".savenewvalue", function () {
     var target     = $(document).find("#targetval").val();
     var name       = $(document).find("#nameval").val();
 
+    thecurrent     = thecurrent.replace(/,/g, "");
+    baseline       = baseline.replace(/,/g, "");
+    target         = target.replace(/,/g, "");
+
     thelocation = $(document).find("#thelocation").val();
 
     post_("savenew_year", { theyear : theyear, 
@@ -349,6 +353,9 @@ $(document).on("click","#savethisnewlocation", function() {
     var targetval       = $(document).find("#targetval").val();
     
     var loc             = $(document).find("#thelocation").val();
+
+    baselineval         = baselineval.replace(/,/g, "");
+    targetval           = targetval.replace(/,/g, "");
 
     post_("savedeep_value", { nameval : nameval , 
                               baselineval : baselineval, 

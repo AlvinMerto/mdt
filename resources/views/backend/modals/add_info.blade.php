@@ -36,27 +36,27 @@
 <?php } else { ?>
 <h6> Add New data for this location </h6>
 <div class="row mb-2">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <label> Name </label>
         <input type="text" class='form-control'
             id="nameval"/>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <label> Baseline </label>
         <input type="text" class='form-control mb-2'
             id="baselineval" />
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <label> Target </label>
         <input type="text" class='form-control mb-2'
             id="targetval"/>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
         <p class="mb-2"> &nbsp; </p>
         <button class="btn btn-primary btn-sm" id="savethisnewlocation"> Save </button>
-    </div>
+    </div> -->
 </div>
 <?php } ?>
 
