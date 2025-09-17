@@ -187,23 +187,23 @@ function the_status(percent) {
     status['loading'] = null;
     status['color'] = null;
 
-    if (percent >= 95) {
+    if (percent >= 81) {
         status['label'] = "Target Achieved";
         status['loading'] = "green_loading";
         status['color'] = "#007f00";
-    } else if (percent >= 80 && percent <= 95) {
+    } else if (percent >= 61 && percent <= 81) {
         status['label'] = "Near Target";
         status['loading'] = "yellow_loading";
         status['color'] = "#ffd966";
-    } else if (percent >= 66 && percent <= 80) {
+    } else if (percent >= 41 && percent <= 61) {
         status['label'] = "Needs Improvement";
         status['loading'] = "pink_loading";
         status['color'] = "#f4b084";
-    } else if (percent >= 51 && percent >= 66) {
+    } else if (percent >= 21 && percent <= 41) {
         status['label'] = "Below Target";
         status['loading'] = "red_loading";
         status['color'] = "#ff0000";
-    } else if (percent <= 51) {
+    } else if (percent >= 0 && percent <= 21) {
         status['label'] = "Far Below Target";
         status['loading'] = "grey_loading";
         status['color'] = "#d4d4d4";
