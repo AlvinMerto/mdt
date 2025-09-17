@@ -187,23 +187,28 @@ function the_status(percent) {
     status['loading'] = null;
     status['color'] = null;
 
-    if (percent >= 75) {
-        status['label'] = "Mindanao Agenda Achieved";
+    if (percent >= 95) {
+        status['label'] = "Target Achieved";
         status['loading'] = "green_loading";
         status['color'] = "#007f00";
-    } else if (percent >= 50 && percent <= 75) {
-        status['label'] = "Challenges Remain";
+    } else if (percent >= 80 && percent <= 95) {
+        status['label'] = "Near Target";
         status['loading'] = "yellow_loading";
         status['color'] = "#ffd966";
-    } else if (percent >= 26 && percent <= 50) {
-        status['label'] = "Significant Challenges Remain";
+    } else if (percent >= 66 && percent <= 80) {
+        status['label'] = "Needs Improvement";
         status['loading'] = "pink_loading";
         status['color'] = "#f4b084";
-    } else if (percent <= 26) {
-        status['label'] = "Major Challenges Remain";
+    } else if (percent <= 51 && percent >= 66) {
+        status['label'] = "Below Target";
         status['loading'] = "red_loading";
         status['color'] = "#ff0000";
+    } else if (percent <= 51) {
+        status['label'] = "Far Below Target";
+        status['loading'] = "grey_loading";
+        status['color'] = "#d4d4d4";
     }
+
     // else {
     //     status['label'] = "Information unavailable";
     //     status['loading'] = "grey_loading";

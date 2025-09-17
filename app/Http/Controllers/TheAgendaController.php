@@ -147,7 +147,9 @@ class TheAgendaController extends Controller
         //                           group by the_values.thelocation";
 
         $sql        = "SELECT the_values.thelocation, 
-                        ROUND(avg({$wv}),2) as thevalue 
+                        ROUND(avg({$wv}),2) as thevalue,
+                        min(the_values.baseline) as baseline, 
+                        min(the_values.target) as target
                         from the_values
                         join the_outputs on the_values.fkoutputid = the_outputs.outputid 
                         where the_outputs.outputid = {$outputid} {$year}

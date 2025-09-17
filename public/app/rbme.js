@@ -91,7 +91,6 @@ $(document).on("click", ".perkpi", function () {
             var txt = yrs.eq(idx).text();
             theyears.push(txt.trim());
         });
-
     });
 
     $(document).find(".perkpi").removeClass("perkpi_selected");
@@ -281,7 +280,11 @@ function get_kpi_info(theyear_, outputid_) {
             var m = new mapboxgl.Marker(box).setLngLat(region[data.values[io].thelocation]).addTo(map);
             marker.push(m);
 
-            var colorloading = make_loading("region_" + data.values[io].thelocation + "_box", data.values[io].thevalue, "Region " + data.values[io].thelocation);
+            var colorloading = make_loading("region_" + data.values[io].thelocation + "_box", 
+                                            data.values[io].thevalue, 
+                                            "Region " + data.values[io].thelocation,
+                                            formatNumber(data.values[io].baseline),
+                                            formatNumber(data.values[io].target));
 
             map.setPaintProperty("region" + data.values[io].thelocation, "fill-color", colorloading);
         }
@@ -322,17 +325,23 @@ function ma_status() {
             var m = new mapboxgl.Marker(box).setLngLat(region[data[i].thelocation]).addTo(map);
             marker.push(m);
 
-            var colorloading = make_loading("region_" + data[i].thelocation + "_box", data[i].thevalue, "Region " + data[i].thelocation);
+            var colorloading = make_loading("region_" + data[i].thelocation + "_box", data[i].thevalue, "Region " + data[i].thelocation, );
             map.setPaintProperty("region" + data[i].thelocation, "fill-color", colorloading);
         }
     });
 
 }
 
-function make_loading(app_to, percent, label) {
+function make_loading(app_to, percent, label, baseline = false, target = false) {
     var status = the_status(percent);
 
-    $("<div class='ma_desc'> <p class='lbl_p'> " + label + " </p> <div class='the_loading_div'> <div class='ma_loading " + status['loading'] + "' style='width:" + percent + "%'>  </div> <span> " + percent + "% </span> </div><p> " + status['label'] + " </p>   </div>").appendTo("#" + app_to);
+    var thetable = "";
+
+    if (baseline != false && target != false) {
+        thetable = "<div style='display: flex;justify-content: space-between;'> <span> Baseline <br/> "+baseline+" </span> <span> Target <br/> "+target+" </span> </div>";
+    }
+
+    $("<div class='ma_desc'> <p class='lbl_p'> " + label + " </p> "+thetable+" <div class='the_loading_div'> <div class='ma_loading " + status['loading'] + "' style='width:" + percent + "%'>  </div> <span> " + percent + "% </span> </div><p> " + status['label'] + " </p> </div>").appendTo("#" + app_to);
 
     return status['color'];
 }
