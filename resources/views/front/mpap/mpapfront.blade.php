@@ -76,7 +76,8 @@
     </div>
 
     @include('front.mainnavs',['navigation'=>'rbme'])
-
+    
+    <h3 id='rbmetitlename'> &nbsp; </h3>
     <div class="macro_indicators pt-10" id="macro_indicators">
         <div class="d-flex flex-column" style="height: 100%;">
             <h2 class='pl-25 macrotitle mt-15' style="flex:0;"> MACRO <span class="color-yellow"> ECONOMIC INDICATORS </span> 

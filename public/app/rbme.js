@@ -33,6 +33,10 @@ $(document).on("click", "#showprojects", function () {
 $(document).on("click", ".iconagenda", function (e) {
     agendaid = $(this).data('maid');
 
+    $(document).find("#rbmetitlename").show();
+    $(document).find("#rbmetitlename").html("Agenda "+agendaid+" Progress Overview");
+
+    map.flyTo({zoom:7, center: [125.17278219762514,7.852526199835467]});
     mindanao_agenda(agendaid);
 });
 
@@ -59,6 +63,9 @@ $(document).on("click", ".peroutcome", function () {
 
     $(document).find(".kpis").remove();
     $(document).find("#kpis_" + outcomeid).remove();
+
+    $(document).find("#rbmetitlename").show();
+    $(document).find("#rbmetitlename").html("Indicator Overview");
 
     get_("get_kpis", { outcomeid: outcomeid, region_id_selected: region_id_selected }, function (data) {
 
