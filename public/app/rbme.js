@@ -65,7 +65,7 @@ $(document).on("click", ".peroutcome", function () {
         $("<ul>").attr({ id: "kpis_" + outcomeid, class: "kpis" }).appendTo("#outcome_" + outcomeid);
 
         for (var io = 0; io <= Object.keys(data.values).length - 1; io++) {
-            $("<li class='perkpi' data-outputid='" + data.values[io].outputid + "'> <div class='row'>  <div class='col-md-2'><span class='badge badge-light-success fs-base' style='background-color:#fff;'><i class='ki-outline ki-arrow-up fs-5 text-success ms-n1'></i>" + data.values[io].thevalue + "</span></div> <div class='col-md-10'>" + data.values[io].kpi + " </div> </div> </li>").appendTo("#kpis_" + outcomeid);
+            $("<li class='perkpi' data-outputid='" + data.values[io].outputid + "'> <div class='row'>  <div class='col-md-2'><span class='badge badge-light-success fs-base' style='background-color:#fff;'>" + data.values[io].thevalue + "</span></div> <div class='col-md-10'>" + data.values[io].kpi + " </div> </div> </li>").appendTo("#kpis_" + outcomeid);
         }
 
     });
