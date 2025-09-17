@@ -120,7 +120,7 @@
                         </div> -->
                     </div>
                     <div class="flex-column pl-20">
-                         <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> THE IMPLIMENTING PARTNERS </h5> 
+                         <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> THE IMPLEMENTING PARTNERS </h5> 
                         <div class='wrap-flex flex-row gap_3 centerall'>
                             <div class="d-flex sponsors-img theagendalogo">
                                 <img class='' src="{{asset('images/partners/eu_small.jpg')}}" />
