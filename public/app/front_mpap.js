@@ -203,7 +203,7 @@ function the_status(percent) {
         status['label'] = "Below Target";
         status['loading'] = "red_loading";
         status['color'] = "#ff0000";
-    } else if (percent >= 0 && percent <= 21) {
+    } else if (percent <= 21) {
         status['label'] = "Far Below Target";
         status['loading'] = "grey_loading";
         status['color'] = "#d4d4d4";
