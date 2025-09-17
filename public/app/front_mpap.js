@@ -187,11 +187,11 @@ function the_status(percent) {
     status['loading'] = null;
     status['color'] = null;
 
-    if (percent >= 76) {
+    if (percent >= 75) {
         status['label'] = "Mindanao Agenda Achieved";
         status['loading'] = "green_loading";
         status['color'] = "#007f00";
-    } else if (percent >= 51 && percent <= 75) {
+    } else if (percent >= 50 && percent <= 75) {
         status['label'] = "Challenges Remain";
         status['loading'] = "yellow_loading";
         status['color'] = "#ffd966";
