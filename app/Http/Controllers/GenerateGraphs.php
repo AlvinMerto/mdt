@@ -89,12 +89,31 @@ class GenerateGraphs extends Controller
         //                           JOIN geolocation ON financetbls.fid = geolocation.md_projectsid 
         //                           GROUP BY region");
 
-        $collection    = DB::select("SELECT region, sum(projectamountpersite) as totalprojects 
+        // countofprojects
+        // amountperprojects
+        $typeofgraphs  = $req->input("typeofgraph");
+
+        $collection    = null;
+        switch($typeofgraphs) {
+            case "countofprojects":
+                $collection    = DB::select("SELECT region, count(master__data.masterid) as totalprojects 
                                      FROM financetbls 
                                      JOIN geolocation ON financetbls.fid = geolocation.md_projectsid 
                                      JOIN master__data on financetbls.masterid = master__data.masterid
                                      where master__data.type_of_financing = '{$req->input('type_of_financing')}'
                                      GROUP BY region");
+                break;
+            case "amountperprojects":
+                $collection    = DB::select("SELECT region, sum(projectamountpersite) as totalprojects 
+                                     FROM financetbls 
+                                     JOIN geolocation ON financetbls.fid = geolocation.md_projectsid 
+                                     JOIN master__data on financetbls.masterid = master__data.masterid
+                                     where master__data.type_of_financing = '{$req->input('type_of_financing')}'
+                                     GROUP BY region");
+                break;
+        }
+        
+        
         
         return response()->json($collection);
     }

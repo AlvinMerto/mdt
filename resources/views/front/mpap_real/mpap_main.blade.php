@@ -286,13 +286,16 @@
                     </div>
                     
                     <div class="boxes_div mb-5">
-                        <h6 class="dist_name"> -- </h6>
-                        <div id="distributiongraph"></div>
-                    </div>
-                    <div class="boxes_div" id="dist_per_reg" style="background:#fff;">
-                        <h6 style="border-bottom: 1px solid #ccc;padding-bottom: 10px;margin-bottom: 15px;"> Distribution of <span class="dist_name_reg"> </span> per Region <i class="bi bi-x-circle closethiswindow" data-window='#dist_per_reg'></i></h6>
+                        <!-- <h6 class="dist_name"> -- </h6>
+                        <div id="distributiongraph"></div> -->
+                        <h6 style="border-bottom: 1px solid #ccc;padding-bottom: 10px;margin-bottom: 15px;"> <span class="dist_name_reg"> &nbsp; </span> <i class="bi bi-x-circle closethiswindow" data-window='#dist_per_reg'></i></h6>
                         <div id="distributiongraph_region"></div>
                     </div>
+
+                    <!-- <div class="boxes_div" id="dist_per_reg" style="background:#fff;">
+                        <h6 style="border-bottom: 1px solid #ccc;padding-bottom: 10px;margin-bottom: 15px;"> Distribution of <span class="dist_name_reg"> </span> per Region <i class="bi bi-x-circle closethiswindow" data-window='#dist_per_reg'></i></h6>
+                        <div id="distributiongraph_region"></div>
+                    </div> -->
 
                     <div class="boxes_div mb-5">
                         <h6> Top ODA funders <small style="float: right;"> All </small> </h6>

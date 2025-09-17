@@ -78,15 +78,19 @@ function initializeEvents() {
 
         $(document).find(".loaddist").removeClass("strongit");
         $(this).addClass("strongit");
-        distributiongraph(tof);
-    })
+        // distributiongraph(tof);
+        distributiongraph_region("Mindanao Specific", tof, "amountperprojects", "Distribution of the Amount of Project per Region");
+        removemarker();
+    });
 
     $(document).on("click", ".numofprojs", function () {
         var tof = $(this).data("typeoffinancing");
 
         $(document).find(".numofprojs").removeClass("strongit");
         $(this).addClass("strongit");
-        countofprojects(tof);
+        // countofprojects(tof);
+        distributiongraph_region("Mindanao Specific", tof, "countofprojects", "Distribution of the Number of Projects");
+        removemarker();
     });
 }
 
@@ -554,14 +558,14 @@ function initialize_graph() {
 }
 
 function distributiongraph(type_of_financing) {
-    getHeat(type_of_financing, "amount_per_projects", "Amount of " + type_of_financing + " Distribution per Island Region");
+    getHeat(type_of_financing, "amount_per_projects", "Amount of " + type_of_financing + " Distribution per Island Region", "amountperprojects");
 }
 
 function countofprojects(type_of_financing) {
-    getHeat(type_of_financing, "countOfProjects", "Number of Projects of " + type_of_financing + " Distribution per Island Region");
+    getHeat(type_of_financing, "countOfProjects", "Number of Projects of " + type_of_financing + " Distribution per Island Region", "countofprojects");
 }
 
-function getHeat(type_of_financing, apiEndpoint, word) {
+function getHeat(type_of_financing, apiEndpoint, word, typeofgraph ) {
     $("#distributiongraph").show();
     disposeRoot("distributiongraph");
 
@@ -579,29 +583,31 @@ function getHeat(type_of_financing, apiEndpoint, word) {
         pieSeries.labels.template.disabled = true;
 
         pieSeries.slices.template.events.on("hit", function (ev) {
-            distributiongraph_region(ev.target.dataItem.dataContext.theregion, type_of_financing);
+            distributiongraph_region(ev.target.dataItem.dataContext.theregion, type_of_financing, typeofgraph);
             removemarker();
         });
     });
 }
 
-function distributiongraph_region(region, type_of_financing) {
+function distributiongraph_region(region, type_of_financing, typeofgraph = false, word = false) {
     if (region != "Mindanao Specific") {
         alert("Cannot show data that is not Mindanao Specific");
         return;
     }
 
-    // $("#distributiongraph_region").show();
+    // $("#distributiongraph").show();
     $(document).find("#dist_per_reg").show();
-    $(document).find(".dist_name_reg").html(type_of_financing);
+    $(document).find(".dist_name_reg").html(word);
 
+    // distributiongraph
+    // distributiongraph_region
     disposeRoot("distributiongraph_region");
 
     var root = am5.Root.new("distributiongraph_region");
 
     var chart = am4core.create("distributiongraph_region", am4charts.PieChart);
 
-    get_("sum_of_projects_per_region", { type_of_financing: type_of_financing }, function (data) {
+    get_("sum_of_projects_per_region", { type_of_financing: type_of_financing , typeofgraph : typeofgraph }, function (data) {
         chart.data = data;
 
         var thevalues = [];
