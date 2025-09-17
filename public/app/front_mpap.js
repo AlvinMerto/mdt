@@ -199,7 +199,7 @@ function the_status(percent) {
         status['label'] = "Needs Improvement";
         status['loading'] = "pink_loading";
         status['color'] = "#f4b084";
-    } else if (percent <= 51 && percent >= 66) {
+    } else if (percent >= 51 && percent >= 66) {
         status['label'] = "Below Target";
         status['loading'] = "red_loading";
         status['color'] = "#ff0000";
