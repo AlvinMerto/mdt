@@ -126,7 +126,6 @@
                                 <img class='' src="{{asset('images/partners/eu_small.jpg')}}" />
                                 <img class='' src="{{asset('images/partners/gizcoop_small.png')}}" />
                                 <img class='' src="{{asset('images/partners/giz_small.png')}}" />
-                                <img class="" src="{{asset('images/partners/usaid_small.png')}}" />
                             </div>
                         </div>
                         <div style="margin-top:30px;">
