@@ -504,7 +504,7 @@ p.the_agenda10:hover {
     z-index: 100000;
     scale: 1.5;
     transition: .5s scale;
-
+    background-color: #fff;
 }
 
 .centerall{
@@ -545,7 +545,18 @@ display: inline-block;
 }
 
 .mdtlogo {
-    width:215px !important;
+    width:15% !important;
+}
+
+.ints_logos {
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.ints_logos img {
+    width: 10%;
+    height: 10%;
 }
 
 @media only screen and (max-width: 1100px) {

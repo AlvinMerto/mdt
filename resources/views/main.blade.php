@@ -66,15 +66,16 @@
             </div>
             <div class="col-md-12 thebgblack_ thebgdiv" style="padding: 0px;position: relative;z-index: 9999999999999;">
                 <div class="wrap-flex flex-column height-100 centerall container-fluid">
-                    <div class="wrap-flex flex-row gap-5 navdiv pagenavs pt-25">
-                        <img class="mdtlogo" src="{{asset('images/mdt_logo.png')}}"/>
+                    <div class="wrap-flex flex-row gap-5 navdiv pagenavs pt-25 ints_logos">
                         <img class='' src="{{asset('images/partners/minda_small.png')}}" />
                         <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" />
+                        <img class='' src="{{asset('images/bbm_new_logo.png')}}"/>
+                        <!-- <img class="mdtlogo" src="{{asset('images/mdt_logo.png')}}"/> -->
                     </div>
                     <div class="flex-column thenavigation wrap-flex pl-20">
                         <div class='centertext'>
-                            <h1 class='white-it big-ma-text bold-it'> MDT </h1>
-                            <h4 class='white-it' style="text-shadow: 0px 1px 2px #000;"> MINDANAO DEVELOPMENT TRACKER </h4> 
+                            <h1 class='white-it big-ma-text bold-it'> <img class="mdtlogo" src="{{asset('images/mdt_logo.png')}}"/>  </h1>
+                            <!-- <h4 class='white-it' style="text-shadow: 0px 1px 2px #000;"> MINDANAO DEVELOPMENT TRACKER </h4>  -->
                         </div>
                         <div class="w-80-p auto-marg">
                             <p>
@@ -120,11 +121,15 @@
                         </div> -->
                     </div>
                     <div class="flex-column pl-20">
-                         <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> THE PARTNERS </h5> 
+                        <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> FUNDED BY </h5> 
                         <div class='wrap-flex flex-row gap_3 centerall'>
                             <div class="d-flex sponsors-img theagendalogo">
                                 <img class='' src="{{asset('images/partners/eu_small.jpg')}}" />
                                 <img class='' src="{{asset('images/partners/gizcoop_small.png')}}" />
+                                <!-- <img class='' src="{{asset('images/partners/giz_small.png')}}" /> -->
+                            </div>
+                            <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> IMPLEMENTING PARTNER </h5> 
+                            <div class="d-flex sponsors-img theagendalogo">
                                 <img class='' src="{{asset('images/partners/giz_small.png')}}" />
                             </div>
                         </div>

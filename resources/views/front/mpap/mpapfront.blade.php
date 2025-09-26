@@ -67,7 +67,7 @@
     <div class="the_mindanao_agenda">
         <ul class="ma_icons">
             <?php foreach ($ma as $m) {
-                $link     = "storage/images/ma_icons/{$m->thelogo}";
+                $link     = "storage/images/ma_icons/".urlencode($m->thelogo)."";
                 $ma_icons = asset($link);
             ?>
                 <li class='iconagenda' data-maid="<?php echo $m->agendaid; ?>"> <img src=<?php echo $ma_icons; ?> id="iconagenda_<?php echo $m->agendaid; ?>"> </li>
@@ -160,10 +160,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3> OUTCOMES
-                            <div style='float:right;'>
+                            <!-- <div style='float:right;'>
                                 <button id='showprojects' class='btntool'> Show Projects </button>
                                 <button id='showlayer' class='btntool'> Layer </button>
-                            </div>
+                            </div> -->
                         </h3>
                     </div>
                     <div id="theoutcomes"> </div>

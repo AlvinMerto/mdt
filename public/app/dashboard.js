@@ -133,7 +133,7 @@ $('#fileInput').on('change', function () {
     form_data.append("aid", aid);
 
     $.ajax({
-        url: '/uploadlogo', // Laravel route
+        url: '/tracker/uploadlogo', // Laravel route
         type: 'POST',
         data: form_data,
         contentType: false,

@@ -103,7 +103,7 @@ $(document).on("click", ".perkpi", function () {
     $(document).find(".perkpi").removeClass("perkpi_selected");
     $(this).addClass("perkpi_selected");
 
-    get_kpi_info(null, outpudid);
+    get_kpi_info(2025, outpudid);
 });
 
 $(document).on("click", "#yearselect li", function () {
