@@ -69,7 +69,7 @@
                     <div class="wrap-flex flex-row gap-5 navdiv pagenavs pt-25 ints_logos">
                         <img class='' src="{{asset('images/partners/minda_small.png')}}" />
                         <img class='' src="{{asset('images/partners/bagongpil_small.png')}}" />
-                        <img class='' src="{{asset('images/bbm_new_logo.png')}}"/>
+                        <img class='' src="{{asset('images/bbm.png')}}"/>
                         <!-- <img class="mdtlogo" src="{{asset('images/mdt_logo.png')}}"/> -->
                     </div>
                     <div class="flex-column thenavigation wrap-flex pl-20">
@@ -127,7 +127,7 @@
                                 <img class='' src="{{asset('images/partners/dilg_logo.png')}}" />
                                 <img class='' src="{{asset('images/partners/eu_small.jpg')}}" />
                                 <img class='' src="{{asset('images/partners/gizcoop_small.png')}}" />
-                                <img class='' src="{{asset('images/partners/giz_small.png')}}" style="height: 40px;margin-top: 20px;"/>
+                                <img class='' src="{{asset('images/partners/giz_small.png')}}" style="height: 40px;"/>
                             </div>
                             <!-- <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> IMPLEMENTING PARTNER </h5> 
                             <div class="d-flex sponsors-img theagendalogo">

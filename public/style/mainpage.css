@@ -399,7 +399,9 @@ p.the_agenda10:hover {
     display: inline-block;
 }
 
-.sponsors-img {}
+.sponsors-img {
+    align-items: first baseline;
+}
 
 .sponsors-img img {
     width: fit-content;
@@ -551,7 +553,7 @@ display: inline-block;
 .ints_logos {
     text-align: center;
     justify-content: center;
-    
+    align-items: first baseline;
 }
 
 .ints_logos img {
