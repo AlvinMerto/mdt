@@ -92,6 +92,12 @@ function initializeEvents() {
         distributiongraph_region("Mindanao Specific", tof, "countofprojects", "Distribution of the Number of Projects");
         removemarker();
     });
+
+    $(document).on("click",".atts_ul li", function() {
+        var img = $(this).find("img").clone();
+
+        $(document).find("#imgsrc").html(img); 
+    });
 }
 
 function loadprojects() {

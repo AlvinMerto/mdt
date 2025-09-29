@@ -159,6 +159,32 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-7" id="theupdates">
+                        <div class="col-md-12">
+                            <div>
+                                <span> Updates of the Project </span>
+                                <div class="mt-2">
+                                    <ul class="atts_ul">
+                                        <li style="width:40%;" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/1.jpg')}}" /> </li>
+                                        <li style="width:40%;"
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#lightroom_div"> <img class='image_att'  src="{{asset('images/attachments/2.jpg')}}" /> </li>
+                                        <li style="width:40%;"
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/3.jpg')}}" /> </li>
+                                        <li style="width:40%;"
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/4.jpg')}}" /> </li>
+                                        <li style="width:40%;"
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/5.jpg')}}" /> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-5">
                         <div class="col-md-12">
                             <div>
@@ -656,6 +682,19 @@
                         By providing this unprecedented level of transparency and accessibility to project information, the database transforms how stakeholders understand, coordinate, and optimize development efforts across Mindanao.
                     </p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="lightroom_div" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true" style="z-index:9999999999;">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Body -->
+                <div class="modal-body body_details">
+                    <span id="imgsrc"></span>
+                    <!-- <img style="width:100%;" src="{{asset('images/attachments/agenda4.jpg')}}" /> -->
+                </div>
+                <!-- end modal body -->
             </div>
         </div>
     </div>

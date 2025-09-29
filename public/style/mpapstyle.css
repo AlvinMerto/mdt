@@ -882,6 +882,25 @@ body {
     color: green;
 }
 
+.atts_ul {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    gap: 5px;
+}
+
+.atts_ul li {
+    list-style: none;
+    
+}
+
+.atts_ul li img {
+    width:100%;
+}
+
+.image_att {
+    width:100%;
+}
 /* The animation code */
 @keyframes example {
     0% {
