@@ -121,17 +121,18 @@
                         </div> -->
                     </div>
                     <div class="flex-column pl-20">
-                        <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> FUNDED BY </h5> 
+                        <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> PARTNERS </h5> 
                         <div class='wrap-flex flex-row gap_3 centerall'>
                             <div class="d-flex sponsors-img theagendalogo">
+                                <img class='' src="{{asset('images/partners/dilg_logo.png')}}" />
                                 <img class='' src="{{asset('images/partners/eu_small.jpg')}}" />
                                 <img class='' src="{{asset('images/partners/gizcoop_small.png')}}" />
-                                <!-- <img class='' src="{{asset('images/partners/giz_small.png')}}" /> -->
+                                <img class='' src="{{asset('images/partners/giz_small.png')}}" style="height: 40px;margin-top: 20px;"/>
                             </div>
-                            <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> IMPLEMENTING PARTNER </h5> 
+                            <!-- <h5 class='white-it centertext mt-10' style="text-shadow: 0px 1px 2px #000;"> IMPLEMENTING PARTNER </h5> 
                             <div class="d-flex sponsors-img theagendalogo">
                                 <img class='' src="{{asset('images/partners/giz_small.png')}}" />
-                            </div>
+                            </div> -->
                         </div>
                         <div style="margin-top:30px;">
                             <ul class='btn_navigation'>
