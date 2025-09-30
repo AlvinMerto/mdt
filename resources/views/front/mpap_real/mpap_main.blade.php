@@ -729,8 +729,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var myModal = new bootstrap.Modal(document.getElementById('welcomediv'));
-            myModal.show();
+            // var myModal = new bootstrap.Modal(document.getElementById('welcomediv'));
+            // myModal.show();
         });
     </script>
 
