@@ -159,7 +159,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-7" id="theupdates">
+                    <!-- <div class="row mb-7" id="theupdates">
                         <div class="col-md-12">
                             <div>
                                 <span> Updates of the Project </span>
@@ -184,7 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row mb-5">
                         <div class="col-md-12">
                             <div>

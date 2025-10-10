@@ -116,6 +116,11 @@ Route::get("/tracker/topoda", [FrontEndController::class,"topoda"])->name("topod
 Route::get("/tracker/launch",function() {
     return view("launch");
 });
+
+Route::get("/tracker/sidebyside", function(){
+    return view("sidebyside");
+});
+
 // widgets 
 Route::get("/tracker/allprojects", [FrontEndController::class,"allprojects"])->name('allprojects');
 Route::get("/tracker/getodagrant_figures", [FrontEndController::class,"getodagrant_figures"])->name("getodagrant_figures");
