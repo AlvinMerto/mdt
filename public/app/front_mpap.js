@@ -118,7 +118,7 @@ function get_(getwhat, d, somefunc = false) {
                 somefunc(data, jqXHR);
             }
         }, error: function (a, b, c) {
-            console.log(a + b + c);
+            console.log(a + b + c+"="+getwhat);
         }
     });
 }
