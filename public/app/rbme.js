@@ -89,16 +89,16 @@ $(document).on("click", ".perkpi", function () {
 
     $(document).find(".yeardiv").remove();
 
-    get_("trend", { outpudid: outpudid }, function (data) {
-        $(data).insertAfter("#" + dis_id);
+    // get_("trend", { outpudid: outpudid }, function (data) {
+    //     $(data).insertAfter("#" + dis_id);
 
-        var yrs = $(document).find("#yearselect li");
+    //     var yrs = $(document).find("#yearselect li");
 
-        yrs.each(function (idx, ele) {
-            var txt = yrs.eq(idx).text();
-            theyears.push(txt.trim());
-        });
-    });
+    //     yrs.each(function (idx, ele) {
+    //         var txt = yrs.eq(idx).text();
+    //         theyears.push(txt.trim());
+    //     });
+    // });
 
     $(document).find(".perkpi").removeClass("perkpi_selected");
     $(this).addClass("perkpi_selected");
