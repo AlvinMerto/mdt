@@ -95,7 +95,10 @@ class Dashboard extends Controller
                                     group by devpartner, logo, id");
         $projects    = [];
 
-        return view("backend.mpapback")->with(["panel" => "all", "projects" => $projects,"devparts" => $devparts]);
+        return view("backend.mpapback")->with(["panel" => "all", 
+                                               "projects" => $projects,
+                                               "devparts" => $devparts, 
+                                               "userprofile" => $userprofile]);
     }
 
     function prjsunderdevpart(Request $req) {
@@ -178,7 +181,8 @@ class Dashboard extends Controller
             }
         }
 
-        return view("backend.mpapback")->with(["panel" => "add"]);
+        $userprofile = userprofile::where("userid", Auth::id())->get();
+        return view("backend.mpapback")->with(["panel" => "add",'userprofile' => $userprofile]);
     }
 
     function edit(Request $req, $id)
@@ -262,6 +266,7 @@ class Dashboard extends Controller
             die("ID not found");
         }
 
+        $userprofile = userprofile::where("userid", Auth::id())->get();
         return view("backend.editprogproj")->with([
             "collection"      => $collection,
             "allmasterdata"  => $allmasterdata,
@@ -272,7 +277,8 @@ class Dashboard extends Controller
             "sub_sector"     => $sub_sector,
             "sub_financing"  => $sub_financing,
             "implimentingps" => $ip,
-            "ma"             => $ma
+            "ma"             => $ma,
+            "userprofile"    => $userprofile
         ]);
     }
 
@@ -373,6 +379,7 @@ class Dashboard extends Controller
 
     function editrbme($edit)
     {
+        $userprofile = userprofile::where("userid", Auth::id())->get();
         $agendaid   = $edit;
 
         // $collection = DB::select("SELECT the_outcomes.theoutcome,the_outcomes.outcomeid, the_outcomes.thevalue 
@@ -386,7 +393,10 @@ class Dashboard extends Controller
                                     group by the_outcomes.theoutcome, the_outcomes.thevalue, the_outcomes.outcomeid");
 
         $agenda     = TheAgenda::where("agendaid", $agendaid)->get();
-        return view("backend.editrbme")->with(["outcomes" => $collection, "agenda" => $agenda, "agendaid" => $agendaid]);
+        return view("backend.editrbme")->with(["outcomes" => $collection, 
+                                               "agenda" => $agenda, 
+                                               "agendaid" => $agendaid,
+                                               "userprofile" => $userprofile]);
     }
 
     function get_kpi_window(Request $req)

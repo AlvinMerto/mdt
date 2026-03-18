@@ -94,7 +94,7 @@
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-fluid">
-								@include('backend.topbar')
+								@include('backend.topbar', ['userprofile' => $userprofile])
 									<!--begin::Form-->
 									<div id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
 										<!--begin::Aside column-->
