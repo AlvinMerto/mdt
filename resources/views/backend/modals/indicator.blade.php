@@ -1,12 +1,16 @@
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
 <?php if (count($collection) > 0) { // dd($collection); ?>
     <?php for($i = 0; $i <= count($collection)-1; $i++) { ?>
-        <div class="odd px-3" id="kpiid_<?php echo $i; ?>">
+        <div class="card odd p-3 mb-7" id="kpiid_<?php echo $i; ?>">
             <div class="row">
-                <div class="col-md-4 d-flex pe-0 align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_1">
+                <div class="col-md-4 d-flex align-items-center" data-kt-ecommerce-edit-order-filter="product" data-kt-ecommerce-edit-order-id="product_1">
                     <div class="" style="width: 100%;">
                         <!-- <p class="text-gray-800 text-hover-primary fs-5 fw-bold " style="cursor:pointer;"> -->
                             <span class="badge">Indicator Name</span>
-                            <input type="text" class='form-control fieldtext' 
+                            <input type="text" class='form-control fieldtext w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 input-focus' 
                                     data-field="kpi" 
                                     data-table = "the_outputs"
                                     data-keyid_fld = "outputid"
@@ -20,32 +24,32 @@
                                     <?php // echo $collection[$i]->theweight; ?> 
                                 </span>
                             </div> -->
-                            <div class=''> 
-                                <label class="btn btn-light btn-sm kpitab" 
+                            <div class='flex flex-wrap gap-3'> 
+                                <button class="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg font-medium hover:bg-blue-100 transition-colors text-sm kpitab" 
                                         data-outcomeid = "<?php echo $collection[$i]->fkoutcomeid; ?>"
                                         data-displayto = "disaggregation_<?php echo $i; ?>"
                                         data-kpiid = "<?php echo $collection[$i]->outputid; ?>">
-                                <i class="ki-outline ki-pencil fs-30 text-hover-primary" > </i> Edit Disaggregation </label>
-                                <label class="btn btn-light btn-sm deletethis" data-remove='#kpiid_<?php echo $i; ?>' data-tbl="the_outputs" data-keyfld="outputid" data-keyid="<?php echo $collection[$i]->outputid; ?>"> <i class="bi bi-trash3 fs-30 text-hover-danger"> </i> Delete </label>
+                                <i class="fa-solid fa-pen-to-square" > </i> Edit Disaggregation </button>
+                                <button class="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 rounded-lg font-medium hover:bg-red-100 transition-colors text-sm deletethis" data-remove='#kpiid_<?php echo $i; ?>' data-tbl="the_outputs" data-keyfld="outputid" data-keyid="<?php echo $collection[$i]->outputid; ?>"> <i class="fa-solid fa-trash-can"> </i> Delete </button>
                             </div>
                         </div>
                         <!-- <div class="text-muted fs-7">SKU: 04423008</div> -->    
                     </div>
                 </div>
-                <div class="text-start pe-0 col-md-2">
+                <div class="text-start col-md-2">
                     <span class="badge">Indicator Weight</span>
                     <input type = "text" 
-                            class="form-control fieldtext" 
+                            class="form-control fieldtext w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 input-focus" 
                             data-field="theweight" 
                             data-table = "the_outputs"
                             data-keyid_fld = "outputid"
                             value = "<?php echo $collection[$i]->theweight; ?>"
                             data-dbid="<?php echo $collection[$i]->outputid; ?>"/>
                 </div>
-                <div class="text-start pe-0 col-md-2">
+                <div class="text-start col-md-2">
                     <span class="badge">Frequency</span>
                     <span class="fw-bold"> 
-                        <select class="form-select fieldtext" 
+                        <select class="form-select fieldtext w-full appearance-none px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 input-focus cursor-pointer" 
                                 data-field="frequency" 
                                 data-table = "the_outputs"
                                 data-keyid_fld = "outputid"
@@ -56,10 +60,10 @@
                         </select>
                     </span>
                 </div>
-                <div class="text-start pe-0 col-md-2">
+                <div class="text-start col-md-2">
                     <span class="badge">Type of value</span>
                     <span class="fw-bold">
-                        <select class="form-select fieldtext"
+                        <select class="form-select fieldtext w-full appearance-none px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 input-focus cursor-pointer"
                                 data-field="thetype" 
                                 data-table = "the_outputs"
                                 data-keyid_fld = "outputid"
@@ -69,10 +73,10 @@
                         </select>
                     </span>
                 </div>
-                <div class="text-start pe-0 col-md-2">
+                <div class="text-start col-md-2">
                     <span class="badge">Year</span>
                     <span class="fw-bold">
-                        <select class="form-select selectchange">
+                        <select class="form-select selectchange w-full appearance-none px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 input-focus cursor-pointer">
                             <?php for($year = 2025 ; $year >= 2016 ; $year--) {?>
                                 <option> <?php echo $year; ?> </option>
                             <?php } ?>
@@ -80,7 +84,7 @@
                     </span>
                 </div>
                 <div class="tab-pane fade show active disaggregationdiv" id="disaggregation_<?php echo $i; ?>">
-						
+					
 				</div>
             </div>
             <!-- <td class="text-end pe-5" data-order="1">    -->

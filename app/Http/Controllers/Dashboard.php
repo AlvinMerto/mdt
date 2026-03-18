@@ -27,6 +27,8 @@ use App\Models\sectortbl;
 use App\Models\sub_financing;
 use App\Models\sub_sectortbl;
 
+use App\Models\userprofile;
+
 use App\Models\UniversalFunction;
 
 use Illuminate\Http\Request;
@@ -70,19 +72,36 @@ class Dashboard extends Controller
         // $projects = master__data::select("development_partner","title","masterid")->groupBy(["development_partner","title","masterid"])->get(); //all(); // 
         // $devparts    = DevPartners::all();
 
+        $userprofile = userprofile::where("userid", Auth::id())->get();
+        // var_dump($userprofile[0]->agencyid);
+
+        $where       = null;
+
+        if (count($userprofile) > 0) {
+            $agencyid      = $userprofile[0]->agencyid;
+            $powerlevel    = $userprofile[0]->powerlevel;
+
+            if ($powerlevel > 0) {
+                $where     = "where development_partner = '{$agencyid}'";
+            }
+        }
+
         $devparts    = DB::select("select count(masterid) as prjcnt, devpartner, logo, id
                                     from master__data join dev_partners on 
                                     master__data.development_partner = dev_partners.id 
+                                    {$where}
                                     group by devpartner, logo, id");
         $projects    = [];
+
         return view("backend.mpapback")->with(["panel" => "all", "projects" => $projects,"devparts" => $devparts]);
     }
 
     function prjsunderdevpart(Request $req) {
         $devpartner = $req->input("devpart");
+        $level      = $req->input('prjlevel');
 
-        $projects   = master__data::where("development_partner", $devpartner)->get();
-        $html       = view("backend.modals.prjsunderdevpart")->with(["projects" => $projects])->render();
+        $projects   = master__data::where(["development_partner"=>$devpartner,"layertype" => $level])->get();
+        $html       = view("backend.modals.prjsunderdevpart")->with(["projects" => $projects, "level" => $level])->render();
         return response()->json($html);
     }
 
@@ -164,6 +183,7 @@ class Dashboard extends Controller
     {
         // master data
         if ($req->isMethod("post")) {
+
             // columnplace
             // exactaddr
             // brgy
@@ -204,7 +224,16 @@ class Dashboard extends Controller
                                                  where masterid = '{$id}'");
 
         // development partners
-        $devparts           = DevPartners::all();
+        $profile            = userprofile::where("userid", Auth::id())->get("agencyid");
+        $userprofile        = $profile[0]->agencyid;
+
+        $powerlevel         = $profile[0]->powerlevel;
+
+        if ($powerlevel == 0) {
+            $devparts       = DevPartners::all();    
+        } else {        
+            $devparts       = DevPartners::where("id", $userprofile)->get();
+        }
 
         // sector 
         $sector             = sectortbl::all();

@@ -59,8 +59,8 @@
     </div>
 </div>
 <?php } else { ?>
-<h6> Add New data for this location </h6>
-<div class="row mb-2">
+<h6 class="my-4 font-bold"> Add New data for this location </h6>
+<div class="row mb-5">
     <div class="col-md-4">
         <label> Name </label>
         <input type="text" class='form-control'

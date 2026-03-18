@@ -111,18 +111,37 @@ $(document).on("click", ".fakesave", function () {
     alert("Successfully Saved");
 })
 
+var m_id = null;
+
 $(document).on("click",".bring_down", function() {
-    var m_id = $(this).data('arrowdata');
+    m_id = $(this).data('arrowdata');
 
+    $(document).find(".thedevs").children().remove();
+    
     $(document).find(".devpart"+m_id).children().remove();
-    $("<span> Loading... </span>").appendTo(".devpart"+m_id);
+    $("<td colspan='10'> Loading... </td>").appendTo(".devpart"+m_id);
 
-    get_("prjsunderdevpart", {devpart : m_id }, function(data) {
+    get_("prjsunderdevpart", {devpart : m_id, prjlevel : 1 }, function(data) {
         $(document).find(".devpart"+m_id).children().remove();
         $(document).find(".devpart"+m_id).children().remove();
         $(data).appendTo(".devpart"+m_id);
     });
 });
+
+$(document).on("click",".small_tab_select li", function() {
+    $(this).siblings().removeClass("bold-selected");
+    $(this).addClass("bold-selected");
+
+    var level = $(this).data("level");
+
+    get_("prjsunderdevpart", {devpart : m_id, prjlevel : level }, function(data) {
+        $(document).find(".devpart"+m_id).children().remove();
+
+        $(document).find(".devpart"+m_id).children().remove();
+        $(document).find(".devpart"+m_id).children().remove();
+        $(data).appendTo(".devpart"+m_id);
+    });
+})
 
 $('#fileInput').on('change', function () {
     var file_data = $('#fileInput').prop('files')[0];
@@ -313,6 +332,7 @@ $(document).on("click", ".tabindex_year li", function () {
 $(document).on("change",".thelocation", function() {
     // if (theyear == null) { return; }
     $(document).find("#currentextfld").children().remove();
+    $(document).find("#disagg_box").show();
 
     var loc = $(this).val();
 
@@ -321,6 +341,7 @@ $(document).on("change",".thelocation", function() {
         $(document).find("#currentextfld").children().remove();
         $(document).find("#addinfo_display").html("");
         $(document).find("#addinfo_display").children().remove();
+        $(document).find("#disagg_box").hide();
         return;
     }
 
@@ -338,6 +359,22 @@ $(document).on("change",".thelocation", function() {
         $(document).find("#addinfo_display").children().remove();
         $(data).appendTo("#addinfo_display");
     });
+});
+
+$(document).on("click","#addnewreportbtn", function() {
+    $(document).find("#addnewreport").show();
+    $(document).find("#listofreports").hide();
+
+    $(this).addClass("font-bold text-black-400").removeClass("text-gray-400");
+    $(document).find("#listofreportsbtn").removeClass("font-bold text-black-400").addClass("text-gray-400");
+});
+
+$(document).on("click","#listofreportsbtn", function() {
+    $(document).find("#addnewreport").hide();
+    $(document).find("#listofreports").show();
+
+    $(this).addClass("font-bold text-black-400").removeClass("text-gray-400");
+    $(document).find("#addnewreportbtn").removeClass("font-bold text-black-400").addClass("text-gray-400");
 });
 
 $(document).on("click", ".savenewvalue", function () {

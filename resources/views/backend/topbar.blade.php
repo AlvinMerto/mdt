@@ -6,8 +6,8 @@
     $rbme  = null;
     $mpap  = null;
 
-    if (isset($route[1])) {
-        switch($route[1]) {
+    if (isset($route[2])) {
+        switch($route[2]) {
             case "mpap":
                 $mpap = "active";
                 break;
@@ -18,9 +18,10 @@
     } else {
        $main = "active";
     }
-    
+
 ?>
 <!--begin::Navbar-->
+
 <div class="card mb-6 mb-xl-9">
     <div class="card-body pt-0 pb-0">
         <!--begin::Nav-->

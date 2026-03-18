@@ -590,9 +590,9 @@
                                             <!--begin::Card body-->
                                             <div class="card-body">
                                                 <!--begin::Table-->
-                                                <div id="kt_table_widget_5_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                <div id="kt_table_widget_5_table_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                                     <div class="table-responsive">
-                                                        <table class="table align-middle table-row-dashed fs-6 gy-3 dataTable no-footer">
+                                                        <table class="table align-middle table-row-dashed fs-6 gy-3 dataTable">
                                                             <!--begin::Table head-->
                                                             <thead>
                                                                 <!--begin::Table row-->

@@ -42,6 +42,6 @@
 
 <?php 
     if (count($collection) == 0) {
-        echo "<button class='btn btn-primary btn-sm savenewvalue'> Save </button>";
+        echo "<button class='px-8 py-2.5 bg-blue-600 text-white rounded-lg font-semibold shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all transform active:scale-95 savenewvalue'> Save </button>";
     }
 ?>

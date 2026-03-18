@@ -36,8 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+        // return view('dashboard');
+        return redirect()->route("dashboard");
+    })->name('wrongdashboard');
 });
 
 // Route::get("/mpap/{panel?}",[FrontEndController::class,"front"])->name("mpap.front");

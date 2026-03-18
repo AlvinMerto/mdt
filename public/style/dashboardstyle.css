@@ -42,11 +42,10 @@
 .tabindex_year li {
     border-radius: 3px 3px 0px 0px;
     padding: 5px 14px;
-    background: #f1f1f1;
 }
 
 .thedisplaydiv {
-    background: #e2e2e2;
+
     padding: 10px;
 }
 
@@ -64,7 +63,9 @@
 }
 
 .disagg_listli_selected {
-    background: #e2e2e2 !important;
+    background: #eaeaea !important;
+  border: 1px solid #ccc;
+  border-radius: 5px !important;
 }
 
 .ul_listing {
@@ -88,6 +89,11 @@
     background-color: #ccc !important;
 }
 
+.bold-selected {
+    font-weight: bold !important;
+    color:black;
+}
+
 .uploadcsvwindow {
     margin-top: 10px;
     border: 1px solid #eeecec;
@@ -98,6 +104,24 @@
 
 .font-20 {
     font-size: 20px !important;   
+}
+
+.font-weight-normal {
+    font-weight: normal;
+}
+
+.small_tab_select {
+
+}
+
+.small_tab_select li{
+    border-bottom:1px solid transparent;
+}
+
+.small_tab_select li:hover {
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
 }
 
 .color-gray {
