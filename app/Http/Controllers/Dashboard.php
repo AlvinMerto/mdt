@@ -84,6 +84,8 @@ class Dashboard extends Controller
             if ($powerlevel > 0) {
                 $where     = "where development_partner = '{$agencyid}'";
             }
+        } else {
+            die("Please wait while we calibrate your account");
         }
 
         $devparts    = DB::select("select count(masterid) as prjcnt, devpartner, logo, id
