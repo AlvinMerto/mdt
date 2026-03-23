@@ -53,6 +53,10 @@ Route::get("/tracker/details_tobox",[FrontEndController::class,"details_tobox"])
 Route::get("/tracker/get_projects",[FrontEndController::class,"get_projects"])->name("get_projects");
 Route::get("/tracker/the_projects",[FrontEndController::class,"the_projects"])->name("the_projects");
 
+// mpap widgets
+    // level two projects
+    Route::get('/leveltwo',[FrontEndController::class,"leveltwo"])->name("leveltwo");
+
 Route::middleware("auth")->group(function() {
     Route::get("/tracker/dashboard",[Dashboard::class,"index"])->name("dashboard");
     Route::post("/tracker/dashboard", [Dashboard::class,"index"])->name("dashboard");
@@ -86,6 +90,7 @@ Route::middleware("auth")->group(function() {
     Route::get("/tracker/prjsunderdevpart",[Dashboard::class,"prjsunderdevpart"])->name("prjsunderdevpart");
 
     Route::post("/tracker/deleterbme",[Dashboard::class,"deleterbme"])->name("deleterbme");
+
 });
 
 Route::get("/tracker/get_agenda", [TheAgendaController::class,"get_agenda"])->name("get_agenda");

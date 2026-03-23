@@ -271,8 +271,17 @@
 
                             <?php foreach($progs as $p) { ?>
                                 <div class="p-3 bg-slate-100 rounded-lg hover:bg-yellow-100 cursor-pointer transition-all border border-transparent hover:border-yellow-300">
-                                    <div class="text-[11px] font-bold uppercase text-slate-400"><?php echo $p->abbr; ?></div>
-                                    <div class="text-[13px] font-bold programclick" data-progid='<?php echo $p->masterid; ?>'><?php echo $p->title; ?></div>
+                                    <div>
+                                        <img class='w-[42px]' src='<?php echo asset("images/icons/".$p->logo.".png"); ?>'/> 
+                                    </div>
+                                    <div class="text-[13px] font-bold programclick" 
+                                         data-progid='<?php echo $p->masterid; ?>'
+                                         data-devpart='<?php echo $p->development_partner; ?>'
+                                         data-logo='<?php echo $p->pin; ?>'
+                                         data-status='<?php echo $p->status; ?>'><?php echo $p->title; ?></div>
+                                    <div class="text-[11px] font-bold uppercase text-slate-400">
+                                        <span> <?php echo $p->abbr; ?> </span>
+                                    </div>
                                     <span id="proj_<?php echo $p->masterid; ?>"></span>
                                 </div>
                             <?php } ?>

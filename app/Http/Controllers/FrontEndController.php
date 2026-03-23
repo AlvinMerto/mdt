@@ -55,10 +55,8 @@ class FrontEndController extends Controller
                                         ORDER BY g.region");
 
         $collection = collect($regions);
-        
-        $progs      = DB::select("select title, devpartner, abbr, masterid from master__data 
-                                   join dev_partners on master__data.development_partner = dev_partners.id
-                                   where layertype = 1");
+
+        $progs      = DB::select("select title, devpartner, development_partner, abbr, masterid, logo, pin, master__data.status as status from master__data join dev_partners on master__data.development_partner = dev_partners.id where layertype = 1");
 
         return view("front.mpap_real.mpap_main")->with(["allprojects"      => 0, 
                                                         "loangrant"        => 0, 
@@ -373,23 +371,29 @@ class FrontEndController extends Controller
             }
             $and = " and ";
             // $where_string = " where ".implode(" and ", $filters);
-        }  
+        } 
 
-        $level = 1;
-        $where_string = " {$where_string} {$and} master__data.layertype = '{$level}'";
+        // $level = 1;
+        // $where_string = " {$where_string} "; // {$and} master__data.layertype = '{$level}'
 
         $sql           = "SELECT `master__data`.*,`geolocation`.`region`, `geolocation`.`lat`, `geolocation`.`lng`, `dev_partners`.`pin`, `geolocation`.`typeofobj`,
                                     `dev_partners`.`logo`, `dev_partners`.`abbr` 
                                     from `master__data` 
                                     inner join `financetbls` on `master__data`.`masterid` = `financetbls`.`masterid`
                                     inner join `geolocation` on `financetbls`.`fid` = `geolocation`.`md_projectsid` 
-                                    inner join `dev_partners` on `master__data`.`development_partner` = `dev_partners`.`id` 
+                                    inner join `dev_partners` on `master__data`.`development_partner` = `dev_partners`.`id`
                                     {$where_string}";
 
         $pins          = DB::select($sql);
         
         // return response()->json([$pins]);
         return response()->json([$pins, $sql]);
+    }
+
+    function leveltwo(Request $req) {
+        $program_level_id = $req->input("programid");
+
+
     }
 
     function the_projects(Request $req) {

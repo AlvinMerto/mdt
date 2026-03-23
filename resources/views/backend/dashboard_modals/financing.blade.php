@@ -9,7 +9,7 @@
         <!-- begin::fv-row -->
         <div class="">
             <div class="">
-                <div class='row mb-5'>
+                <div class='row mb-5 hideit'>
                     <div class="col-md-3">
                         <!--begin::Input group-->
                         <!--begin::Label-->
@@ -17,8 +17,15 @@
                         <!--end::Label-->
                     </div>
                     <div class="col-md-9">
+<!--                         <div class="md:col-span-8 space-y-2">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <span class="text-slate-400 font-medium">₱</span>
+                            </div>
+                            <input type="number" id="projAmt" class="w-full pl-10 pr-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-700 transition-all focus:border-blue-500" placeholder="0.00">
+                        </div> -->
                         <!--begin::Select2-->
                         <input type='text' id="projectamount"
+                            placeholder="0.00"
                             class="form-control mb-2 fieldtext" 
                             data-field="projectamount"
                             data-table="financetbls" 
@@ -41,7 +48,7 @@
                     </div>
                     <div class="col-md-9">
                         <!--begin::Select2-->
-                        <input type='text' class="form-control mb-2 fieldtext" data-field="amountdisbursed"
+                        <input type='text' placeholder="0.00" class="form-control mb-2 fieldtext" data-field="amountdisbursed"
                             data-table="financetbls" data-keyid_fld="fid" data-dbid="<?php echo $collection[0]->fid; ?> "
                             value="<?php echo $collection[0]->amountdisbursed; ?>" />
                         <!--end::Select2-->
@@ -60,7 +67,7 @@
                     </div>
                     <div class="col-md-9">
                         <!--begin::Select2-->
-                        <input type='text' class="form-control mb-2 fieldtext" data-field="costtogender"
+                        <input type='text' placeholder="0.00" class="form-control mb-2 fieldtext" data-field="costtogender"
                             data-table="financetbls" data-keyid_fld="fid" data-dbid="<?php echo $collection[0]->fid; ?> "
                             value="<?php echo $collection[0]->costtogender; ?>" />
                         <!--end::Select2-->
@@ -74,12 +81,12 @@
                     <div class="col-md-3">
                         <!--begin::Input group-->
                         <!--begin::Label-->
-                        <label class="form-label">Project Amount Per Site</label>
+                        <label class="form-label" >Project Amount Per Site</label>
                         <!--end::Label-->
                     </div>
                     <div class="col-md-9">
                         <!--begin::Select2-->
-                        <input type='text' class="form-control mb-2 fieldtext" id="amountperprojectsite" data-field="projectamountpersite"
+                        <input type='text' placeholder="0.00" class="form-control mb-2 fieldtext" id="amountperprojectsite" data-field="projectamountpersite"
                             data-table="financetbls" data-keyid_fld="fid" data-dbid="<?php echo $collection[0]->fid; ?> "
                             value="<?php echo $collection[0]->projectamountpersite; ?>" />
                         <!--end::Select2-->

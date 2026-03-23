@@ -342,6 +342,7 @@ function display_details_mpap(data, id, devpart, status, thelogo_pin) {
     //     "padding-top": "20px"
     // }, 300);
 
+    $(document).find("#level2projects").children().remove();
     $(document).find("#projecttitle").text(data[0][0].title);
     $(document).find("#thedescs").text(data[0][0].description);
     $(document).find("#projectstatus").text(data[0][0].status);
@@ -378,6 +379,59 @@ function display_details_mpap(data, id, devpart, status, thelogo_pin) {
 
         // create_line(theline, "connectionline", "#f80000", 2);
     });
+
+    let params                 = Object();
+        params.layertype       = 2;
+        params.attachedtolayer = id;
+
+    get_("filter_it", { filters : params }, function(data){
+        if (data[0].length > 0) {
+            var dom     = '<div class="row mb-5">'+
+                                '<div class="col-md-12">'+
+                                    '<div>'+
+                                        '<div style="display:flex;">'+
+                                            '<span class="text-[20px] border-t border-gray-900 border-dotted mt-1 pt-1 w-full mb-2"> Projects </span>'+
+                                        '</div>';
+
+            var servingid = null;
+
+            for(var i = 0;i<=data[0].length-1;i++) {
+                if (servingid != data[0][i].masterid) {
+                    dom +=   '<div class="bg-white p-4 rounded-xl transition-all cursor-pointer">'+
+                                '<div class="flex justify-between items-start mb-3">'+
+                                    '<h4 class="font-bold text-slate-800 leading-tight text-l">'+data[0][i].title+'</h4>'+
+                                    '<svg class="w-8 h-7 ml-0" fill="none" stroke="currentColor">'+
+                                        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>'+
+                                '</div>'+
+                                '<div class="flex justify-between text-[13px] mb-1">'+
+                                    '<span>55%</span>'+
+                                    '<span>'+data[0][i].status+'</span>'+
+                                '</div>'+
+                                '<div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">'+
+                                    '<div class="h-full bg-indigo-500" style="width: 55%"></div>'+
+                                '</div>'+
+                            '</div>';
+                }
+                servingid = data[0][i].masterid;
+            }
+
+            dom +=     '</div>'+
+                    '</div>'+
+                 '</div>';
+
+            $(document).find("#level2projects").append(dom);
+        }
+    });
+
+}
+
+function quantify_status(stat) {
+    status['on-going']  = "30%";
+    status['pipeline']  = "30%";
+    status['completed'] = "30%";
+    status['on-hold']   = "30%";
+
+    return status[stat];
 }
 
 function animateCount(id, target, duration) {
