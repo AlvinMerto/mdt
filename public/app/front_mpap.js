@@ -390,7 +390,7 @@ function display_details_mpap(data, id, devpart, status, thelogo_pin) {
 
             for(var i = 0;i<=data[0].length-1;i++) {
                 if (servingid != data[0][i].masterid) {
-                    dom +=   '<div class="bg-white p-4 rounded-xl transition-all cursor-pointer">'+
+                    dom +=   '<div class="bg-white p-4 rounded-xl transition-all cursor-pointer mb-4">'+
                                 '<div class="flex justify-between items-start mb-3">'+
                                     '<h4 class="font-bold text-slate-800 leading-tight text-l">'+data[0][i].title+'</h4>'+
                                     '<svg class="w-8 h-7 ml-0" fill="none" stroke="currentColor">'+
