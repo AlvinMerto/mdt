@@ -132,16 +132,6 @@ function initializeDefaultMap() {
 $(document).on("click",".programclick", function() {
     var progid = $(this).data("progid");
 
-    // let params = Object();
-
-    // params.layertype       = 2;
-    // params.attachedtolayer = progid;
-
-    // get_("filter_it", { filters: params }, function (data) {
-    //     console.log(data[0]);
-    //     console.log(data[1]);
-    // });
-
     var id          = progid;
     var devpart     = $(this).data("devpart");
     var thelogo_pin = $(this).data("logo")+".png";

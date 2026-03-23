@@ -334,14 +334,6 @@ function parseCoordinates(coordString) {
 
 function display_details_mpap(data, id, devpart, status, thelogo_pin) {
 
-    // var detailsbox = $(document).find(".details_box");
-    // detailsbox.animate({
-    //     "width": "35" + "%",
-    //     "padding-left": "20px",
-    //     "padding-right": "20px",
-    //     "padding-top": "20px"
-    // }, 300);
-
     $(document).find("#level2projects").children().remove();
     $(document).find("#projecttitle").text(data[0][0].title);
     $(document).find("#thedescs").text(data[0][0].description);
@@ -385,6 +377,7 @@ function display_details_mpap(data, id, devpart, status, thelogo_pin) {
         params.attachedtolayer = id;
 
     get_("filter_it", { filters : params }, function(data){
+       
         if (data[0].length > 0) {
             var dom     = '<div class="row mb-5">'+
                                 '<div class="col-md-12">'+
@@ -451,6 +444,9 @@ function animateCount(id, target, duration) {
 }
 
 function formatNumber(num) {
+    if (num == null) {
+        return null;
+    }
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
