@@ -55,6 +55,10 @@ class FrontEndController extends Controller
                                         ORDER BY g.region");
 
         $collection = collect($regions);
+        
+        $progs      = DB::select("select title, devpartner, abbr, masterid from master__data 
+                                   join dev_partners on master__data.development_partner = dev_partners.id
+                                   where layertype = 1");
 
         return view("front.mpap_real.mpap_main")->with(["allprojects"      => 0, 
                                                         "loangrant"        => 0, 
@@ -63,7 +67,8 @@ class FrontEndController extends Controller
                                                         "sector"           => $sectors,
                                                         "devparts"         => $devparts,
                                                         "alllocs"          => 0,
-                                                        "persector"        => $collection]);   
+                                                        "persector"        => $collection,
+                                                        "progs"            => $progs]);   
     }
 
     function allprojects(Request $req) {

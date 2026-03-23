@@ -33,6 +33,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{url('style/generalstyle.css')}}" />
     <link rel="stylesheet" href="{{url('style/mpapstyle.css')}}" />
 
@@ -72,44 +73,28 @@
     </div> -->
 
     <div id="bottom_navigation_ma_rbme">
-        <div class="timeline-mpap">
+        <div class="timeline-container flex items-center space-x-1 ">
+            <div class="flex space-x-1 text-[11px] font-bold text-slate-400">
             <?php for($i=2016;$i<=date("Y");$i++) { ?>
                 <?php $class = ""; 
                     if ($i == date("Y")) {
                         $class = "selected_timeline";
                     }
                 ?>
-                <div class="container-mpap <?php echo $class; ?>">
-                    <div class="content-mpap">
-                    <h6 class='theyear_mpap'><?php echo $i; ?></h6>
-                    </div>
-                </div>
+
+                <h6 class='theyear_mpap mb-0 ml-0 hover:text-yellow-600 cursor-pointer <?php echo $class; ?>'><?php echo $i; ?></h6>
+                    
             <?php } ?>
+            </div>
         </div>
     </div>
 
-    <!-- <div id="legend_div">
-    <div class="row">
-        <div class="col-md-3 lbl_hover">
-            <span class="legendspan pipeline" data-legend = "pipeline"> </span> <p class='lbl'> Pipeline </p>
-        </div>
-        <div class="col-md-3 lbl_hover">
-            <span class="legendspan onhold" data-legend = "on-hold"> </span> <p class='lbl'> On-hold </p>
-        </div>
-        <div class="col-md-3 lbl_hover">
-            <span class="legendspan ongoing" data-legend = "on-going"> </span> <p class='lbl'> On-Going </p>
-        </div>
-        <div class="col-md-3 lbl_hover">
-            <span class="legendspan completed" data-legend = "completed"> </span> <p class='lbl'> Completed </p>
-        </div>
-    </div>
-</div> -->
     <div class="details_box addgradient">
         <div class="first_box mb-5">
             <div class="imagebox">
                 <!-- <img src="https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg"/> -->
             </div>
-            <span> Project Title </span>
+            <span> Title </span>
             <h5 style="line-height: 32px;" id="projecttitle"> &nbsp; </h5> <i class="bi bi-backspace-fill theclosebtn" title='Close this window'></i>
         </div>
         <div class="second_box">
@@ -159,44 +144,17 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row mb-7" id="theupdates">
-                        <div class="col-md-12">
-                            <div>
-                                <span> Updates of the Project </span>
-                                <div class="mt-2">
-                                    <ul class="atts_ul">
-                                        <li style="width:40%;" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/1.jpg')}}" /> </li>
-                                        <li style="width:40%;"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#lightroom_div"> <img class='image_att'  src="{{asset('images/attachments/2.jpg')}}" /> </li>
-                                        <li style="width:40%;"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/3.jpg')}}" /> </li>
-                                        <li style="width:40%;"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/4.jpg')}}" /> </li>
-                                        <li style="width:40%;"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#lightroom_div"> <img class='image_att' src="{{asset('images/attachments/5.jpg')}}" /> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+
                     <div class="row mb-5">
-                        <div class="col-md-12">
-                            <div>
-                                <div style="display:flex;">
-                                    <span> Project Locations </span>
-                                    <button id="display_in_map" class="btn btn-primary btn-sm" style="margin-top: -8px;margin-left: 15px;"> Display in Map </button>
-                                </div>
-                                <ul class='proj_locs mt-2' id="proj_locs">
-                                </ul>
-                            </div>
-                        </div>
+                        <button id="display_in_map" class="btn btn-primary btn-sm" style=" display:block;"> Locate in Map </button>
                     </div>
+
+                    <!-- dont delete, this where locations of projects are placed-->
+                        <ul class='proj_locs mt-2' id="proj_locs_"> </ul>
+                    <!-- ## -->
+
+                    <span id="level2projects"></span>
+
                 </div>
             </div>
 
@@ -217,15 +175,10 @@
                 <div class="modal-body">
                     <span id="thesearchresults"></span>
                 </div>
-                <!-- <div class="modal-footer">
-                    <button class="btn btn-primary btn-xs"> Download </button>  
-                </div> -->
+
             </div>
         </div>
-        <!-- <h5> <i class="bi bi-x-lg closethiswindow" data-window='#search_result'></i> Search Results 
-                <button class="btn btn-primary btn-xs"> Download </button> 
-        </h5>  -->
-        
+
     </div>
 
 
@@ -239,44 +192,46 @@
         </div>
         <div class="bodydiv col-md-12 mb-2" style="display:none !important; ">
 
-            <!-- <div class="d-flex">
-                <h5 class="mb-5"> Filter </h5>
-                <ul class='ul_filter'>
-                    <li data-bs-toggle="modal" data-bs-target="#filterdiv"> Generate Report </li>
-                    <li> <i class="bi bi-cash-coin font-18"></i>  </li> <i class="bi bi-pie-chart-fill font-18"></i>
-                    <li> <i class="bi bi-heart-fill font-18"></i>  </li>
-                    <li> <i class="bi bi-briefcase font-18"></i>  </li>
-                </ul>
-            </div> -->
+
         </div>
-        <div class="contentdiv overflow-y-scroll col-md-12 mt-20">
-            <h5 class='mb-5'> General Statistics <i class="bi bi-list opengenstat"></i> </h5>
+        <div class="contentdiv overflow-y-scroll col-md-12 mt-0">
+            <!-- <h5 class='mb-5'> General Statistics <i class="bi bi-list opengenstat"></i> </h5> -->
             <div class="row">
+                <div class="col-md-12 mb-4">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <p class="text-xl font-bold mb-0" id="genstat_lbl"> Mindanao <i class="bi bi-x-circle closethiswindow" data-window='#dist_per_reg'></i> </p>
+                    </div>
+                </div>
                 <div class="col-md-6">
-                    <div class="boxes_div mb-5">
-                        <h6> Amount </h6>
-                        <div class="boxes_div d-flex" style="background: #fff;">
-                            <p class='font-1-9rem mt-4'>
-                                <strong id='total_total' class="grandtotal"> </strong>
-                            </p>
-                            <div class="">
-                                <div class="font-18 d-flex">
-                                    <hr class='borderclass_amnt' />
-                                    <p class='font-16 loaddist' data-typeoffinancing="Loan">
-                                        <span> $ </span>
-                                        <span id='odaloan'> </span> Loan
-                                    </p>
-                                </div>
-                                <div class="font-18 d-flex">
-                                    <hr class='borderclass_amnt' />
-                                    <p class='font-16 loaddist' data-typeoffinancing="Grant">
-                                        <span> $ </span>
-                                        <span id='odagrant'> </span> Grant
-                                    </p>
-                                </div>
+                    <div class="boxes_div_ mb-5">
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                            <h3 class="text-xl font-bold text-slate-400 uppercase mb-4">General Statistics</h3>
+                            <div class="flex items-center justify-between mb-2 mt-5">
+                                <span class="text-l font-semibold">Amount</span>
+                                <strong id='total_total' class="text-2xl font-bold text-yellow-600 grandtotal"> </strong>
+                                <!-- <span class="text-2xl font-bold text-yellow-600">1.9B</span> -->
+                            </div>
+                            <div class="text-[13px] text-slate-500 space-y-1 ml-auto text-right">
+                                <div class="loaddist" data-typeoffinancing="Loan"><span> $ </span> <span id='odaloan'> </span> Loan</div>
+                                <div class="loaddist" data-typeoffinancing="Grant"><span> $ </span> <span id='odagrant'> </span> Grant</div>
+                            </div>
+                            <hr class="my-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-l font-semibold">Number of Projects</span>
+                                <span class="text-2xl font-bold text-yellow-600">53</span>
+                            </div>
+                            <div class="text-[13px] text-slate-500 space-y-1 ml-auto text-right">
+                                <div class="numofprojs" data-typeoffinancing="Loan"><span id='odaloan_projects'></span> Loans</div>
+                                <div class="numofprojs" data-typeoffinancing="Grant"><span id='odagrant_projects'> </span> Grants</div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="boxes_div mb-5">
+                        <h6 style="border-bottom: 1px solid #ccc;padding-bottom: 10px;margin-bottom: 15px;"> <span class="dist_name_reg"> &nbsp; </span> </h6>
+                        <div id="distributiongraph_region"></div>
+                    </div>
+                    
                     <div class="boxes_div mb-5" style="height: 318px; display:none;">
                         <h6> Distribution per Financial Assistance </h6>
                         <span id="theloangrantdiv"> </span>
@@ -286,36 +241,6 @@
                                         <li title="2024" style="height:100%; margin:0px 1px; width:15px;" class="thecolor 2024_list"> </li>
                                     </ul>
                                 </div> -->
-                    </div>
-
-                    <div class="boxes_div mb-5">
-                        <h6> Number of Projects </h6>
-                        <div class="boxes_div d-flex" style="background: #fff;">
-                            <p class='font-26 mt-4'>
-                                <strong id='totalnumprojs'  class="grandtotal"> <span>--</span> </strong>
-                            </p>
-                            <div class="">
-                                <div class="font-18 d-flex">
-                                    <hr class='borderclass_amnt' />
-                                    <p class='font-16 numofprojs' data-typeoffinancing="Loan">
-                                        <span id='odaloan_projects'> -- </span> Loan
-                                    </p>
-                                </div>
-                                <div class="font-18 d-flex">
-                                    <hr class='borderclass_amnt' />
-                                    <p class='font-16 numofprojs' data-typeoffinancing="Grant">
-                                        <span id='odagrant_projects'> -- </span> Grant
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="boxes_div mb-5">
-                        <!-- <h6 class="dist_name"> -- </h6>
-                        <div id="distributiongraph"></div> -->
-                        <h6 style="border-bottom: 1px solid #ccc;padding-bottom: 10px;margin-bottom: 15px;"> <span class="dist_name_reg"> &nbsp; </span> <i class="bi bi-x-circle closethiswindow" data-window='#dist_per_reg'></i></h6>
-                        <div id="distributiongraph_region"></div>
                     </div>
 
                     <!-- <div class="boxes_div" id="dist_per_reg" style="background:#fff;">
@@ -339,113 +264,129 @@
                     </div>
                 </div>
                 <div class="col-md-6" >
-                    <div class="row px-10">
-                        <div class="col-md-12 boxes_div">
-                            <?php
-                            function thegraphs($tof, $persector)
-                            {
-                                $regions       = ["9", "10", "11", "12", "13", "barmm"];
+                    <div class="bg-white mb-5 p-4 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="text-xl font-bold text-slate-400 uppercase mb-4">Programs</h3>
+                        <!-- <h2 id="current-title" class="text-lg font-bold leading-tight">Programs</h2> -->
+                        <div id="item-list" class="mt-4 space-y-2 h-[250px] overflow-y-auto pr-1">
 
-                                $doms          = "";
-                                foreach ($regions as $reg) {
-
-                                    $nums    = [];
-                                    $min     = null;
-                                    $max     = null;
-
-                                    $doms .= "<div class='labelchart'>Region {$reg} </div>";
-                                    $filtered = $persector->where("region", $reg)->toArray();
-
-                                    foreach ($filtered as $f) {
-                                        array_push($nums, $f->total_amount);
-                                    }
-
-                                    if (count($filtered) > 0) {
-                                        $min = min($nums);
-                                        $max = max($nums);
-
-                                        $thenums = [];
-
-                                        foreach ($filtered as $ffs) {
-                                            if ($ffs->type_of_financing == $tof) {
-                                                continue;
-                                            }
-
-                                            if (strlen($ffs->total_amount) > 0) {
-                                                if ($ffs->total_amount > 0) {
-                                                    $norm = ($ffs->total_amount - $min) / ($max - $min);
-                                                    $perc = ($norm * 100);
-                                                    $pts  = ($perc / 100);
-
-                                                    array_push($thenums,  $perc);
-                                                }
-                                            } else {
-                                                array_push($thenums, 0);
-                                            }
-                                        }
-                                    } else {
-                                        $thenums = [0, 0, 0, 0];
-                                    }
-
-                                    $doms .=  "<div class='barchart' style=" ?> <?php $countt = 1;
-                                                                                foreach ($thenums as $tns) {
-                                                                                    $doms .=  "--a{$countt}:{$tns};";
-                                                                                    $countt++;
-                                                                                } ?> <?php $doms .=  ">";
-                                                                                                    $count = 1;
-                                                                                                    foreach ($thenums as $tn) {
-                                                                                                        $doms .=  "<div class='segmentbar a{$count}'></div>";
-                                                                                                        $count++;
-                                                                                                    }
-                                                                                                    $doms .=  "</div>";
-                                                                                                }
-                                                                                                    ?>
-
-                            <?php return $doms;
-                            } ?>
-
-                            <h6> Distribution Per Sector per type of financial assistance</h6>
-                            <!-- <span id="pie_map"> </span> -->
-                            <ul class="the_nav_chart" id="the_nav_chart">
-                                <li class="small_tab_select" data-window="loan_window"> Loan </li>
-                                <li data-window='grant_window'> Grant </li>
-                            </ul>
-                            <div id="loan_window" class="thewindow showthiswindow">
-                                <div class="chart">
-                                    <?Php echo thegraphs("loan", $persector); ?>
+                            <?php foreach($progs as $p) { ?>
+                                <div class="p-3 bg-slate-100 rounded-lg hover:bg-yellow-100 cursor-pointer transition-all border border-transparent hover:border-yellow-300">
+                                    <div class="text-[11px] font-bold uppercase text-slate-400"><?php echo $p->abbr; ?></div>
+                                    <div class="text-[13px] font-bold programclick" data-progid='<?php echo $p->masterid; ?>'><?php echo $p->title; ?></div>
+                                    <span id="proj_<?php echo $p->masterid; ?>"></span>
                                 </div>
-                            </div>
-                            <div id="grant_window" class="thewindow">
-                                <div class="chart">
-                                    <?Php echo thegraphs("grant", $persector); ?>
-                                </div>
-                            </div>
-                            <div style="margin-top: 12px; padding-top:12px; border-top:4px dotted #ccc;">
-                                <h5> Legend </h5>
-                                <?php
-                                $unique_sector = $persector->unique('thesector')->toArray();
-                                $sectors       = [];
-
-                                foreach ($unique_sector as $us) {
-                                    $sectors[] = $us->thesector;
-                                }
-
-                                $counttt = 1;
-                                foreach ($sectors as $key => $s) {
-                                    echo "<div class='d-flex flex-row gap-3' style='font-size: 12px !important; margin-bottom: 5px; border-bottom: 1px solid #ccc;'> 
-                                            <table>
-                                                <tr> 
-                                                    <td style='vertical-align: top; padding-top:4px;'> <div style='margin-bottom:0px;height: 14px;width: 30px;' class='a{$counttt}'> </div> </td>
-                                                    <td style='vertical-align: top; padding-left:10px;'> <p style='margin-bottom:0px;'> {$s} </p> </td>
-                                                </tr>
-                                            </table>
-                                          </div>";
-                                    $counttt++;
-                                }
-                                ?>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
+
+                    <div class="bg-white mb-5 p-4 rounded-xl shadow-sm border border-slate-200">  
+                            <div class="col-md-12 boxes_div">
+                                <?php
+                                function thegraphs($tof, $persector)
+                                {
+                                    $regions       = ["9", "10", "11", "12", "13", "barmm"];
+
+                                    $doms          = "";
+                                    foreach ($regions as $reg) {
+
+                                        $nums    = [];
+                                        $min     = null;
+                                        $max     = null;
+
+                                        $doms .= "<div class='labelchart'>Region {$reg} </div>";
+                                        $filtered = $persector->where("region", $reg)->toArray();
+
+                                        foreach ($filtered as $f) {
+                                            array_push($nums, $f->total_amount);
+                                        }
+
+                                        if (count($filtered) > 0) {
+                                            $min = min($nums);
+                                            $max = max($nums);
+
+                                            $thenums = [];
+
+                                            foreach ($filtered as $ffs) {
+                                                if ($ffs->type_of_financing == $tof) {
+                                                    continue;
+                                                }
+
+                                                if (strlen($ffs->total_amount) > 0) {
+                                                    if ($ffs->total_amount > 0) {
+                                                        $norm = ($ffs->total_amount - $min) / ($max - $min);
+                                                        $perc = ($norm * 100);
+                                                        $pts  = ($perc / 100);
+
+                                                        array_push($thenums,  $perc);
+                                                    }
+                                                } else {
+                                                    array_push($thenums, 0);
+                                                }
+                                            }
+                                        } else {
+                                            $thenums = [0, 0, 0, 0];
+                                        }
+
+                                        $doms .=  "<div class='barchart' style=" ?> <?php $countt = 1;
+                                                                                    foreach ($thenums as $tns) {
+                                                                                        $doms .=  "--a{$countt}:{$tns};";
+                                                                                        $countt++;
+                                                                                    } ?> <?php $doms .=  ">";
+                                                                                                        $count = 1;
+                                                                                                        foreach ($thenums as $tn) {
+                                                                                                            $doms .=  "<div class='segmentbar a{$count}'></div>";
+                                                                                                            $count++;
+                                                                                                        }
+                                                                                                        $doms .=  "</div>";
+                                                                                                    }
+                                                                                                        ?>
+
+                                <?php return $doms;
+                                } ?>
+
+                                <h6> Distribution Per Sector per type of financial assistance</h6>
+                                <!-- <span id="pie_map"> </span> -->
+                                <ul class="the_nav_chart" id="the_nav_chart">
+                                    <li class="small_tab_select" data-window="loan_window"> Loan </li>
+                                    <li data-window='grant_window'> Grant </li>
+                                </ul>
+                                <div id="loan_window" class="thewindow showthiswindow">
+                                    <div class="chart">
+                                        <?Php echo thegraphs("loan", $persector); ?>
+                                    </div>
+                                </div>
+                                <div id="grant_window" class="thewindow">
+                                    <div class="chart">
+                                        <?Php echo thegraphs("grant", $persector); ?>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 12px; padding-top:12px; border-top:4px dotted #ccc;">
+                                    <h5> Legend </h5>
+                                    <?php
+                                    $unique_sector = $persector->unique('thesector')->toArray();
+                                    $sectors       = [];
+
+                                    foreach ($unique_sector as $us) {
+                                        $sectors[] = $us->thesector;
+                                    }
+
+                                    $counttt = 1;
+                                    foreach ($sectors as $key => $s) {
+                                        echo "<div class='d-flex flex-row gap-3' style='font-size: 12px !important; margin-bottom: 5px; border-bottom: 1px solid #ccc;'> 
+                                                <table>
+                                                    <tr> 
+                                                        <td style='vertical-align: top; padding-top:4px;'> <div style='margin-bottom:0px;height: 14px;width: 30px;' class='a{$counttt}'> </div> </td>
+                                                        <td style='vertical-align: top; padding-left:10px;'> <p style='margin-bottom:0px;'> {$s} </p> </td>
+                                                    </tr>
+                                                </table>
+                                              </div>";
+                                        $counttt++;
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                    </div>
+
                 </div>
             </div>
             <div class="row mb-4 mt-10 " style="display:none;">
@@ -713,7 +654,7 @@
     <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiYWx2aW5tZXJ0byIsImEiOiJjazM3MjBobDEwN3ZvM21wemx6aG5tNHlqIn0.ch2yPYUkeOn1ih6nbfAm1A';
+        mapboxgl.accessToken = "{{ env('MAPBOX_TOKEN') }}";
 
         // mapbox://styles/alvinmerto/cm9cc7hf6007q01sp0cq40gb5 :: dark
         // mapbox://styles/alvinmerto/cm9cboss5008701rcdieh4wec :: light

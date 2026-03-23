@@ -129,13 +129,29 @@ function initializeDefaultMap() {
     });
 }
 
+$(document).on("click",".programclick", function() {
+    var progid = $(this).data("progid");
+
+    let params = Object();
+
+    params.layertype = 2;
+   
+    get_("filter_it", { filters: params }, function (data) {
+        console.log(data);
+    });
+
+});
+
 $(document).on("click", ".theyear_mpap", function () {
     removemarker();
 
     global_theyear = $(this).text();
 
-    $(this).parent().parent().siblings().removeClass("selected_timeline");
-    $(this).parent().parent().addClass("selected_timeline");
+    // $(this).parent().parent().siblings().removeClass("selected_timeline");
+    // $(this).parent().parent().addClass("selected_timeline");
+
+    $(this).siblings().removeClass("selected_timeline");
+    $(this).addClass("selected_timeline");
 
     numberofprojects(global_theyear, global_region_sel);
     get_odas("all", global_theyear);
@@ -327,6 +343,7 @@ $(document).on("click", '#displayOnMap', function () {
 
 $(document).on("click", ".theclosebtn", function () {
 
+    $(document).find("#genstat_lbl").text("Mindanao");
     themainnav("show");
     var detailsbox = $(document).find(".details_box").removeClass("showdiv");
     // detailsbox.animate({
@@ -446,6 +463,17 @@ function getodagrant_figures(year = false, region = false) {
 
     if (region != false) {
         params.region = region;
+
+        let theregs = {
+            "region9"    : "Zamboanga Peninsula",
+            "region10"   : "Northern Mindanao",
+            "region11"   : "Davao Region",
+            "region12"   : "Socksargen",
+            "region13"   : "Caraga",
+            "regionbarmm": "BARMM"
+        };
+
+        $(document).find("#genstat_lbl").text(theregs['region'+region]+" (Region "+region+")");
     }
 
     $(document).find("#odagrant").text("---");

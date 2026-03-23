@@ -286,7 +286,7 @@ function display_pin(data) {
                 $(document).find("#" + devpart).siblings().removeClass("li_selected");
                 $(document).find("#" + devpart).addClass("li_selected");
 
-                get_("getdetails", { ii: id }, function (dd) {
+                get_("getdetails", { ii : id }, function (dd) {
                     display_details_mpap(dd, id, devpart, status, thelogo_pin, status);
                 });
 
@@ -302,7 +302,6 @@ function display_pin(data) {
             // create_line(lat, "line" + o, returnColor(data[0][o].status), 4);
 
             const m = new mapboxgl.Marker(pin).setLngLat([lat[0][0], lat[0][1]]).addTo(map);
-
             marker.push(m);
         }
     }

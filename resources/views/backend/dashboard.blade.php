@@ -57,7 +57,7 @@
 							<div id="kt_app_content" class="app-content flex-column-fluid">
 								<!--begin::Content container-->
 								<div id="kt_app_content_container" class="app-container container-fluid">
-									@include('backend.topbar')
+									@include('backend.topbar', ['userprofile' => $userprofile])
 									<!--begin::Row-->
 									<div class="row gx-6 gx-xl-9">
 										<!--begin::Col-->

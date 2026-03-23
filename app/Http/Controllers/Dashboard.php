@@ -42,8 +42,21 @@ class Dashboard extends Controller
     //
     function index(Request $req)
     {
-        $projects = []; // master__data::all();
-        $macro    = MacroIndicators::all();
+        $projects    = []; // master__data::all();
+        $macro       = MacroIndicators::all();
+
+        $userprofile = userprofile::where("userid", Auth::id())->get();
+
+        if (count($userprofile) > 0) {
+            $agencyid      = $userprofile[0]->agencyid;
+            $powerlevel    = $userprofile[0]->powerlevel;
+
+            if ($powerlevel > 0) {
+                $where     = "where development_partner = '{$agencyid}'";
+            }
+        } else {
+            die("Please wait while we calibrate your account");
+        }
 
         if ($req->isMethod('post')) {
             $theindicator   = $req->input("theindicator");
@@ -64,7 +77,9 @@ class Dashboard extends Controller
             return redirect()->back()->with('success', 'Post saved successfully!');
         }
 
-        return view("backend.dashboard")->with(["projects" => $projects, "macro" => $macro]);
+        return view("backend.dashboard")->with(["projects"    => $projects, 
+                                                "macro"       => $macro, 
+                                                "userprofile" => $userprofile]);
     }
 
     function mpapbackend(Request $req)
@@ -230,14 +245,14 @@ class Dashboard extends Controller
                                                  where masterid = '{$id}'");
 
         // development partners
-        $profile            = userprofile::where("userid", Auth::id())->get("agencyid");
+        $profile            = userprofile::where("userid", Auth::id())->get();
         $userprofile        = $profile[0]->agencyid;
 
         $powerlevel         = $profile[0]->powerlevel;
 
         if ($powerlevel == 0) {
             $devparts       = DevPartners::all();    
-        } else {        
+        } else {
             $devparts       = DevPartners::where("id", $userprofile)->get();
         }
 
