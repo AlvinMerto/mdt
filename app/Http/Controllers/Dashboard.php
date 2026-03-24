@@ -387,9 +387,11 @@ class Dashboard extends Controller
 
     function rbme()
     {
-        $agenda = TheAgenda::all();
+        $agenda             = TheAgenda::all();
 
-        return view("backend.rbme")->with(["agenda" => $agenda]);
+        $userprofile        = userprofile::where("userid", Auth::id())->get();
+
+        return view("backend.rbme")->with(["agenda" => $agenda,"userprofile"=>$userprofile]);
     }
 
     function editrbme($edit)
