@@ -538,15 +538,20 @@
 														<button type="button" id="addnewlocation" class="btn btn-sm btn-primary">
 															<span class="indicator-label">Add New Location</span>
 														</button>
+														<br/>
+														<label class="uploadcsvwindow">
+															<a href='https://drive.google.com/file/d/157LS5nr6EXoaQ8HUOQpqXOOEIacvtRpI/view?usp=sharing' target='_blank'> Download the CSV format </a>
+														</label>
 														<label class="uploadcsvwindow">
 															<span class=''> Upload a CSV </span>
 															<input type="hidden" value="<?php echo $collection[0]->masterid; ?>" id="masteridhide" />
-															<input class='mt-4' type="file" id="thecsvfile" name="thecsvfile" />
+															<input type="file" id="thecsvfile" name="thecsvfile" />
 															<span class='mt-2' id="csvuploadStatus"> &nbsp; </span>
 														</label>
 													</div>
 													<?php
 													if (count($geo_finance) > 0) {
+														echo "<h3 class='mt-6'> List of Locations </h3>";
 														echo "<ul class='ul_listing' id='gd_list'>";
 														foreach ($geo_finance as $gf) {
 															echo "<li data-loc_id='{$gf->geolocationid}'> {$gf->columnplace} </li>";
@@ -571,6 +576,7 @@
 												<?php
 												if (count($geo_finance) > 0) {
 													echo "<div class='col-md-4'>";
+													echo "<h3 class='mb-3'> List of Locations </h3>";
 													echo "<ul class='ul_listing' id='fd_list'>";
 													foreach ($geo_finance as $gf) {
 														echo "<li data-loc_id='{$gf->geolocationid}'> {$gf->columnplace} </li>";
